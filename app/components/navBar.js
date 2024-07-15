@@ -7,6 +7,7 @@ import Benefits from "../screens/Benefits";
 import FindCare from "../screens/FindCare";
 import Px from "../screens/Px";
 import Menu from "../screens/Menu";
+import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,12 +18,32 @@ const NavBar = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
+            let iconColor = focused ? "#41c0da" : "white"; // White when not focused
+            let iconSize = route.name === "Home" ? 45 : size;
 
             if (route.name === "Home") {
-              iconName = focused ? "home" : "home-outline";
+              return (
+                <View
+                  style={{
+                    width: 100,
+                    height: 100,
+                    borderRadius: 50,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "#02226d", 
+                    //paddingTop: 40,
+                  }}
+                >
+                  <Ionicons
+                    name={focused ? "home" : "home-outline"}
+                    size={iconSize}
+                    color={iconColor}
+                  />
+                </View>
+              );
             } else if (route.name === "Benefits") {
               iconName = focused ? "umbrella" : "umbrella-outline";
-            } else if (route.name === "FindCare") {
+            } else if (route.name === "Find Care") {
               iconName = focused ? "heart-circle" : "heart-circle-outline";
             } else if (route.name === "Px") {
               iconName = focused ? "medical" : "medical-outline";
@@ -30,41 +51,82 @@ const NavBar = () => {
               iconName = focused ? "menu" : "menu-outline";
             }
 
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return (
+              <Ionicons name={iconName} size={iconSize} color={iconColor} />
+            );
           },
         })}
         tabBarOptions={{
-          activeTintColor: "blue",
-          inactiveTintColor: "gray",
+          activeTintColor: "white", 
+          inactiveTintColor: "white", 
           style: {
-            height: 70,
+            height: 100, 
+            backgroundColor: "#02226d", 
+          },
+          labelStyle: {
+            fontSize: 12, 
           },
         }}
       >
         <Tab.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }} // Hide the header for Home screen
-        />
-        <Tab.Screen
           name="Benefits"
           component={Benefits}
-          options={{ headerShown: false }} // Hide the header for Benefits screen
+          options={{
+            headerShown: false,
+            tabBarStyle: {
+              height: 80, 
+              backgroundColor: "#02226d",
+              paddingBottom: 20,
+            },
+          }}
         />
         <Tab.Screen
-          name="FindCare"
+          name="Find Care"
           component={FindCare}
-          options={{ headerShown: false }} // Hide the header for FindCare screen
+          options={{
+            headerShown: false,
+            tabBarStyle: {
+              height: 80, 
+              backgroundColor: "#02226d",
+              paddingBottom: 20,
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerShown: false,
+            tabBarStyle: {
+              height: 80, 
+              backgroundColor: "#02226d",
+              paddingBottom: 20,
+            },
+          }}
         />
         <Tab.Screen
           name="Px"
           component={Px}
-          options={{ headerShown: false }} // Hide the header for Px screen
+          options={{
+            headerShown: false,
+            tabBarStyle: {
+              height: 80, 
+              backgroundColor: "#02226d",
+              paddingBottom: 20,
+            },
+          }}
         />
         <Tab.Screen
           name="Menu"
           component={Menu}
-          options={{ headerShown: false }} // Hide the header for Menu screen
+          options={{
+            headerShown: false,
+            tabBarStyle: {
+              height: 80, 
+              backgroundColor: "#02226d",
+              paddingBottom: 20,
+            },
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>
