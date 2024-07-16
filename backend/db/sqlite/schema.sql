@@ -59,7 +59,8 @@ CREATE TABLE UserHealthInformation (
 CREATE TABLE FamilyHealthConditions (
     uid INT,
     condition ENUM('healthy', 'cancer', 'diabetes') NOT NULL,
-    PRIMARY KEY (uid, condition)
+    PRIMARY KEY (uid, condition),
+    FOREIGN KEY (uid) REFERENCES Users (uid)
 );
 
 -- Plan information table
