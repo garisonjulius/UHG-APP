@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 -- User table
 CREATE TABLE Users (
     uid INT AUTO_INCREMENT PRIMARY KEY,
@@ -52,13 +54,13 @@ CREATE TABLE UserHealthInformation (
     nonbrand_prescription_spending INT NOT NULL,
     specialty_prescription_spending INT NOT NULL,
     activity_level VARCHAR(10) NOT NULL,
-    is_pregnant BOOLEAN
+    is_pregnant BOOLEAN NOT NULL
 );
 
 -- Family health conditions table
 CREATE TABLE FamilyHealthConditions (
     uid INT,
-    condition VARCHAR(50) NOT NULL,
+    condition VARCHAR(50),
     PRIMARY KEY (uid, condition),
     FOREIGN KEY (uid) REFERENCES Users (uid)
 );
@@ -94,5 +96,6 @@ CREATE TABLE PlanInfo (
     network_hospital_ad VARCHAR(20) NOT NULL,
     network_emergency_bd VARHCAR(20) NOT NULL,
     network_emergency_ad VARHCAR(20) NOT NULL,
+    annual_estimates INT NOT NULL,
     plan_description VARCHAR(255) NOT NULL
 );
