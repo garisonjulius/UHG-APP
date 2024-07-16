@@ -21,7 +21,7 @@ CREATE TABLE Users (
 -- User health conditions table
 CREATE TABLE UserHealthConditions (
     uid INT,
-    condition ENUM('healthy', 'cancer', 'diabetes') NOT NULL
+    condition VARCHAR(50),
     PRIMARY KEY (uid, condition)
 );
 
@@ -51,48 +51,48 @@ CREATE TABLE UserHealthInformation (
     brand_prescription_spending INT NOT NULL,
     nonbrand_prescription_spending INT NOT NULL,
     specialty_prescription_spending INT NOT NULL,
-    activity_level ENUM('Low', 'Medium', 'High') NOT NULL,
+    activity_level VARCHAR(10) NOT NULL,
     is_pregnant BOOLEAN
 );
 
 -- Family health conditions table
 CREATE TABLE FamilyHealthConditions (
     uid INT,
-    condition ENUM('healthy', 'cancer', 'diabetes') NOT NULL,
+    condition VARCHAR(50) NOT NULL,
     PRIMARY KEY (uid, condition),
     FOREIGN KEY (uid) REFERENCES Users (uid)
 );
 
 -- Plan information table
 CREATE TABLE PlanInfo (
-    pid INT PRIMARY KEY,
+    pid INT AUTO_INCREMENT PRIMARY KEY,
     plan_type VARCHAR(255),
     monthly_premium INT NOT NULL,
     deductible_per_person INT NOT NULL,
     out_of_pocket_max_per_person INT NOT NULL,
-    network_primary_bd INT NOT NULL,
-    network_primary_ad INT NOT NULL,
-    network_preventive_bd INT NOT NULL,
-    network_preventive_ad INT NOT NULL,
-    network_specialist_bd INT NOT NULL,
-    network_specialist_ad INT NOT NULL,
-    network_xray_bd INT NOT NULL,
-    network_xray_ad INT NOT NULL,
-    network_imaging_bd INT NOT NULL,
-    network_imaging_ad INT NOT NULL,
-    network_blood_bd INT NOT NULL,
-    network_blood_ad INT NOT NULL,
-    network_generic_bd INT NOT NULL,
-    network_generic_ad INT NOT NULL,
-    network_brand_bd INT NOT NULL,
-    network_brand_ad INT NOT NULL,
-    network_npbrand_bd INT NOT NULL,
-    network_npbrand_ad INT NOT NULL,
-    network_specialty_bd INT NOT NULL,
-    network_specialty_ad INT NOT NULL,
-    network_hospital_bd INT NOT NULL,
-    network_hospital_ad INT NOT NULL,
-    network_emergency_bd INT NOT NULL,
-    network_emergency_ad INT NOT NULL,
+    network_primary_bd VARCHAR(20) NOT NULL,
+    network_primary_ad VARCHAR(20) NOT NULL,
+    network_preventive_bd VARCHAR(20) NOT NULL,
+    network_preventive_ad VARCHAR(20) NOT NULL,
+    network_specialist_bd VARCHAR(20) NOT NULL,
+    network_specialist_ad VARCHAR(20) NOT NULL,
+    network_xray_bd VARCHAR(20) NOT NULL,
+    network_xray_ad VARCHAR(20) NOT NULL,
+    network_imaging_bd VARCHAR(20) NOT NULL,
+    network_imaging_ad VARCHAR(20) NOT NULL,
+    network_blood_bd VARCHAR(20) NOT NULL,
+    network_blood_ad VARCHAR(20) NOT NULL,
+    network_generic_bd VARCHAR(20) NOT NULL,
+    network_generic_ad VARCHAR(20) NOT NULL,
+    network_brand_bd VARCHAR(20) NOT NULL,
+    network_brand_ad VARCHAR(20) NOT NULL,
+    network_npbrand_bd VARCHAR(20) NOT NULL,
+    network_npbrand_ad VARCHAR(20) NOT NULL,
+    network_specialty_bd VARCHAR(20) NOT NULL,
+    network_specialty_ad VARCHAR(20) NOT NULL,
+    network_hospital_bd VARCHAR(20) NOT NULL,
+    network_hospital_ad VARCHAR(20) NOT NULL,
+    network_emergency_bd VARHCAR(20) NOT NULL,
+    network_emergency_ad VARHCAR(20) NOT NULL,
     plan_description VARCHAR(255) NOT NULL
 );
