@@ -1,17 +1,3 @@
--- Create enum for health conditions
-CREATE TYPE health_condition AS ENUM (
-    'healthy',
-    'cancer',
-    'diabetes'
-);
-
--- Create enum for activity level
-CREATE TYPE activity_level AS ENUM (
-    'Low',
-    'Moderate',
-    'High'
-);
-
 -- User table
 CREATE TABLE Users (
     uid INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,7 +21,7 @@ CREATE TABLE Users (
 -- User health conditions table
 CREATE TABLE UserHealthConditions (
     uid INT,
-    condition health_condition,
+    condition ENUM('healthy', 'cancer', 'diabetes') NOT NULL
     PRIMARY KEY (uid, condition)
 );
 
@@ -65,14 +51,14 @@ CREATE TABLE UserHealthInformation (
     brand_prescription_spending INT NOT NULL,
     nonbrand_prescription_spending INT NOT NULL,
     specialty_prescription_spending INT NOT NULL,
-    activity activity_level,
+    activity_level ENUM('Low', 'Medium', 'High') NOT NULL,
     is_pregnant BOOLEAN
 );
 
 -- Family health conditions table
 CREATE TABLE FamilyHealthConditions (
     uid INT,
-    condition health_condition,
+    condition ENUM('healthy', 'cancer', 'diabetes') NOT NULL,
     PRIMARY KEY (uid, condition)
 );
 
