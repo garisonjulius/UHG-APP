@@ -15,7 +15,6 @@ CREATE TYPE activity_level AS ENUM (
 -- User table
 CREATE TABLE Users (
     uid INT AUTO_INCREMENT PRIMARY KEY,
-    fid INT,
     pid INT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -25,12 +24,11 @@ CREATE TABLE Users (
     spouse_age INT,
     spouse_gender VARCHAR(10),
     gender VARCHAR(10) NOT NULL,
-    avg_annual_income INT NOT NULL,
+    avg_annual_household_income INT NOT NULL,
     zip_code VARCHAR(10) NOT NULL,
     num_in_network_providers INT NOT NULL,
     has_outside_coverage BOOLEAN NOT NULL,
     spouse_has_outside_coverage BOOLEAN,
-    FOREIGN KEY (fid) REFERENCES FamilyHealthConditions(fid),
     FOREIGN KEY (pid) REFERENCES PlanInfo(pid)
 );
 
@@ -73,9 +71,9 @@ CREATE TABLE UserHealthInformation (
 
 -- Family health conditions table
 CREATE TABLE FamilyHealthConditions (
-    fid INT,
+    uid INT,
     condition health_condition,
-    PRIMARY KEY (fid, condition)
+    PRIMARY KEY (uid, condition)
 );
 
 -- Plan information table
