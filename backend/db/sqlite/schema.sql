@@ -72,18 +72,21 @@ CREATE TABLE PlanInfo (
     monthly_premium INT NOT NULL,
     deductible_per_person INT NOT NULL,
     out_of_pocket_max_per_person INT NOT NULL,
+    -- Doctor Visits
     network_primary_bd VARCHAR(20) NOT NULL,
     network_primary_ad VARCHAR(20) NOT NULL,
     network_preventive_bd VARCHAR(20) NOT NULL,
     network_preventive_ad VARCHAR(20) NOT NULL,
     network_specialist_bd VARCHAR(20) NOT NULL,
     network_specialist_ad VARCHAR(20) NOT NULL,
+    -- Labs & imaging
     network_xray_bd VARCHAR(20) NOT NULL,
     network_xray_ad VARCHAR(20) NOT NULL,
     network_imaging_bd VARCHAR(20) NOT NULL,
     network_imaging_ad VARCHAR(20) NOT NULL,
     network_blood_bd VARCHAR(20) NOT NULL,
     network_blood_ad VARCHAR(20) NOT NULL,
+    -- Prescriptions
     network_generic_bd VARCHAR(20) NOT NULL,
     network_generic_ad VARCHAR(20) NOT NULL,
     network_brand_bd VARCHAR(20) NOT NULL,
@@ -92,10 +95,15 @@ CREATE TABLE PlanInfo (
     network_npbrand_ad VARCHAR(20) NOT NULL,
     network_specialty_bd VARCHAR(20) NOT NULL,
     network_specialty_ad VARCHAR(20) NOT NULL,
+    -- Hospital & Emergency Stay
+    -- Choose hospital stay (physician). This is the amount the patient is
+    -- responsible for when receiving services provided by a physician,
+    -- surgeon, medical, doctor, or other specialist.
     network_hospital_bd VARCHAR(20) NOT NULL,
     network_hospital_ad VARCHAR(20) NOT NULL,
     network_emergency_bd VARHCAR(20) NOT NULL,
     network_emergency_ad VARHCAR(20) NOT NULL,
+    -- Annual estimate that user will pay for plan
     annual_estimates INT NOT NULL,
     plan_description VARCHAR(255) NOT NULL
 );
