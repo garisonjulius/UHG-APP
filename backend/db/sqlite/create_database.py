@@ -4,7 +4,7 @@ def create_db_tables():
     # Create database connection
     con = sqlite3.connect('UHCDatabase.db')
 
-    # Run the database schema to create the tables Create cursor to fetch results from SQL queries
+    # Run the database schema to create the tables
     with open('./backend/db/sqlite/schema.sql') as fp:
         con.executescript(fp.read())
 

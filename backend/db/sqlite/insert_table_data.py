@@ -4,7 +4,7 @@ def insert_db_data():
     # Create database connection
     con = sqlite3.connect('UHCDatabase.db')
 
-    # Run the database schema to create the tables Create cursor to fetch results from SQL queries
+    # Run the database schema to insert data into database
     with open('./backend/db/sqlite/data.sql') as fp:
         con.executescript(fp.read())
 
