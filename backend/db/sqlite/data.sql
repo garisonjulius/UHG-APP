@@ -24,5 +24,4 @@ VALUES
 -- Insert user family conditions into FamilyHealthConditions table
 
 
--- Insert information about user's health and plan spending into
--- UserHealthInformation table
+-- Insert information about user's health and plan spending into UserHealthInformation table
