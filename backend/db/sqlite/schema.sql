@@ -98,7 +98,7 @@ CREATE TABLE PlanInfo (
     -- Hospital & Emergency Stay
     -- Choose hospital stay (physician). This is the amount the patient is
     -- responsible for when receiving services provided by a physician,
-    -- surgeon, medical, doctor, or other specialist.
+    -- surgeon, medical doctor, or other specialist.
     network_hospital_bd VARCHAR(20) NOT NULL,
     network_hospital_ad VARCHAR(20) NOT NULL,
     network_emergency_bd VARHCAR(20) NOT NULL,
