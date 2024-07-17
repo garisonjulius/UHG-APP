@@ -78,7 +78,7 @@ CREATE TABLE FamilyHealthConditions (
 
 -- Plan information table
 CREATE TABLE PlanInfo (
-    pid INT PRIMARY KEY,
+    pid INT AUTO_INCREMENT PRIMARY KEY,
     plan_type VARCHAR(255),
     monthly_premium INT NOT NULL,
     deductible_per_person INT NOT NULL,

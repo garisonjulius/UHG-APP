@@ -1,0 +1,91 @@
+Health care plan #1: UHC Bronze-X Value Plan - HMO
+Plan’s network type: Health Maintenance Organization (HMO). HMO plans usually limit coverage to providers who are within the plan’s network, and require a doctor’s referral to see specialists.
+Monthly premium in US Dollars: $376.65
+Annual deductible per person in US dollars: $9450
+Annual maximum out of pocket per person in US dollars: $9450
+In network primary care doctor visit before deductible is met in US dollars: $35
+In network primary care doctor visit after deductible is met in US dollars: $35
+In network preventive care doctor visit before deductible is met in US dollars: No charge
+In network preventive care doctor visit after deductible is met in US dollars: No charge
+In network specialist doctor visit before deductible is met in US dollars: $90
+In network specialist doctor visit after deductible is met in US dollars: $90
+In network cost of XRAY before deductible is met in US dollars: $150
+In network cost of XRAY after deductible is met in US dollars: $150
+In network cost of imaging before deductible is met in US dollars: Full price
+In network cost of imaging after deductible is met in US dollars: No charge
+In network cost of blood work before deductible is met in US dollars: $80
+In network cost of blood work after deductible is met in US dollars: $80
+In network cost of generic medication before deductible is met in US dollars: $25
+In network cost of generic medication after deductible is met in US dollars: $25
+In network cost of brand medication before deductible is met in US dollars: Full price
+In network cost of brand medication after deductible is met in US dollars: No charge
+In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
+In network cost of non-preferred brand medication after deductible is met in US dollars: No charge
+In network cost of specialty medication before deductible is met in US dollars: Full price
+In network cost of specialty medication after deductible is met in US dollars: No charge
+In network cost of hospital stay before deductible is met in US dollars: Full price
+In network cost of hospital stay after deductible is met in US dollars: No charge
+In network cost of emergency room before deductible is met in US dollars: Full price
+In network cost of emergency room after deductible is met in US dollars: No charge
+
+
+Health care plan #2: UHC Bronze-X Virtual Access (Unlimited $0 Virtual) - HMO
+Plan’s network type: Health Maintenance Organization (HMO). HMO plans usually limit coverage to providers who are within the plan’s network, and require a doctor’s referral to see specialists.
+Monthly premium in US Dollars: $378.45
+Annual deductible per person in US dollars: $7250
+Annual maximum out of pocket per person in US dollars: $9450
+In network primary care doctor visit before deductible is met in US dollars: No charge
+In network primary care doctor visit after deductible is met in US dollars: No charge
+In network preventive care doctor visit before deductible is met in US dollars: No charge
+In network preventive care doctor visit after deductible is met in US dollars: No charge
+In network specialist doctor visit before deductible is met in US dollars: Full price
+In network specialist doctor visit after deductible is met in US dollars: 30%
+In network cost of XRAY before deductible is met in US dollars: Full price
+In network cost of XRAY after deductible is met in US dollars: 30%
+In network cost of imaging before deductible is met in US dollars: Full price
+In network cost of imaging after deductible is met in US dollars: 30%
+In network cost of blood work before deductible is met in US dollars: $20
+In network cost of blood work after deductible is met in US dollars: $20
+In network cost of generic medication before deductible is met in US dollars: $3
+In network cost of generic medication after deductible is met in US dollars: $3
+In network cost of brand medication before deductible is met in US dollars: Full price
+In network cost of brand medication after deductible is met in US dollars: 30%
+In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
+In network cost of non-preferred brand medication after deductible is met in US dollars: 50%
+In network cost of non-preferred specialty medication before deductible is met in US dollars: Full price
+In network cost of non-preferred specialty medication after deductible is met in US dollars: 50%
+In network cost of hospital stay before deductible is met in US dollars: Full price 
+In network cost of hospital stay after deductible is met in US dollars: 30%
+In network cost of emergency room before deductible is met in US dollars: Full price
+In network cost of emergency room after deductible is met in US dollars: 50%
+ 
+
+Health care plan #3: UHC Bronze-X ($0 PCP, $5 Tier 2 Rx, No Referrals) - HMO
+Plan’s network type: Health Maintenance Organization (HMO). HMO plans usually limit coverage to providers who are within the plan’s network, and require a doctor’s referral to see specialists.
+Monthly premium in US Dollars: $379.54
+Annual deductible per person in US dollars: $8250
+Annual maximum out of pocket per person in US dollars: $9450 
+In network primary care doctor visit before deductible is met in US dollars: No charge
+In network primary care doctor visit after deductible is met in US dollars: No charge
+In network preventive care doctor visit before deductible is met in US dollars: No charge
+In network preventive care doctor visit after deductible is met in US dollars: No charge
+In network specialist doctor visit before deductible is met in US dollars: $140
+In network specialist doctor visit after deductible is met in US dollars: $140
+In network cost of XRAY before deductible is met in US dollars: Full price
+In network cost of XRAY after deductible is met in US dollars: 40%
+In network cost of imaging before deductible is met in US dollars: Full price
+In network cost of imagine after deductible is met in US dollars: 40%
+In network cost of blood work before deductible is met in US dollars: Full price
+In network cost of blood work after deductible is met in US dollars: 20%
+In network cost of generic medication before deductible is met in US dollars: 5%
+In network cost of generic medication after deductible is met in US dollars: 5%
+In network cost of brand medication before deductible is met in US dollars: Full price
+In network cost of brand medication after deductible is met in US dollars: 40%
+In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
+In network cost of non-preferred brand medication after deductible is met in US dollars: 50%
+In network cost of specialty medication before deductible is met in US dollars: Full price
+In network cost of specialty medication after deductible is met in US dollars: 50%
+In network cost of hospital stay before deductible is met in US dollars: Full price
+In network cost of hospital stay after deductible is met in US dollars: 40%
+In network cost of emergency room before deductible is met in US dollars: Full price
+In network cost of emergency room after deductible is met in US dollars: 50%
