@@ -104,6 +104,5 @@ CREATE TABLE PlanInfo (
     network_emergency_bd VARHCAR(20) NOT NULL,
     network_emergency_ad VARHCAR(20) NOT NULL,
     -- Annual estimate that user will pay for plan
-    annual_estimates INT NOT NULL,
-    plan_description VARCHAR(255) NOT NULL
+    annual_estimates INT NOT NULL
 );
