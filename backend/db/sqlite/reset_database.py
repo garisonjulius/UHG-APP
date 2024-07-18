@@ -22,8 +22,9 @@ def reset_database():
     # Drop each table
     for table in table_names:
         print(table)
-        cur.execute("DROP TABLE ? ",
-                   (table, )
+        cur.execute(
+            "DROP TABLE (?) ",
+            (table, )
         )
         print(f"{table} dropped")
 
