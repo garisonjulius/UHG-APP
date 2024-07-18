@@ -16,22 +16,22 @@ VALUES (1, 'UHC Bronze-X Value Plan - HMO', 'Health Maintenance Organization (HM
 -- Insert user data into Users table
 INSERT INTO Users
 VALUES
-(1, , NULL, 'Sarah', 'Hayes', 29, 1, FALSE, NULL, NULL, 'Female', 100000, '28107', 73, FALSE, NULL),
-(2, , NULL, 'Leah', 'Johnson', 30, 1, TRUE, 32, 'Female', 'Female', 80000, '28107', 55, TRUE, TRUE),
-(3, , NULL, 'Michael', 'Smith', 35, 2, TRUE, 37, 'Male', 'Male', 60000, '28107', 86, FALSE, FALSE),
-(4, , NULL, 'Emily', 'Brown', 28, 0, FALSE, NULL, NULL, 'Female', 50000, '28107', 40, FALSE, NULL),
-(5, , NULL, 'David', 'Lee', 26, 0, FALSE, NULL, NULL, 'Male', 45000, '28107', 92, FALSE, NULL),
-(6, , NULL, 'Jessica', 'Garcia', 29, 3, TRUE, 31, 'Male', 'Female', 110000, '28107', 63, FALSE, FALSE);
+(1, 3, NULL, 'Sarah', 'Hayes', 29, 1, FALSE, NULL, NULL, 'Female', 100000, '28107', 73, FALSE, NULL),
+(2, 1, NULL, 'Leah', 'Johnson', 30, 1, TRUE, 32, 'Female', 'Female', 80000, '28107', 55, TRUE, TRUE),
+(3, 1, NULL, 'Michael', 'Smith', 35, 2, TRUE, 37, 'Male', 'Male', 60000, '28107', 86, FALSE, FALSE),
+(4, 5, NULL, 'Emily', 'Brown', 28, 0, FALSE, NULL, NULL, 'Female', 50000, '28107', 40, FALSE, NULL),
+(5, 4, NULL, 'David', 'Lee', 26, 0, FALSE, NULL, NULL, 'Male', 40000, '28107', 92, FALSE, NULL),
+(6, 2, NULL, 'Jessica', 'Garcia', 29, 3, TRUE, 31, 'Male', 'Female', 125000, '28107', 63, FALSE, FALSE);
 
 -- Insert information about user's health and plan spending into UserHealthInformation table
 INSERT INTO UserHealthInformation
 VALUES
 (1, FALSE, TRUE, 5, 6, 1, 0, 0, 8, 3, 740, 444, 8960, 2225, 0, 1000, 0, 0, 0, 'High', FALSE),
-(),
-(),
-(),
-(),
-();
+(2, TRUE, FALSE, 4, 1, 0, 1, 0, 3, 5, 592, 74, 3360, 0, 515, 30, 200, 0, 0, 'Moderate', FALSE),
+(3, TRUE, TRUE 2, 0, 1, 0, 1, 2, 0, 296, 0, 2240, 2225, 0, 0, 0, 0, 0, 'Low', FALSE),
+(4, FALSE, TRUE, 4, 2, 1, 0, 1, 3, 5, 592, 148, 3360, 2225, 0, 50, 100, 0, 80, 'Moderate', TRUE),
+(5, TRUE, FALSE, 15, 4, 3, 2, 2, 8, 12, 2220, 296, 8960, 6675, 1030, 40, 150, 150, 4000, 'Low', FALSE),
+(6, FALSE, TRUE, 4, 2, 0, 1, 0, 3, 5, 592, 148, 3360, 0, 515, 30, 200, 250, 5000, 'High', TRUE);
 
 -- Insert user conditions into UserHealthConditions table
 
