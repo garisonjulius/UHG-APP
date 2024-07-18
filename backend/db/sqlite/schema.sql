@@ -4,6 +4,7 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE Users (
     uid INT AUTO_INCREMENT PRIMARY KEY,
     pid INT,
+    rid INT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     age INT NOT NULL,
@@ -17,7 +18,8 @@ CREATE TABLE Users (
     num_in_network_providers INT NOT NULL,
     has_outside_coverage BOOLEAN NOT NULL,
     spouse_has_outside_coverage BOOLEAN,
-    FOREIGN KEY (pid) REFERENCES PlanInfo(pid)
+    FOREIGN KEY (pid) REFERENCES PlanInfo(pid),
+    FOREIGN KEY (rid) REFERENCES PlanInfo(pid)
 );
 
 -- User health conditions table
@@ -67,7 +69,7 @@ CREATE TABLE FamilyHealthConditions (
 
 -- Plan information table
 CREATE TABLE PlanInfo (
-    pid INT PRIMARY KEY,
+    pid INT PRIMARY KEY AUTO_INCREMENT,
     plan_title VARCHAR(255) NOT NULL,
     plan_network_type VARCHAR(255) NOT NULL,
     monthly_premium INT NOT NULL,
