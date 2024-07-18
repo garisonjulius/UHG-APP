@@ -48,7 +48,6 @@ CREATE TABLE UserHealthInformation (
     doctor_visits_spending INT NOT NULL,
     specialist_visits_spending INT NOT NULL,
     labs_tests_spending INT NOT NULL,
-    prescription_spending INT NOT NULL,
     hospital_visits_spending INT NOT NULL,
     emergency_visits_spending INT NOT NULL,
     generic_prescription_spending INT NOT NULL,
