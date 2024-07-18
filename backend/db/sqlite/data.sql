@@ -11,7 +11,7 @@ VALUES (1, 'UHC Bronze-X Value Plan - HMO', 'Health Maintenance Organization (HM
 -- -- (, 'UHC Silver-X ($0 PCP, $3 Tier 2 Rx, No Referrals) - HMO', 'Health Maintenance Organization (HMO)', '512.17', '3250', '9450', 'No Charge', 'No Charge', 'No Charge', 'No Charge', 'Full Price', '50%', 'Full Price', '50%', 'Full Price', '50%', '20', '20','3', '3', 'Full Price', '100', 'Full Price', '50%', 'Full Price', '50%', 'Full Price', '50%', 'Full Price', '50%', '6218'),
 -- -- (, 'UHC Gold-X Value Plan - HMO', 'Health Maintenance Organization (HMO)', '512.98', '1150', '6750', '10', '10', 'No Charge', 'No Charge', '30', '30', '50', '50', 'Full Price', '400', '25', '25', '10', '10', '30', '30', 'Full Price', '60', 'Full Price', '75', 'Full Price', '$450 per stay', 'Full Price', '350', '6271'),
 (4, 'UHC Silver-X Virtual Access (Unlimited $0 Virtual) - HMO', 'Health Maintenance Organization (HMO)', '517.50', '3850', '9450', 'No Charge', 'No Charge', 'No Charge', 'No Charge', 'Full Price', '40%', 'Full Price', '40%', 'Full Price', '40%', '10', '10', '3', '3', 'Full Price', '100', 'Full Price', '40%', 'Full Price', '50%', 'Full Price', '40%', 'Full Price', '40%', '6272'),
-(5, 'UHC Gold-X Advantage+ ($0 PCP, Adult Dental + Vision) - HMO', 'Health Maintenance Organization (HMO)', '528.31', '1500', '7000', 'No Charge', 'No Charge', 'No Charge', 'No Charge', '40', '40', '65', '65', '250', '250', '10', '10', '1', '1', '50', '50', 'Full Price', '30%', 'Full Price', '40%', 'Full Price', '20%', 'Full Price', '20%', '6404')
+(5, 'UHC Gold-X Advantage+ ($0 PCP, Adult Dental + Vision) - HMO', 'Health Maintenance Organization (HMO)', '528.31', '1500', '7000', 'No Charge', 'No Charge', 'No Charge', 'No Charge', '40', '40', '65', '65', '250', '250', '10', '10', '1', '1', '50', '50', 'Full Price', '30%', 'Full Price', '40%', 'Full Price', '20%', 'Full Price', '20%', '6404');
 
 -- Insert user data into Users table
 INSERT INTO Users
@@ -23,11 +23,17 @@ VALUES
 (5, , NULL, 'David', 'Lee', 26, 0, FALSE, NULL, NULL, 'Male', 45000, '28107', 92, FALSE, NULL),
 (6, , NULL, 'Jessica', 'Garcia', 29, 3, TRUE, 31, 'Male', 'Female', 110000, '28107', 63, FALSE, FALSE);
 
+-- Insert information about user's health and plan spending into UserHealthInformation table
+INSERT INTO UserHealthInformation
+VALUES
+(1, FALSE, TRUE, 5, 6, 1, 0, 0, 8, 3, 740, 444, 8960, 2225, 0, 1000, 0, 0, 0, 'High', FALSE),
+(),
+(),
+(),
+(),
+();
 
 -- Insert user conditions into UserHealthConditions table
 
 
 -- Insert user family conditions into FamilyHealthConditions table
-
-
--- Insert information about user's health and plan spending into UserHealthInformation table
