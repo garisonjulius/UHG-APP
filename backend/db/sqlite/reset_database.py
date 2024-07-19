@@ -12,20 +12,15 @@ def reset_database():
     table_names = res.fetchall()
 
     # Delete information from each table
-    # for table in table_names:
-    #     print(table)
-    #     cur.execute("DELETE FROM ?",
-    #                (table, )
-    #     )
-    #     print(f"{table} deleted")
+    for table in table_names:
+        query = f'DELETE FROM {table[0]}'
+        cur.execute(query)
+        print(f"{table} deleted")
 
     # Drop each table
     for table in table_names:
-        print(table)
-        cur.execute(
-            "DROP TABLE (?) ",
-            (table, )
-        )
+        query = f'DROP TABLE {table[0]}'
+        cur.execute(query)
         print(f"{table} dropped")
 
     # Commit changes and close the database connection
