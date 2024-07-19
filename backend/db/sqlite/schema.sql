@@ -55,7 +55,8 @@ CREATE TABLE UserHealthInformation (
     nonbrand_prescription_spending INT NOT NULL,
     specialty_prescription_spending INT NOT NULL,
     activity_level VARCHAR(10) NOT NULL,
-    is_pregnant BOOLEAN NOT NULL
+    is_pregnant BOOLEAN NOT NULL,
+    FOREIGN KEY (uid) REFERENCES PlanInfo(uid)
 );
 
 -- Family health conditions table
