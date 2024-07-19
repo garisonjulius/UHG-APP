@@ -1,23 +1,17 @@
 from flask import Flask
+from united_health import app
 from langchain_openai import AzureChatOpenAI
-
 from langchain_community.document_loaders import TextLoader
 #from langchain_community.document_loaders import PyPDFLoader
 #from langchain_community.document_loaders import DirectoryLoader
-
-
-
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
-
-app = Flask(__name__)
 
 llm_model = AzureChatOpenAI(
     azure_deployment= "gpt-35-turbo",
 )
 
-
-loader = TextLoader("./healthplan.txt")
+loader = TextLoader("./backend/healthplan.txt")
 
 # loader = PyPDFLoader("./test.pdf")
 # pages = loader.load_and_split()

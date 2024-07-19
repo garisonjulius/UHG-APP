@@ -1,5 +1,7 @@
 import sqlite3
+import click
 
+@click.command('reset-db')
 def reset_database():
     # Create database connection
     con = sqlite3.connect('UHCDatabase.db')
