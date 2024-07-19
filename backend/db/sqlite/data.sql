@@ -15,7 +15,7 @@ VALUES (1, 'UHC Bronze-X Value Plan - HMO', 'Health Maintenance Organization (HM
 
 -- Insert user data into Users table
 INSERT INTO Users
-VALUES
+VALUES 
 (1, 3, NULL, 'Sarah', 'Hayes', 29, 1, FALSE, NULL, NULL, 'Female', 100000, '28107', 73, FALSE, NULL),
 (2, 1, NULL, 'Leah', 'Johnson', 30, 1, TRUE, 32, 'Female', 'Female', 80000, '28107', 55, TRUE, TRUE),
 (3, 1, NULL, 'Michael', 'Smith', 35, 2, TRUE, 37, 'Male', 'Male', 60000, '28107', 86, FALSE, FALSE),
@@ -25,10 +25,10 @@ VALUES
 
 -- Insert information about user's health and plan spending into UserHealthInformation table
 INSERT INTO UserHealthInformation
-VALUES
+VALUES 
 (1, FALSE, TRUE, 5, 6, 1, 0, 0, 8, 3, 740, 444, 8960, 2225, 0, 1000, 0, 0, 0, 'High', FALSE),
 (2, TRUE, FALSE, 4, 1, 0, 1, 0, 3, 5, 592, 74, 3360, 0, 515, 30, 200, 0, 0, 'Moderate', FALSE),
-(3, TRUE, TRUE 2, 0, 1, 0, 1, 2, 0, 296, 0, 2240, 2225, 0, 0, 0, 0, 0, 'Low', FALSE),
+(3, TRUE, TRUE, 2, 0, 1, 0, 1, 2, 0, 296, 0, 2240, 2225, 0, 0, 0, 0, 0, 'Low', FALSE),
 (4, FALSE, TRUE, 4, 2, 1, 0, 1, 3, 5, 592, 148, 3360, 2225, 0, 50, 100, 0, 80, 'Moderate', TRUE),
 (5, TRUE, FALSE, 15, 4, 3, 2, 2, 8, 12, 2220, 296, 8960, 6675, 1030, 40, 150, 150, 4000, 'Low', FALSE),
 (6, FALSE, TRUE, 4, 2, 0, 1, 0, 3, 5, 592, 148, 3360, 0, 515, 30, 200, 250, 5000, 'High', TRUE);
