@@ -21,7 +21,7 @@ docs = loader.load()
 app = Flask(__name__)
  
 llm_model = AzureChatOpenAI(
-    azure_deployment= "gpt-35-turbo",
+    azure_deployment= "GPT-4o",
 )
  
 embeddings =  AzureOpenAIEmbeddings(model="text-embedding-ada-002")
