@@ -7,7 +7,7 @@ def verify_tables_created():
     cur = con.cursor()
 
     # Verify the tables have been created
-    res = cur.execute("SELECT name FROM sqlite_master")
+    res = cur.execute("SELECT name FROM sqlite_master WHERE type = 'table'")
 
     # Look at the names of the created tables
     table_names = res.fetchall()
