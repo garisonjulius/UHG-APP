@@ -4,6 +4,7 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE Users (
     uid INT AUTO_INCREMENT PRIMARY KEY,
     pid INT,
+    rid INT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     age INT NOT NULL,
@@ -17,7 +18,8 @@ CREATE TABLE Users (
     num_in_network_providers INT NOT NULL,
     has_outside_coverage BOOLEAN NOT NULL,
     spouse_has_outside_coverage BOOLEAN,
-    FOREIGN KEY (pid) REFERENCES PlanInfo(pid)
+    FOREIGN KEY (pid) REFERENCES PlanInfo(pid),
+    FOREIGN KEY (rid) REFERENCES PlanInfo(pid)
 );
 
 -- User health conditions table
@@ -42,19 +44,19 @@ CREATE TABLE UserHealthInformation (
     num_emergency_room_visits INT NOT NULL,
     num_surgeries INT NOT NULL,
     num_labs_or_tests INT NOT NULL,
-    doctor_visits_price INT NOT NULL,
-    specialist_visits_price INT NOT NULL,
-    labs_tests_price INT NOT NULL,
-    prescription_price INT NOT NULL,
-    hospital_visits_price INT NOT NULL,
-    emergency_visits_price INT NOT NULL,
-    num_prescriptions INT NOT NULL,
+    num_prescription_refills INT NOT NULL,
+    doctor_visits_spending INT NOT NULL,
+    specialist_visits_spending INT NOT NULL,
+    labs_tests_spending INT NOT NULL,
+    hospital_visits_spending INT NOT NULL,
+    emergency_visits_spending INT NOT NULL,
     generic_prescription_spending INT NOT NULL,
     brand_prescription_spending INT NOT NULL,
     nonbrand_prescription_spending INT NOT NULL,
     specialty_prescription_spending INT NOT NULL,
     activity_level VARCHAR(10) NOT NULL,
-    is_pregnant BOOLEAN NOT NULL
+    is_pregnant BOOLEAN NOT NULL,
+    FOREIGN KEY (uid) REFERENCES Users(uid)
 );
 
 -- Family health conditions table
@@ -67,8 +69,9 @@ CREATE TABLE FamilyHealthConditions (
 
 -- Plan information table
 CREATE TABLE PlanInfo (
-    pid INT AUTO_INCREMENT PRIMARY KEY,
-    plan_type VARCHAR(255),
+    pid INT PRIMARY KEY,
+    plan_title VARCHAR(255) NOT NULL,
+    plan_network_type VARCHAR(255) NOT NULL,
     monthly_premium INT NOT NULL,
     deductible_per_person INT NOT NULL,
     out_of_pocket_max_per_person INT NOT NULL,
@@ -104,6 +107,5 @@ CREATE TABLE PlanInfo (
     network_emergency_bd VARHCAR(20) NOT NULL,
     network_emergency_ad VARHCAR(20) NOT NULL,
     -- Annual estimate that user will pay for plan
-    annual_estimates INT NOT NULL,
-    plan_description VARCHAR(255) NOT NULL
+    annual_estimates INT NOT NULL
 );
