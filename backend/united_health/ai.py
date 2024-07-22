@@ -29,8 +29,8 @@ def get_recommended_description(uid):
 
     return response
 
-def _get_rid(uid):
-    response = get_recommended_description(uid)
+def _get_rid():
+    response = get_recommended_description()
 
     # Regex pattern to match _word_ formatting
     pattern = r'#(\d+)'
@@ -47,6 +47,23 @@ def put_rid(uid):
 
     rid = _get_rid(uid)
 
+    # Look at current rid
+    curr_rid = cursor.execute(
+        "SELECT rid FROM Users "
+        "WHERE UID = ? ",
+        (uid, )
+    )
+    curr_rid = curr_rid.fetchall()[0]
+
+    # Verify user exists
+    if len(curr_rid) == 0:
+        return f'Invalid user id: {uid}. User does not exist', 400
+
+    # Check if user already has a recommended plan
+    print(curr_rid[0])
+    if curr_rid[0] is not None:
+        return f'RID already set'
+
     # SQL UPDATE statement to update RID only if it is currently None (NULL)
     update_query = "UPDATE Users SET RID = ? WHERE UID = ? AND RID IS NULL"
 
@@ -60,6 +77,7 @@ def put_rid(uid):
     cursor.close()
     conn.close()
 
+    return 'Success'
 def get_short_description(uid):
     # Connect to SQLite database (change the database name and path as per your setup)
     conn = sqlite3.connect('UHCDatabase.db')
