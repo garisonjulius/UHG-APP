@@ -2,7 +2,7 @@ from langchain_openai import AzureChatOpenAI
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
-from db.sqlite.get_user_data import *
+from united_health.get_user_data import *
 import re
 
 loader = TextLoader("./backend/healthplan.txt")
@@ -24,7 +24,7 @@ def get_recommended_description():
     user = get_user_information(1)
     health = get_health_information(1)
 
-    start_phrase = f"You are a healthcare insurance agent trying to ensure member loyalty for user, {user['first_name']} {user['last_name']}. She is {user['age']}, {user['gender']}, has {user['num_children']} child(ren), and has an income of ${user['avg_annual_household_income']}. Her generic prescription spending is ${health['generic_prescription_spending']}. The number of prescription refills she has is {health['num_prescription_refills']}. The amount she has spent on emergency visits is ${health['emergency_visits_spending']}. The amount she has spent on hospital benefits is ${health['hospital_visits_spending']}. She has spent ${health['specialist_visits_spending']} on each of the specialist visits. She has spent ${health['labs_tests_spending']} on XRAYS. She has spent $148 on each of the doctor visits. She has had {health['num_labs_or_tests']} labs and tests, {health['num_specialist_visits']} specialist visits, and {health['num_doctor_visits']} doctor visits. She is looking to pay the minimum on healthcare each year. Recommend a healthcare plan based on the data provided and provide reasoning for why this plan is superior. Take into account income and children when making your decision. Please follow the format of: The reason X plan is better is because X plan offers a lower cost for category Z compared to Y and since Sara spends more on category Z, she would do well with a plan that maximizes savings there. Write the just the plan number italicized followed by the explanation as formatted by the example."
+    start_phrase = f"You are a healthcare insurance agent trying to ensure member loyalty for user, {user['first_name']} {user['last_name']}. She is {user['age']}, {user['gender']}, has {user['num_children']} child(ren), and has an income of ${user['avg_annual_household_income']}. Her generic prescription spending is ${health['generic_prescription_spending']}. The number of prescription refills she has is {health['num_prescription_refills']}. The amount she has spent on emergency visits is ${health['emergency_visits_spending']}. The amount she has spent on hospital benefits is ${health['hospital_visits_spending']}. She has spent ${health['specialist_visits_spending']} on each of the specialist visits. She has spent ${health['labs_tests_spending']} on XRAYS. She has spent $148 on each of the doctor visits. She has had {health['num_labs_or_tests']} labs and tests, {health['num_specialist_visits']} specialist visits, and {health['num_doctor_visits']} doctor visits. She is looking to pay the minimum on healthcare each year. Recommend a healthcare plan based on the data provided and provide reasoning for why this plan is superior. Take into account income and children when making your decision. Please follow the format of: The reason X plan is better is because X plan offers a lower cost for category Z compared to Y and since Sara spends more on category Z, she would do well with a plan that maximizes savings there. Write the just the plan number followed by the explanation as formatted by the example."
     response = index.query(start_phrase, llm_model)
 
     return response
@@ -47,8 +47,8 @@ def put_rid(uid):
 
     rid = get_rid()
 
-    # SQL UPDATE statement
-    update_query = "UPDATE Users SET RID = ? WHERE UID = ?"
+    # SQL UPDATE statement to update RID only if it is currently None (NULL)
+    update_query = "UPDATE Users SET RID = ? WHERE UID = ? AND RID IS NULL"
 
     # Execute the update query
     cursor.execute(update_query, (rid, uid))
@@ -60,7 +60,4 @@ def put_rid(uid):
     cursor.close()
     conn.close()
 
-
-
-
-    
+        

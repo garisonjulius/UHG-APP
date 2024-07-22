@@ -1,6 +1,7 @@
 from flask import jsonify
 from united_health import app
 import sqlite3
+import united_health.ai
 
 DATABASE = 'UHCDatabase.db'
 
@@ -12,10 +13,10 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
-#@app.route("/")
+@app.route("/")
 def recommend_plan():
     """Function description."""
-
+    united_health.ai.put_rid(3)
     return 'Home page'
 
 @app.route("/user/<uid>", methods=['GET'])
