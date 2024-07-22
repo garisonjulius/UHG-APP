@@ -1,6 +1,7 @@
 from flask import jsonify
 from united_health import app
 import sqlite3
+import united_health.ai
 
 DATABASE = 'UHCDatabase.db'
 
@@ -15,14 +16,41 @@ def get_db():
 @app.route("/")
 def recommend_plan():
     """Function description."""
-
+    united_health.ai.put_rid(3)
     return 'Home page'
 
 @app.route("/user/<uid>", methods=['GET'])
 def get_user_info(uid):
     """Function description."""
+    # Connect to the database
+    db = get_db()
+    cur = db.cursor()
 
-    return 'User information'
+    # Store their name and pid
+    cur.execute(
+        "SELECT first_name, last_name, pid "
+        "FROM Users "
+        "WHERE uid = ?",
+        (uid,)
+    )
+
+    user_info = cur.fetchone()
+
+    # Close the cursor and database connection
+    cur.close()
+    db.close()
+
+    if not user_info:
+        return 'User info not available', 400
+
+    response = {
+        'first_name': user_info[0],
+        'last_name': user_info[1],
+        'pid': user_info[2]
+    }
+
+    return jsonify(response)
+
 
 @app.route("/recommend/<uid>", methods=['GET'])
 def get_recommended_plan_info(uid):
