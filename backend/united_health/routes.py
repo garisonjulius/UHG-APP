@@ -6,7 +6,9 @@ DATABASE = 'UHCDatabase.db'
 
 def get_db():
     """Return connection to the UHCDatabase."""
+
     db = sqlite3.connect(DATABASE)
+
     # db.row_factory = sqlite3.Row
     return db
 
