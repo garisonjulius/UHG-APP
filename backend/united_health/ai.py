@@ -60,7 +60,6 @@ def put_rid(uid):
         return f'Invalid user id: {uid}. User does not exist', 400
 
     # Check if user already has a recommended plan
-    print(curr_rid[0])
     if curr_rid[0] is not None:
         return f'RID already set'
 
@@ -78,18 +77,33 @@ def put_rid(uid):
     conn.close()
 
     return 'Success'
+
 def get_short_description(uid):
-    # Connect to SQLite database (change the database name and path as per your setup)
+     # Connect to SQLite database (change the database name and path as per your setup)
     conn = sqlite3.connect('UHCDatabase.db')
     cursor = conn.cursor()
+    
+    # Look at current rid
+    plan_rec = cursor.execute(
+        "SELECT plan_rec_desc FROM Users "
+        "WHERE UID = ? ",
+        (uid, )
+    )
+    plan_rec = plan_rec.fetchall()[0]
 
-    rid = _get_rid(uid)
+    # Verify user exists
+    if len(plan_rec) == 0:
+        return f'Invalid user id: {uid}. User does not exist', 400
 
-    # SQL UPDATE statement to update RID only if it is currently None (NULL)
-    update_query = "UPDATE Users SET RID = ? WHERE UID = ? AND RID IS NULL"
+    # Check if user already has a recommended plan
+    if plan_rec[0] is not None:
+        return f'RID already set'
+
+    # SQL UPDATE statement to update plan_rec_desc only if it is currently None (NULL)
+    update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND plan_rec_desc IS NULL"
 
     # Execute the update query
-    cursor.execute(update_query, (rid, uid))
+    cursor.execute(update_query, (plan_rec, uid))
 
     # Commit the transaction
     conn.commit()
@@ -97,8 +111,5 @@ def get_short_description(uid):
     # Close the cursor and connection
     cursor.close()
     conn.close()
-    return(
-    {
-        'description' : index.query('Can you summarize this description in 30 words?\n' + get_recommended_description(uid), llm_model)
-    }
-    )
+
+    return 'Success'

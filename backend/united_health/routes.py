@@ -13,6 +13,12 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
+@app.route("/recommend/desc/<uid>")
+def recommended_desc(uid):
+    """Take short plan description and output it"""
+    response = united_health.ai.get_short_description(uid)
+
+    return response
 @app.route("/recommend/<uid>")
 def recommend_plan(uid):
     """Prompt OpenAI API with user infomation to generate a plan recommendation for the user, and 
