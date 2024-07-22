@@ -5,6 +5,7 @@ CREATE TABLE Users (
     uid INT AUTO_INCREMENT PRIMARY KEY,
     pid INT,
     rid INT,
+    plan_rec_desc VARCHAR(1000),
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     age INT NOT NULL,
