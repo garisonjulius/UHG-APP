@@ -1,11 +1,10 @@
 from flask import Flask
+from united_health import app
 from langchain_openai import AzureChatOpenAI
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
 from db.sqlite.get_user_data import *
-
-app = Flask(__name__)
 
 loader = TextLoader("./backend/healthplan.txt")
  
