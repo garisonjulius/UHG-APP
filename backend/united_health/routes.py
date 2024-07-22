@@ -13,10 +13,15 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
-@app.route("/")
-def recommend_plan():
+@app.route("/b/<uid>", methods=['GET'])
+def short_plan_description(uid):
+    """"""
+    return jsonify(united_health.ai.get_short_description(uid))
+
+@app.route("/a/<uid>", methods=['GET'])
+def recommend_plan(uid):
     """Function description."""
-    united_health.ai.put_rid(3)
+    united_health.ai.put_rid(uid)
     return 'Home page'
 
 @app.route("/user/<uid>", methods=['GET'])
