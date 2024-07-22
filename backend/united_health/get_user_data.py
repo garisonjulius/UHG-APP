@@ -6,7 +6,6 @@ def get_user_information(username : str) -> dict:
 def get_health_information(username : str) -> dict:
     return _get_table_information('UserHealthInformation', username)
 
-
 def _get_table_information(table_name : str, username : str) -> dict:
     conn = sqlite3.connect('UHCDatabase.db')
     cursor = conn.cursor()
@@ -24,7 +23,6 @@ def _get_table_information(table_name : str, username : str) -> dict:
     row = cursor.fetchone()
     if row:
         info = dict(zip(column_names, row))
-
 
     # Close the cursor and the connection
     cursor.close()
