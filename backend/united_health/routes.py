@@ -10,7 +10,7 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
-@app.route("/")
+#@app.route("/")
 def recommend_plan():
     """Function description."""
 
@@ -19,8 +19,35 @@ def recommend_plan():
 @app.route("/user/<uid>", methods=['GET'])
 def get_user_info(uid):
     """Function description."""
+    # Connect to the database
+    db = get_db()
+    cur = db.cursor()
 
-    return 'User information'
+    # Store their name and pid
+    cur.execute(
+        "SELECT first_name, last_name, pid "
+        "FROM Users "
+        "WHERE uid = ?",
+        (uid,)
+    )
+
+    user_info = cur.fetchone()
+
+    # Close the cursor and database connection
+    cur.close()
+    db.close()
+
+    if not user_info:
+        return 'User info not available', 400
+
+    response = {
+        'first_name': user_info[0],
+        'last_name': user_info[1],
+        'pid': user_info[2]
+    }
+
+    return jsonify(response)
+
 
 @app.route("/recommend/<uid>", methods=['GET'])
 def get_recommended_plan_info(uid):
