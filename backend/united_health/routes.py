@@ -38,7 +38,12 @@ def get_recommended_plan_info(uid):
         "WHERE uid = ? ",
         (uid, )
     )
-    rid = rid.fetchall()[0][0]
+    # Verify that the user exists
+    rid = rid.fetchall()
+    if len(rid) == 0:
+        return f'Invalid user id: {uid}', 400
+    else:
+        rid = rid[0][0]
 
     # Check if the user does not have a recommended plan
     if rid is None:
@@ -53,7 +58,12 @@ def get_recommended_plan_info(uid):
             "WHERE pid = ? ",
             (rid, )
         )
-        plan_info = plan_info.fetchall()[0]
+        # Verify that the recommended plan exists
+        plan_info = plan_info.fetchall()
+        if len(plan_info) == 0:
+            return f'Invalid plan id: {rid}', 400
+        else:
+            plan_info = plan_info[0]
 
     # Close the database connection
     db.close()
@@ -110,12 +120,12 @@ def get_plan_info(pid):
         "WHERE pid = ?",
         (pid, )
     )
-    
-    if len(plan_info.fetchall()) is 0:
+    # Verify that the plan exsists
+    plan_info = plan_info.fetchall()
+    if len(plan_info) == 0:
         db.close()
-        return 'No current plan information available', 400
-
-    plan_info = plan_info.fetchall()[0]
+        return f'Invalid plan id: {pid}', 400
+    plan_info = plan_info[0]
     db.close()
 
     response = {
