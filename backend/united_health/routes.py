@@ -111,7 +111,7 @@ def get_plan_info(pid):
         (pid, )
     )
     
-    if not plan_info:
+    if len(plan_info.fetchall()) is 0:
         db.close()
         return 'No current plan information available', 400
 
