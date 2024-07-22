@@ -78,6 +78,7 @@ CREATE TABLE PlanInfo (
     -- Doctor Visits
     network_primary_bd VARCHAR(20) NOT NULL,
     network_primary_ad VARCHAR(20) NOT NULL,
+    out_of_network_primary_bd VARCHAR(20) NOT NULL,
     network_preventive_bd VARCHAR(20) NOT NULL,
     network_preventive_ad VARCHAR(20) NOT NULL,
     network_specialist_bd VARCHAR(20) NOT NULL,
