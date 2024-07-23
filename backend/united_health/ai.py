@@ -29,8 +29,8 @@ def get_recommended_description(uid):
 
     return response
 
-def _get_rid():
-    response = get_recommended_description()
+def _get_rid(uid):
+    response = get_recommended_description(uid)
 
     # Regex pattern to match _word_ formatting
     pattern = r'#(\d+)'
@@ -78,11 +78,13 @@ def put_rid(uid):
 
     return 'Success'
 
-def get_short_description(uid):
+def put_short_description(uid):
      # Connect to SQLite database (change the database name and path as per your setup)
     conn = sqlite3.connect('UHCDatabase.db')
     cursor = conn.cursor()
-    
+
+    desc = get_recommended_description(uid)
+
     # Look at current rid
     plan_rec = cursor.execute(
         "SELECT plan_rec_desc FROM Users "
@@ -103,7 +105,7 @@ def get_short_description(uid):
     update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND plan_rec_desc IS NULL"
 
     # Execute the update query
-    cursor.execute(update_query, (plan_rec, uid))
+    cursor.execute(update_query, (index.query('Can you give a 30 word summary of just the reasoning:' + desc, llm_model), uid))
 
     # Commit the transaction
     conn.commit()

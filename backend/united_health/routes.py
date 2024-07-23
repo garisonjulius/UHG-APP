@@ -13,18 +13,15 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
-@app.route("/recommend/desc/<uid>")
-def recommended_desc(uid):
-    """Take short plan description and output it"""
-    response = united_health.ai.get_short_description(uid)
-
-    return response
-@app.route("/recommend/<uid>")
+@app.route("/recommend/<uid>", methods=['GET'])
 def recommend_plan(uid):
     """Prompt OpenAI API with user infomation to generate a plan recommendation for the user, and 
     then store the recommended plan in the database."""
-    response = united_health.ai.put_rid(uid)
-    return response
+    rid_res = united_health.ai.put_rid(uid)
+    desc_res = united_health.ai.put_short_description(uid)
+
+    return rid_res == desc_res
+    
 
 @app.route("/user/<uid>", methods=['GET'])
 def get_user_info(uid):
@@ -35,7 +32,7 @@ def get_user_info(uid):
 
     # Fetch user's name, pid, and rid
     cur.execute(
-        "SELECT first_name, last_name, pid, rid "
+        "SELECT first_name, last_name, pid, rid, plan_rec_desc "
         "FROM Users "
         "WHERE uid = ?",
         (uid, )
@@ -54,7 +51,8 @@ def get_user_info(uid):
         'first_name': user_info[0],
         'last_name': user_info[1],
         'pid': user_info[2],
-        'rid': user_info[3]
+        'rid': user_info[3],
+        'reasoning' : user_info[4]
     }
 
     return jsonify(response)
