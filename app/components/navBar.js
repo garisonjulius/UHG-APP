@@ -7,6 +7,8 @@ import Benefits from "../screens/Benefits";
 import FindCare from "../screens/FindCare";
 import Px from "../screens/Px";
 import Menu from "../screens/Menu";
+import Rec from "../screens/Rec";
+
 import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
@@ -118,7 +120,7 @@ const NavBar = () => {
         />
         <Tab.Screen
           name="Menu"
-          component={Menu}
+          component={Rec}
           options={{
             headerShown: false,
             tabBarStyle: {
