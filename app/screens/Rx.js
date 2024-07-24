@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Px = () => {
+const Rx = () => {
   return (
     <View style={styles.container}>
       <Text>Prescriptions</Text>
@@ -17,4 +17,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Px;
+export default Rx;
