@@ -6,7 +6,7 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
     const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
-        <View style={popUpStyles.centeredView}>
+        <View style={[popUpStyles.centeredView, popUpStyles.allPopUpText]}>
             <Modal
                 animationType='slide'
                 transparent={true}
@@ -18,11 +18,11 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
                 <View style={[popUpStyles.centeredView, popUpStyles.opacityBackground]}>
                     <View style={popUpStyles.popUpView}>
                         <View style={popUpStyles.popUpText}>
-                            <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
-                            <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan{'\n'}</Text>
+                            <Text style={[popUpStyles.popUpText, popUpStyles.boldText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
+                            <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan{'\n'}</Text>
                             {/* TODO: Implement correct link below */}
                             <Text style={popUpStyles.popUpText}>
-                                More information on the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan
+                                More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
                             </Text>
                         </View>
 
@@ -40,7 +40,7 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
                                 setPopUpVisible(!popUpVisible);
                             }}
                             >
-                                <Text>Do not show again</Text>
+                                <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Do not show again</Text>
                             </Pressable>
 
                             {/* Remind me later button */}
@@ -54,7 +54,7 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
                                 setPopUpVisible(!popUpVisible);
                             }}
                             >
-                                <Text>Remind me later</Text>
+                                <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Remind me later</Text>
                             </Pressable>
                         </View>
                     </View>
@@ -73,6 +73,9 @@ const popUpStyles = StyleSheet.create({
     },
     opacityBackground: {
         backgroundColor: 'rgba(52, 52, 52, 0.5)',
+    },
+    allPopUpText: {
+        color: '#02226d',
     },
     popUpView: {
         width: '100%',
@@ -98,20 +101,17 @@ const popUpStyles = StyleSheet.create({
     button: {
         borderRadius: 10,
         padding: 10,
-        elevation: 2,
-    },
-    buttonOpen: {
-        backgroundColor: '#F194FF',
     },
     popUpText: {
         fontSize: 18,
         textAlign: 'center',
     },
-    headerText: {
+    boldText: {
         fontWeight: 'bold',
     },
-    planRecText: {
-        fontWeight: 'bold',
+    buttonText: {
+        fontSize: 18,
+        textDecorationLine: 'underline',
     },
 });
 
