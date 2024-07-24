@@ -15,7 +15,7 @@ import {
   Animated
 } from "react-native";
 
-function Home(props) {
+function Home({navigation}) {
   const [carouselPage, setCarouselPage] = useState(0);
   const [renderPopUp, setRenderPopUp] = useState(true);
   const flatListRef = useRef(null);
@@ -31,7 +31,8 @@ function Home(props) {
                           () => setRenderPopUp(false)
                         } 
                         displayPopUp={true} 
-                        recPlanTitle={'UHC Gold Advantage'}/>}
+                        recPlanTitle={'UHC Gold Advantage'}
+                        navigation={navigation} />}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>

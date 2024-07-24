@@ -3,7 +3,7 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
-const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle }) => {
+const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation }) => {
     // const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
@@ -21,8 +21,7 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle }) => {
                         <View style={popUpStyles.popUpText}>
                             <Text style={[popUpStyles.popUpText, popUpStyles.boldText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
                             <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan{'\n'}</Text>
-                            {/* TODO: Implement correct link below */}
-                            <Pressable>
+                            <Pressable onPress={() => navigation.navigate('Menu')}>
                                 <Text style={popUpStyles.popUpText}>
                                     More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
                                     <AntDesign name="arrowright" size={32} color="#02226d" style={popUpStyles.arrowRight}/>
