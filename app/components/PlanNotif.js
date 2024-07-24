@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { Link } from '@react-navigation/native';
 
-const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
+const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
     const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
         <View style={popUpStyles.centeredView}>
             <Modal
                 animationType='slide'
-                transparent={true} 
+                transparent={false} 
                 visible={popUpVisible}
                 onRequestClose={() => {
                     console.log('Modal has been closed');
@@ -18,8 +18,8 @@ const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
                 <View style={popUpStyles.centeredView}>
                     <View style={popUpStyles.popUpView}>
                         <View style={popUpStyles.popUpText}>
-                            <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th)</Text>
-                            <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> Plan</Text>
+                            <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
+                            <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan{'\n'}</Text>
                             {/* TODO: Implement correct link below */}
                             <Text style={popUpStyles.popUpText}>
                                 More information on the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan
@@ -33,6 +33,10 @@ const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
                             style={[popUpStyles.button, popUpStyles.buttonOpen]}
                             onPress={() => {
                                 // Make POST request
+                                // Prevent rendering of the popup on the Home screen
+                                // to avoid shifted components on screen
+                                updateRenderPopUp(true);
+                                // Toggle whether or not popup info is displayed (NOT rendered)
                                 setPopUpVisible(!popUpVisible);
                             }}
                             >
@@ -43,6 +47,10 @@ const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
                             <Pressable
                             style={[popUpStyles.button, popUpStyles.buttonOpen]}
                             onPress={() => {
+                                // Prevent rendering of the popup on the Home screen
+                                // to avoid shifted components on screen
+                                updateRenderPopUp(true);
+                                // Toggle whether or not popup info is displayed (NOT rendered)
                                 setPopUpVisible(!popUpVisible);
                             }}
                             >

@@ -17,15 +17,17 @@ import {
 
 function Home(props) {
   const [carouselPage, setCarouselPage] = useState(0);
+  const [renderPopUp, setRenderPopUp] = useState(true);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
+  displayPopUp = true;
   return (
     <SafeAreaView style={styles.container}>
       {/* ADDITION: PopUp */}
-      <PlanNotif displayPopUp={true} recPlanTitle={'UHC Gold Advantage'}/>
+      {renderPopUp && <PlanNotif updateRenderPopUp={(popUpRendered) => setRenderPopUp(!popUpRendered)} displayPopUp={true} recPlanTitle={'UHC Gold Advantage'}/>}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
