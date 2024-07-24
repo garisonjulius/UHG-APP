@@ -6,16 +6,16 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
     const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
-        <View style={popUpStyles.centeredView}>
+        <View style={[popUpStyles.centeredView, popUpStyles.opacityBackground]}>
             <Modal
                 animationType='slide'
-                transparent={false} 
+                transparent={true}
                 visible={popUpVisible}
                 onRequestClose={() => {
                     console.log('Modal has been closed');
                     setModalVisible(!modalVisible);
                 }}>
-                <View style={popUpStyles.centeredView}>
+                <View style={[popUpStyles.centeredView, popUpStyles.opacityBackground]}>
                     <View style={popUpStyles.popUpView}>
                         <View style={popUpStyles.popUpText}>
                             <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
@@ -70,6 +70,9 @@ const popUpStyles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    opacityBackground: {
+        backgroundColor: 'rgba(52, 52, 52, 0.5)',
     },
     popUpView: {
         width: '100%',
