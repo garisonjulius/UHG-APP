@@ -27,8 +27,8 @@ function Home(props) {
     <SafeAreaView style={styles.container}>
       {/* ADDITION: PopUp */}
       {renderPopUp && <PlanNotif 
-                        updateRenderPopUp={
-                          (popUpRendered) => setRenderPopUp(!popUpRendered)
+                        stopRender={
+                          () => setRenderPopUp(false)
                         } 
                         displayPopUp={true} 
                         recPlanTitle={'UHC Gold Advantage'}/>}

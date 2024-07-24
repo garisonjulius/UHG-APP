@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { Link } from '@react-navigation/native';
 
-const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
-    const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
+// Basic code structure from: https://reactnative.dev/docs/modal
+const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle }) => {
+    // const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
         <View style={[popUpStyles.centeredView, popUpStyles.allPopUpText]}>
             <Modal
                 animationType='slide'
-                transparent={true}
-                visible={popUpVisible}
+                transparent={false}
+                visible={true}
                 onRequestClose={() => {
                     console.log('Modal has been closed');
                     setModalVisible(!modalVisible);
@@ -33,11 +34,8 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
                             style={[popUpStyles.button, popUpStyles.buttonOpen]}
                             onPress={() => {
                                 // Make POST request
-                                // Prevent rendering of the popup on the Home screen
-                                // to avoid shifted components on screen
-                                updateRenderPopUp(true);
-                                // Toggle whether or not popup info is displayed (NOT rendered)
-                                setPopUpVisible(!popUpVisible);
+                                // Stop rendering the notification. This sets 
+                                stopRender();
                             }}
                             >
                                 <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Do not show again</Text>
@@ -49,9 +47,9 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
                             onPress={() => {
                                 // Prevent rendering of the popup on the Home screen
                                 // to avoid shifted components on screen
-                                updateRenderPopUp(true);
+                                stopRender();
                                 // Toggle whether or not popup info is displayed (NOT rendered)
-                                setPopUpVisible(!popUpVisible);
+                                // setPopUpVisible(!popUpVisible);
                             }}
                             >
                                 <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Remind me later</Text>
