@@ -6,6 +6,7 @@ CREATE TABLE Users (
     pid INT,
     rid INT,
     plan_rec_desc VARCHAR(1000),
+    display_rec_pop_up BOOLEAN NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     age INT NOT NULL,
