@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
-import { Link } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
 const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle }) => {
@@ -22,19 +22,22 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle }) => {
                             <Text style={[popUpStyles.popUpText, popUpStyles.boldText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
                             <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan{'\n'}</Text>
                             {/* TODO: Implement correct link below */}
-                            <Text style={popUpStyles.popUpText}>
-                                More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
-                            </Text>
+                            <Pressable>
+                                <Text style={popUpStyles.popUpText}>
+                                    More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
+                                    <AntDesign name="arrowright" size={32} color="#02226d" style={popUpStyles.arrowRight}/>
+                                </Text>
+                            </Pressable>
                         </View>
 
                         {/* Buttons */}
                         <View style={popUpStyles.buttonsView}>
                             {/* Do not show again button */}
                             <Pressable
-                            style={[popUpStyles.button, popUpStyles.buttonOpen]}
+                            style={popUpStyles.button}
                             onPress={() => {
                                 // Make POST request
-                                // Stop rendering the notification. This sets 
+                                // Stop rendering the notification. This sets renderPopUp to false in Home.
                                 stopRender();
                             }}
                             >
@@ -45,8 +48,7 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle }) => {
                             <Pressable
                             style={[popUpStyles.button, popUpStyles.buttonOpen]}
                             onPress={() => {
-                                // Prevent rendering of the popup on the Home screen
-                                // to avoid shifted components on screen
+                                // Stop rendering the notification. This sets renderPopUp to false in Home.
                                 stopRender();
                                 // Toggle whether or not popup info is displayed (NOT rendered)
                                 // setPopUpVisible(!popUpVisible);
@@ -74,6 +76,9 @@ const popUpStyles = StyleSheet.create({
     },
     allPopUpText: {
         color: '#02226d',
+    },
+    arrowRight: {
+        paddingLeft: 10,
     },
     popUpView: {
         width: '100%',
