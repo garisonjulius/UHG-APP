@@ -6,7 +6,7 @@ const PlanNotif = ({ updateRenderPopUp, displayPopUp, recPlanTitle }) => {
     const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
-        <View style={[popUpStyles.centeredView, popUpStyles.opacityBackground]}>
+        <View style={popUpStyles.centeredView}>
             <Modal
                 animationType='slide'
                 transparent={true}
