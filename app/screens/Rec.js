@@ -1,9 +1,46 @@
-import * as React from "react";
+//import * as React from "react";
+import React, {useState, useEffect} from "react"
 import { StyleSheet, Image, View, Text } from "react-native";
-//import { Image } from "expo-image";
 import { Color, FontSize, FontFamily, Border } from "../assets/GlobalStyles";
 
 const ComparisonFrame1 = () => {
+  
+  const [planData, setPlanData] = useState(null);
+  
+  useEffect(() => {
+    // Fetch user information
+    fetchUserInformation('1'); 
+    // Fetch plan information
+    fetchPlanInformation('1');
+  }, []);
+
+  const fetchUserInformation = async (uid) => {
+    try {
+      const response = await fetch(`/user/${uid}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const userData = await response.json();
+      setUserData(userData); // Update state with fetched user data
+    } catch (error) {
+      console.error('Error fetching user information:', error);
+    }
+  };
+
+  const fetchPlanInformation = async (pid) => {
+    try {
+      const response = await fetch(`/plan/${pid}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const planData = await response.json();
+      setPlanData(planData); // Update state with fetched plan data
+    } catch (error) {
+      console.error('Error fetching plan information:', error);
+    }
+  };
+
+  
   return (
     <View style={[styles.comparisonFrame, styles.comparisonFrameLayout]}>
       <View
@@ -45,14 +82,13 @@ HMO/PPO/POS/EPO
       <View style={[styles.rectangleView, styles.rectangleViewPosition]} />
       <Text style={[styles.features, styles.featuresTypo]}>Features</Text>
       <Text style={[styles.titleRecommended, styles.titleTypo]}>
-        <Text style={styles.title}>{`Title
+        <Text style={styles.title}>{`Reccomended
 `}</Text>
-        <Text style={styles.recommended}>(Recommended)</Text>
+        
       </Text>
       <Text style={[styles.titleCurrent, styles.titleTypo]}>
-        <Text style={styles.title}>{`Title
+        <Text style={styles.title}>{`Current
 `}</Text>
-        <Text style={styles.recommended}>(Current)</Text>
       </Text>
       <View style={[styles.vectorParent, styles.groupChildLayout]}>
         <Image
@@ -63,12 +99,13 @@ HMO/PPO/POS/EPO
         <Text
           style={[styles.basedOnHealthcare, styles.titleTypo]}
         >{`Based on healthcare activity over the past year, we calculated $500 in lost value for the year of 2024. 
-
-All plan options >
-`}</Text>
+        `}</Text>
+        
         <Text
           style={[styles.contactAnAgent, styles.titleTypo]}
-        >{`                                              Contact an agent `}</Text>
+        >{`All Plan Options >       Contact an Agent `}
+        
+        </Text>
         <Text style={[styles.inIn, styles.titleTypo]}>{`*IN = In Network
 *ON = Out-Of-Network
 *OP = Out-of-pocket`}</Text>
@@ -83,12 +120,13 @@ All plan options >
         contentFit="cover"
         source={require("../assets/alert-circle.png")}
       />
-      <Image
+      {/* <Image
         style={styles.xIcon}
         contentFit="cover"
         source={require("../assets/x.png")}
-      />
-      <Text style={[styles.titlerectext, styles.titlerectextTypo]}>{`Lorum
+      /> */}
+      <Text style={[styles.titlerectext, styles.titlerectextTypo]}>{
+`Lorum
 
 
 
@@ -97,7 +135,6 @@ Lorum
 
 
 Lorum
-
 
 
 
@@ -125,7 +162,6 @@ Lorum
 
 
 Lorum
-
 
 
 
@@ -157,6 +193,7 @@ const styles = StyleSheet.create({
   inInFlexBox: { //
     textAlign: "left",
     left: 3,
+    position: "absolute",
   },
   rectangleIconLayout: { //
     width: 449,
@@ -175,6 +212,7 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     textAlign: "center",
     fontSize: FontSize.size_3xl,
+    position: "absolute",
   },
   titleTypo: { ////
     color: Color.colorWhite,
@@ -186,6 +224,7 @@ const styles = StyleSheet.create({
     height: 251,
     width: 449,
     position: "absolute",
+    //zIndex: 10,
   },
   titlerectextTypo: { ////
     height: 556,
@@ -204,10 +243,10 @@ const styles = StyleSheet.create({
     top: -15,
     width: 165,
     left: 283,
-    //position: "absolute",
+    position: "absolute",
   },
   monthlyPremiumAnnual: {
-    top: 148,
+    top: 130,
     fontSize: 16.5,
     lineHeight: 19,
     color: Color.colorBlack,
@@ -224,7 +263,7 @@ const styles = StyleSheet.create({
     width: 153,
     left: 130,
     top: 0,
-    //position: "absolute",
+    position: "absolute",
     //height: 998,
     //backgroundColor: Color.colorWhite,
   },
@@ -236,7 +275,7 @@ const styles = StyleSheet.create({
     top: 115,
     left: 3,
     width: 449,
-    //position: "absolute",
+    position: "absolute",
   },
   lineView: {
     top: 116,
@@ -246,16 +285,19 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     //height: 631,
     left: 130,
+    position: "absolute",
   },
   lineIcon: {
     left: 279,
     width: 7,
     //height: 631,
     top: 115,
+    position: "absolute",
   },
   comparisonFrameChild1: {
     height: 2,
     top: 746,
+    position: "absolute",
   },
   rectangleView: {
     borderTopLeftRadius: Border.br_3xs,
@@ -264,6 +306,7 @@ const styles = StyleSheet.create({
     height: 115,
     top: 0,
     //width: 448,
+    position: "absolute",
   },
   features: {
     left: 21,
@@ -276,16 +319,19 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   title: {
-    fontSize: FontSize.size_3xl,
+    fontSize: FontSize.size_lg,
+    position: "absolute",
   },
   recommended: {
     fontSize: FontSize.size_md,
+    position: "absolute",
   },
   titleRecommended: {
-    width: 169,
+    width: 150,
     textAlign: "center",
     top: 44,
     left: 270,
+    position: "absolute",
   },
   titleCurrent: {
     left: 161,
@@ -293,59 +339,67 @@ const styles = StyleSheet.create({
     height: 44,
     textAlign: "center",
     top: 44,
+    position: "absolute",
   },
   groupChild: { ////
     left: 0,
     height: 251,
-    top: 0,
+    top: -105,
+    position: "absolute",
   },
   rectangleIcon: {
     left: -1,
     height: 251,
     top: 746,
+    position: "absolute",
   },
   basedOnHealthcare: {
-    top: 47, //793
-    left: 60,
+    top: -70, //793
+    left: 45,
     width: 336,
     textAlign: "center",
     lineHeight: 22,
-    fontSize: FontSize.size_3xl,
+    fontSize: FontSize.size_lg,
+    position: "absolute",
+    
   },
   contactAnAgent: {
-    top: 228, //964
-    left: 57,
+    top: 20, //964
+    left: 10,
     lineHeight: 18,
     width: 365,
     height: 20,
     fontSize: FontSize.size_lg,
     textAlign: "center",
+    position: "absolute",
   },
   inIn: {
-    top: 5, //751
+    top: -100, //751
     fontSize: 9,
     lineHeight: 9,
     textAlign: "left",
     left: 3,
+    position: "absolute",
   },
   phoneCallIcon: {
-    top: 213, //959
-    //left: 411,
-    width: 26,
-    height: 30,
-    //position: "absolute",
+    top: 15, //959
+    left: 360,
+    width: 25,
+    height: 25,
+    position: "absolute",
     //overflow: "hidden",
   },
   vectorParent: {
     left: -1,
     top: 746,
+    position: "absolute",
   },
   alertCircleIcon: {
     top: 88, 
     left: 390,
     width: 19, 
     height: 19,
-    //position: "absolute",
+    position: "absolute",
     //overflow: "hidden",
   },
   xIcon: {
@@ -358,9 +412,11 @@ const styles = StyleSheet.create({
   },
   titlerectext: {
     marginLeft: 104, ////
+    position: "absolute",
   },
   titlecurrenttext: { ////
     marginLeft: -49,
+    position: "absolute",
   },
   comparisonFrame: {
     //borderRadius: Border.br_mid,
@@ -368,7 +424,8 @@ const styles = StyleSheet.create({
     width: "100%",
     overflow: "hidden",
     height: 998,
-    backgroundColor: Color.colorWhite
+    backgroundColor: Color.colorWhite,
+    position: "absolute",
   },
 });
 
