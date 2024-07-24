@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, request
 from united_health import app
 import sqlite3
 import united_health.ai
@@ -12,6 +12,14 @@ def get_db():
 
     # db.row_factory = sqlite3.Row
     return db
+
+@app.route('/notification', methods = ['POST'])
+def post_data():
+    request_data = request.get_json()
+    display = request_data.get('display')
+
+    
+
 
 @app.route("/recommend/<uid>", methods=['GET'])
 def recommend_plan(uid):
