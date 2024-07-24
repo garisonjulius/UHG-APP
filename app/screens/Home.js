@@ -1,6 +1,8 @@
-import React, {useState,useEffect, useRef}from "react";
+import React, { useState, useEffect, useRef }from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { data, renderCarouselItem, handleScroll, PageIndicator, useCarouselEffect } from "../components/Carousel";
+import PlanNotif from '../components/PlanNotif';
+
 import styles from '../styles'
 import {
   Image,
@@ -22,6 +24,8 @@ function Home(props) {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* ADDITION: PopUp */}
+      <PlanNotif displayPopUp={true} recPlanTitle={'UHC Gold Advantage'}/>
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>

@@ -1,24 +1,96 @@
 import React, {useState} from 'react';
 import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import { Link } from '@react-navigation/native';
 
-const PlanNotif = ({ displayPopUp }) => {
+const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
     const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
-        <Modal
-          animationType='slide'
-          transparent={true} 
-          visible={popUpVisible}
-          onRequestClose={() => {
-            console.log('Modal has been closed');
-            setModalVisible(!modalVisible);
-          }}>
-        </Modal>
+        <View style={popUpStyles.centeredView}>
+            <Modal
+                animationType='slide'
+                transparent={true} 
+                visible={popUpVisible}
+                onRequestClose={() => {
+                    console.log('Modal has been closed');
+                    setModalVisible(!modalVisible);
+                }}>
+                <View style={popUpStyles.centeredView}>
+                    <View style={popUpStyles.popUpView}>
+                        <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th)</Text>
+                        <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> Plan</Text>
+                        {/* TODO: Implement correct link below */}
+                        <Text style={popUpStyles.popUpText}>
+                            More information on the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan
+                        </Text>
+
+                        {/* Do not show again button */}
+                        <Pressable
+                          style={[popUpStyles.button, popUpStyles.buttonOpen]}
+                          onPress={() => {
+                            // Make POST request
+                            setPopUpVisible(!popUpVisible);
+                          }}
+                        >
+                            <Text>Do not show again</Text>
+                        </Pressable>
+
+                        {/* Remind me later button */}
+                        <Pressable
+                          style={[popUpStyles.button, popUpStyles.buttonOpen]}
+                          onPress={() => {
+                            setPopUpVisible(!popUpVisible);
+                          }}
+                        >
+                            <Text>Remind me later</Text>
+                        </Pressable>
+                    </View>
+                </View>
+                
+            </Modal>
+        </View>
     );
 }
 
-const style = StyleSheet.create({
-    
+const popUpStyles = StyleSheet.create({
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    popUpView: {
+        width: '100%',
+        backgroundColor: '#edf8fc',
+        borderRadius: 20,
+        padding: 35,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    button: {
+        borderRadius: 10,
+        padding: 10,
+        elevation: 2,
+    },
+    buttonOpen: {
+        backgroundColor: '#F194FF',
+    },
+    popUpText: {
+        fontSize: 18,
+        textAlign: 'center',
+    },
+    headerText: {
+        fontWeight: 'bold',
+    },
+    planRecText: {
+        fontWeight: 'bold',
+    },
 });
 
 export default PlanNotif;
