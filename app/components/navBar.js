@@ -5,7 +5,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Home from "../screens/Home";
 import Benefits from "../screens/Benefits";
 import FindCare from "../screens/FindCare";
-import Px from "../screens/Px";
+import Rx from "../screens/Rx";
 import Menu from "../screens/Menu";
 import Rec from "../screens/Rec";
 
@@ -47,7 +47,7 @@ const NavBar = () => {
               iconName = focused ? "umbrella" : "umbrella-outline";
             } else if (route.name === "Find Care") {
               iconName = focused ? "heart-circle" : "heart-circle-outline";
-            } else if (route.name === "Px") {
+            } else if (route.name === "Rx") {
               iconName = focused ? "medical" : "medical-outline";
             } else if (route.name === "Menu") {
               iconName = focused ? "menu" : "menu-outline";
@@ -107,8 +107,8 @@ const NavBar = () => {
           }}
         />
         <Tab.Screen
-          name="Px"
-          component={Px}
+          name="Rx"
+          component={Rx}
           options={{
             headerShown: false,
             tabBarStyle: {
