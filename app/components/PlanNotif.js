@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View} from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { Link } from '@react-navigation/native';
 
 const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
@@ -17,33 +17,38 @@ const PlanNotif = ({ displayPopUp, recPlanTitle }) => {
                 }}>
                 <View style={popUpStyles.centeredView}>
                     <View style={popUpStyles.popUpView}>
-                        <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th)</Text>
-                        <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> Plan</Text>
-                        {/* TODO: Implement correct link below */}
-                        <Text style={popUpStyles.popUpText}>
-                            More information on the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan
-                        </Text>
+                        <View style={popUpStyles.popUpText}>
+                            <Text style={[popUpStyles.popUpText, popUpStyles.headerText]}>60 days until open enrollment begins (Nov. 15th)</Text>
+                            <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> Plan</Text>
+                            {/* TODO: Implement correct link below */}
+                            <Text style={popUpStyles.popUpText}>
+                                More information on the <Text style={popUpStyles.planRecText}>{recPlanTitle}</Text> plan
+                            </Text>
+                        </View>
 
-                        {/* Do not show again button */}
-                        <Pressable
-                          style={[popUpStyles.button, popUpStyles.buttonOpen]}
-                          onPress={() => {
-                            // Make POST request
-                            setPopUpVisible(!popUpVisible);
-                          }}
-                        >
-                            <Text>Do not show again</Text>
-                        </Pressable>
+                        {/* Buttons */}
+                        <View style={popUpStyles.buttonsView}>
+                            {/* Do not show again button */}
+                            <Pressable
+                            style={[popUpStyles.button, popUpStyles.buttonOpen]}
+                            onPress={() => {
+                                // Make POST request
+                                setPopUpVisible(!popUpVisible);
+                            }}
+                            >
+                                <Text>Do not show again</Text>
+                            </Pressable>
 
-                        {/* Remind me later button */}
-                        <Pressable
-                          style={[popUpStyles.button, popUpStyles.buttonOpen]}
-                          onPress={() => {
-                            setPopUpVisible(!popUpVisible);
-                          }}
-                        >
-                            <Text>Remind me later</Text>
-                        </Pressable>
+                            {/* Remind me later button */}
+                            <Pressable
+                            style={[popUpStyles.button, popUpStyles.buttonOpen]}
+                            onPress={() => {
+                                setPopUpVisible(!popUpVisible);
+                            }}
+                            >
+                                <Text>Remind me later</Text>
+                            </Pressable>
+                        </View>
                     </View>
                 </View>
                 
@@ -72,6 +77,12 @@ const popUpStyles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+    },
+    buttonsView: {
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 50,
+        marginTop: 15,
     },
     button: {
         borderRadius: 10,
