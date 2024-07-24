@@ -13,12 +13,30 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
-@app.route('/notification', methods = ['POST'])
-def post_data():
+@app.route('/display', methods = ['POST'])
+def post_display_popup():
     request_data = request.get_json()
     display = request_data.get('display')
+    uid = request_data.get('uid')
 
-    
+    # Connect to SQLite database (change the database name and path as per your setup)
+    conn = sqlite3.connect('UHCDatabase.db')
+    cursor = conn.cursor()
+
+    # SQL UPDATE statement to update RID only if it is currently None (NULL)
+    update_query = "UPDATE Users SET display_rec_pop_up = ? WHERE UID = ?"
+
+    # Execute the update query
+    cursor.execute(update_query, (display, uid))
+
+    # Commit the transaction
+    conn.commit()
+
+    # Close the cursor and connection
+    cursor.close()
+    conn.close()
+
+
 
 
 @app.route("/recommend/<uid>", methods=['GET'])
@@ -40,7 +58,7 @@ def get_user_info(uid):
 
     # Fetch user's name, pid, and rid
     cur.execute(
-        "SELECT first_name, last_name, pid, rid, plan_rec_desc "
+        "SELECT first_name, last_name, pid, rid, plan_rec_desc, display_rec_pop_up "
         "FROM Users "
         "WHERE uid = ?",
         (uid, )
@@ -60,7 +78,8 @@ def get_user_info(uid):
         'last_name': user_info[1],
         'pid': user_info[2],
         'rid': user_info[3],
-        'reasoning' : user_info[4]
+        'reasoning' : user_info[4],
+        'display' : user_info[5]
     }
 
     return jsonify(response)
