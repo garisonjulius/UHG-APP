@@ -19,6 +19,7 @@
         "foregroundImage": "./app/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "softwareKeyboardLayoutModel" : "pan",
       "package": "com.anonymous.HealthApp"
     },
     "web": {

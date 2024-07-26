@@ -20,6 +20,8 @@ function Home(props) {
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
