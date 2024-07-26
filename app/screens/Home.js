@@ -22,11 +22,14 @@ function Home({navigation}) {
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
   const [renderPopUp, setRenderPopUp] = useState(false);
+  // Fetched user data
   const [userInfo, setUserInfo] = useState(null);
+  // Track whether or not algorithm setting rid from AI has been run
+  const [ridCalculated, setRidCalculated] = useState(false);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
 
-  uid = 1;
+  uid = 2;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
@@ -45,15 +48,34 @@ function Home({navigation}) {
         else {
           setRenderPopUp(false);
         }
+
+        // Check if user has been recommended a plan to avoid
+        // having the AI recommend a plan multiple
+        if (data['rid'] !== null) {
+          setRidCalculated(true);
+          return;
+        }
+        else {
+          // Run algorithm to recommend a plan for the user
+          return fetch(`http://10.0.2.2:5000/recommend/${uid}`)
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                setRidCalculated(true);
+              })
+              .catch(err => {
+                console.error('Request to recommend plan for user failed', err)
+              });
+        }
       })
       .catch(err => {
         alert(err)
       });
-    },[]);
+  },[]);
 
   return (
     <SafeAreaView style={styles.container}>
-      {renderPopUp && <PlanNotif 
+      {ridCalculated && renderPopUp && <PlanNotif 
                         stopRender={
                           () => setRenderPopUp(false)
                         } 
