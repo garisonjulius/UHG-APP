@@ -38,7 +38,7 @@ function Home({navigation}) {
 
   useEffect(() => {
     // Fetch user information
-    fetch('http://10.0.2.2:5000/user/1')
+    fetch(`http://10.0.2.2:5000/user/${uid}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -67,7 +67,8 @@ function Home({navigation}) {
                         } 
                         displayPopUp={renderPopUp} 
                         recPlanTitle={'UHC Gold Advantage'}
-                        navigation={navigation} />}
+                        navigation={navigation}
+                        uid={uid} />}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>

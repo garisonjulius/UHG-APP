@@ -1,9 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Alert, Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
+import axios from 'axios';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
-const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation }) => {
+const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) => {
+    // Function to call when 'Do not show again' is pressed
+    const postDisplayData = async () => {
+        try {
+        // Perform the POST request
+        post_url = `http://10.0.2.2:5000/updateDisplay/${uid}`
+        const response = await axios.post(post_url, {
+            displayPopUp: false
+        });
+    
+        console.log(response.data);
+    
+        } catch (error) {
+        console.error('Error sending data to server:', error);
+        }
+    };
+
 
     return (
         <View style={[popUpStyles.centeredView, popUpStyles.allPopUpText]}>
@@ -39,6 +56,7 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation }) => {
                             style={popUpStyles.button}
                             onPress={() => {
                                 // Make POST request
+                                postDisplayData();
                                 // Stop rendering the notification. This sets renderPopUp to false in Home.
                                 stopRender();
                             }}
