@@ -22,13 +22,7 @@ function Home({navigation}) {
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
   const [renderPopUp, setRenderPopUp] = useState(false);
-  const [firstName, setFirstName] = useState(null);
-  const [lastName, setLastName] = useState(null);
-  const [firstInitial, setFirstInitial] = useState(null);
-  const [lastInitial, setLastInitial] = useState(null);
-  const [planID, setPlanID] = useState(null);
-  const [recID, setRecID] = useState(null);
-  const [recReasoning, setRecReasoning] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
 
@@ -42,17 +36,15 @@ function Home({navigation}) {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+        // Set user info with JSON object
+        setUserInfo(data);
+        // Individually set the renderPopUp variable
         if (data.display_rec_pop_up == 1) {
           setRenderPopUp(true);
         }
         else {
           setRenderPopUp(false);
         }
-        setFirstName(data.first_name);
-        setLastName(data.last_name);
-        setPlanID(data.pid);
-        setRecID(data.rid);
-        setRecReasoning(data.ai_rec_reasoning);
       })
       .catch(err => {
         alert(err)
@@ -68,15 +60,15 @@ function Home({navigation}) {
                         displayPopUp={renderPopUp} 
                         recPlanTitle={'UHC Gold Advantage'}
                         navigation={navigation}
-                        uid={uid} />}
+                        uid={userInfo && userInfo['uid']} />}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
-            <Text style={styles.buttonFont}> {firstName && firstName[0]}{lastName && lastName[0]}</Text>
+            <Text style={styles.buttonFont}> {userInfo && userInfo['first_name'][0]}{userInfo && userInfo['last_name'][0]}</Text>
           </View>
         </TouchableHighlight>
         <View style={styles.nameContainer}>
-          <Text style={styles.headerName}> {firstName} {lastName}</Text>
+          <Text style={styles.headerName}> {userInfo && userInfo['first_name']} {userInfo && userInfo['last_name']}</Text>
           <Text style={styles.headerHome}> Home </Text>
         </View>
         <Image  
