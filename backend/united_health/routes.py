@@ -21,8 +21,6 @@ def update_display():
         display = request_data.get('displayPopUp')
         uid = request_data.get('uid')
 
-        print(request_data)
-
         # Validate data
         if display is None or uid is None:
             return jsonify({'error': 'Invalid input'}), 400
