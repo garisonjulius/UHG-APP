@@ -48,8 +48,6 @@ function Home({navigation}) {
           setRenderPopUp(false);
         }
         setFirstName(data.first_name);
-        setFirstInitial(data.first_name[0]);
-        setLastInitial(data.last_name[0]);
         setLastName(data.last_name);
         setPlanID(data.pid);
         setRecID(data.rid);
@@ -72,7 +70,7 @@ function Home({navigation}) {
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
-            <Text style={styles.buttonFont}> {firstInitial}{lastInitial}</Text>
+            <Text style={styles.buttonFont}> {firstName && firstName[0]}{lastName && lastName[0]}</Text>
           </View>
         </TouchableHighlight>
         <View style={styles.nameContainer}>
