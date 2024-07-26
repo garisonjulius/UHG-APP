@@ -39,11 +39,11 @@ function Home(props) {
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
-            <Text style={styles.buttonFont}> {name["first_name"][0]}{name["last_name"][0]} </Text>
+            <Text style={styles.buttonFont}> {name && name["first_name"][0]}{name && name["last_name"][0]} </Text>
           </View>
         </TouchableHighlight>
         <View style={styles.nameContainer}>
-          <Text style={styles.headerName}> {name["first_name"]} {name["last_name"]}</Text>
+          <Text style={styles.headerName}> {name && name["first_name"]}{name && name["last_name"]}</Text>
           <Text style={styles.headerHome}> Home </Text>
         </View>
         <Image  
