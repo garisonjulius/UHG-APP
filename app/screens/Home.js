@@ -51,12 +51,11 @@ function Home({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* ADDITION: PopUp */}
       {renderPopUp && <PlanNotif 
                         stopRender={
                           () => setRenderPopUp(false)
                         } 
-                        displayPopUp={true} 
+                        displayPopUp={renderPopUp} 
                         recPlanTitle={'UHC Gold Advantage'}
                         navigation={navigation} />}
       <View style={styles.headerContainer}>

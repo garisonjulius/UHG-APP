@@ -4,17 +4,15 @@ import { AntDesign } from '@expo/vector-icons';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
 const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation }) => {
-    // const [popUpVisible, setPopUpVisible] = useState(displayPopUp);
 
     return (
         <View style={[popUpStyles.centeredView, popUpStyles.allPopUpText]}>
             <Modal
                 animationType='slide'
                 transparent={false}
-                visible={true}
+                visible={displayPopUp}
                 onRequestClose={() => {
-                    console.log('Modal has been closed');
-                    setModalVisible(!modalVisible);
+                    stopRender();
                 }}>
                 <View style={[popUpStyles.centeredView, popUpStyles.opacityBackground]}>
                     <View style={popUpStyles.popUpView}>
@@ -49,8 +47,6 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation }) => {
                             onPress={() => {
                                 // Stop rendering the notification. This sets renderPopUp to false in Home.
                                 stopRender();
-                                // Toggle whether or not popup info is displayed (NOT rendered)
-                                // setPopUpVisible(!popUpVisible);
                             }}
                             >
                                 <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Remind me later</Text>
