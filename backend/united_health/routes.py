@@ -32,7 +32,7 @@ def get_user_info(uid):
 
     # Fetch user's name, pid, and rid
     cur.execute(
-        "SELECT first_name, last_name, pid, rid, plan_rec_desc "
+        "SELECT first_name, last_name, pid, rid, plan_rec_desc, display_rec_pop_up "
         "FROM Users "
         "WHERE uid = ?",
         (uid, )
@@ -52,7 +52,8 @@ def get_user_info(uid):
         'last_name': user_info[1],
         'pid': user_info[2],
         'rid': user_info[3],
-        'reasoning' : user_info[4]
+        'ai_rec_reasoning': user_info[4],
+        'display_rec_pop_up': user_info[5]
     }
 
     return jsonify(response)
