@@ -26,7 +26,7 @@ function Home({navigation}) {
 
   useEffect(() => {
     // Fetch user information
-    fetch('http://10.0.2.2:5000/user/1')
+    fetch('http://127.0.0.1:5000/user/1')
       .then(response => response.json())
       .then(data => {
         console.log(data);
