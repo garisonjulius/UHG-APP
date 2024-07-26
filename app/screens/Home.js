@@ -15,21 +15,35 @@ import {
 
 function Home(props) {
   const [carouselPage, setCarouselPage] = useState(0);
+  const [name, setName] = useState('');
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
+
+  useEffect(() => {
+    // Fetch user information
+    fetch('http://10.0.2.2:5000/user/1')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setName(data);
+      })
+      .catch(err => {
+        alert("Invalid User ID")
+      });
+    },[]);
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
-            <Text style={styles.buttonFont}> SH </Text>
+            <Text style={styles.buttonFont}> {name["first_name"][0]}{name["last_name"][0]} </Text>
           </View>
         </TouchableHighlight>
         <View style={styles.nameContainer}>
-          <Text style={styles.headerName}> Sarah Hayes</Text>
+          <Text style={styles.headerName}> {name["first_name"]} {name["last_name"]}</Text>
           <Text style={styles.headerHome}> Home </Text>
         </View>
         <Image  
