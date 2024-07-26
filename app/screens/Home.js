@@ -17,8 +17,15 @@ import {
 
 function Home({navigation}) {
   const [carouselPage, setCarouselPage] = useState(0);
-  const [renderPopUp, setRenderPopUp] = useState(true);
-  const [name, setName] = useState('');
+  // Initially set renderPopUp to false. Once user data is fetched,
+  // it will be updated to true and trigger the popup to display
+  // if the user has not clicked 'Do not show again'
+  const [renderPopUp, setRenderPopUp] = useState(false);
+  const [firstName, setFirstName] = ('');
+  const [lastName, setLastName] = ('');
+  const [planID, setPlanID] = useState(null);
+  const [recID, setRecID] = useState(null);
+  const [recReasoning, setRecReasoning] = useState('');
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
   
@@ -30,7 +37,12 @@ function Home({navigation}) {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setName(data);
+        setRenderPopUp(data['display_rec_pop_up']);
+        setFirstName(data['first_name']);
+        setLastName(data['last_name']);
+        setPlanID(data['pid']);
+        setRecID(data['rid']);
+        setRecReasoning(data['rec_reasoning']);
       })
       .catch(err => {
         alert("Invalid User ID")
@@ -50,11 +62,11 @@ function Home({navigation}) {
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
-            <Text style={styles.buttonFont}> {name["first_name"][0]}{name["last_name"][0]} </Text>
+            <Text style={styles.buttonFont}> {firstName[0]}{lastName[0]} </Text>
           </View>
         </TouchableHighlight>
         <View style={styles.nameContainer}>
-          <Text style={styles.headerName}> {name["first_name"]} {name["last_name"]}</Text>
+          <Text style={styles.headerName}> {firstName} {lastName}</Text>
           <Text style={styles.headerHome}> Home </Text>
         </View>
         <Image  
