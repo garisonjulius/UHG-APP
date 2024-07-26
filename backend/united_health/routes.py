@@ -13,28 +13,42 @@ def get_db():
     # db.row_factory = sqlite3.Row
     return db
 
-@app.route('/display', methods = ['POST'])
-def post_display_popup():
-    request_data = request.get_json()
-    display = request_data.get('display')
-    uid = request_data.get('uid')
+@app.route('/updateDisplay', methods=['POST'])
+def update_display():
+    try:
+        # Get JSON data from the request
+        request_data = request.get_json()
+        display = request_data.get('displayPopUp')
+        uid = request_data.get('uid')
 
-    # Connect to SQLite database (change the database name and path as per your setup)
-    conn = sqlite3.connect('UHCDatabase.db')
-    cursor = conn.cursor()
+        print(request_data)
 
-    # SQL UPDATE statement to update RID only if it is currently None (NULL)
-    update_query = "UPDATE Users SET display_rec_pop_up = ? WHERE UID = ?"
+        # Validate data
+        if display is None or uid is None:
+            return jsonify({'error': 'Invalid input'}), 400
 
-    # Execute the update query
-    cursor.execute(update_query, (display, uid))
+        # Connect to SQLite database
+        conn = sqlite3.connect('UHCDatabase.db')
+        cursor = conn.cursor()
 
-    # Commit the transaction
-    conn.commit()
+        # SQL UPDATE statement to update display_rec_pop_up based on UID
+        update_query = "UPDATE Users SET display_rec_pop_up = ? WHERE UID = ?"
 
-    # Close the cursor and connection
-    cursor.close()
-    conn.close()
+        # Execute the update query
+        cursor.execute(update_query, (int(display), uid))
+
+        # Commit the transaction
+        conn.commit()
+
+        return jsonify({'message': 'Update successful'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        # Ensure the cursor and connection are closed
+        cursor.close()
+        conn.close()
+
+
 
 
 

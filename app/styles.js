@@ -352,6 +352,35 @@ const styles = StyleSheet.create({
       fontSize: 22,
       fontWeight: "bold",
     },
+    spotlightContainer: {
+      position: "absolute",
+      alignItems: "left",
+      justifyContent: "center",
+      flexDirection: "column",
+      bottom: 25,
+      height: "13%",
+      width: "90%",
+      aspectRatio: 1,
+      backgroundColor: "white",
+      borderRadius: 10,
+    },
+    spotlight: {
+      color: "#02226d",
+      alignItems: "left",
+      justifyContent: "left",
+      bottom: 80,
+      fontSize: 22,
+      fontWeight: "bold",
+      left: 5
+    },
+    spotlightForward: {
+      width: 30,
+      height: 30,
+      position: "absolute",
+      left: 335,
+      bottom: 115,
+      tintColor: "#021842"
+    }
   });
   
   export default styles;
