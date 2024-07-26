@@ -14,6 +14,7 @@ import {
   useWindowDimensions,
   Animated
 } from "react-native";
+import Spotlight from "../components/Spotlight";
 
 function Home({navigation}) {
   const [carouselPage, setCarouselPage] = useState(0);
@@ -115,6 +116,7 @@ function Home({navigation}) {
       showsHorizontalScrollIndicator={false}
       onScroll={(event) => handleScroll(event, carouselPage, setCarouselPage)}/>
       <PageIndicator data={data} carouselPage={carouselPage}/>
+      <Spotlight />
     </SafeAreaView>
   );
 }
