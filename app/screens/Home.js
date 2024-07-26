@@ -21,31 +21,42 @@ function Home({navigation}) {
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
   const [renderPopUp, setRenderPopUp] = useState(false);
-  const [firstName, setFirstName] = ('');
-  const [lastName, setLastName] = ('');
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [firstInitial, setFirstInitial] = useState(null);
+  const [lastInitial, setLastInitial] = useState(null);
   const [planID, setPlanID] = useState(null);
   const [recID, setRecID] = useState(null);
-  const [recReasoning, setRecReasoning] = useState('');
+  const [recReasoning, setRecReasoning] = useState(null);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
+
+  uid = 1;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
   useEffect(() => {
     // Fetch user information
-    fetch('http://127.0.0.1:5000/user/1')
+    fetch('http://10.0.2.2:5000/user/1')
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setRenderPopUp(data['display_rec_pop_up']);
-        setFirstName(data['first_name']);
-        setLastName(data['last_name']);
-        setPlanID(data['pid']);
-        setRecID(data['rid']);
-        setRecReasoning(data['rec_reasoning']);
+        if (data.display_rec_pop_up == 1) {
+          setRenderPopUp(true);
+        }
+        else {
+          setRenderPopUp(false);
+        }
+        setFirstName(data.first_name);
+        setFirstInitial(data.first_name[0]);
+        setLastInitial(data.last_name[0]);
+        setLastName(data.last_name);
+        setPlanID(data.pid);
+        setRecID(data.rid);
+        setRecReasoning(data.ai_rec_reasoning);
       })
       .catch(err => {
-        alert("Invalid User ID")
+        alert(err)
       });
     },[]);
 
@@ -61,7 +72,7 @@ function Home({navigation}) {
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
-            <Text style={styles.buttonFont}> {firstName[0]}{lastName[0]} </Text>
+            <Text style={styles.buttonFont}> {firstInitial}{lastInitial}</Text>
           </View>
         </TouchableHighlight>
         <View style={styles.nameContainer}>
