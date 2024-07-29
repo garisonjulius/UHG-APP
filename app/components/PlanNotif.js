@@ -4,7 +4,24 @@ import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
-const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) => {
+const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
+    const [recPlanTitle, setRecPlanTitle] = useState(null);
+
+    // Fetch the recommended plan title
+    useEffect(() => {
+        plan_info_url = `http://10.0.2.2:5000/plan/${rid}`;
+        console.log(plan_info_url);
+        fetch(plan_info_url)
+          .then(response => response.json())
+          .then(data => {
+            console.log("plan info: ", data)
+            setRecPlanTitle(data['plan_title']);
+          })
+          .catch(err => {
+            console.error('Request for recommended plan information failed', err);
+          });
+    }, []);
+
     // Function to call when 'Do not show again' is pressed
     const postDisplayData = async () => {
         try {
@@ -17,7 +34,7 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) 
         console.log(response.data);
     
         } catch (error) {
-        console.error('Error sending data to server:', error);
+            console.error('Error sending data to server:', error);
         }
     };
 

@@ -83,4 +83,9 @@ def put_rid(uid):
     cursor.close()
     conn.close()
 
-    return 'Success'
+    # Return the rid and the recommended plan title
+    response = {
+        'rid': rid
+    }
+
+    return response

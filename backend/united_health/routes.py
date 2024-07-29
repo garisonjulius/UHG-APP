@@ -12,7 +12,7 @@ def get_db():
 
 @app.route('/updateDisplay/<uid>', methods=['POST'])
 def update_display(uid):
-    """Update the display_rec_pop_up database variable for user uid."""
+    """Update the display_rec_pop_up database variable to be false for user uid."""
     try:
         # Get JSON data from the request
         post_request_data = request.get_json()
