@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
-import { Text,TouchableOpacity,View, Dimensions, Image } from "react-native";
+import { Text,TouchableOpacity,View, Dimensions, Image, Pressable } from "react-native";
 import styles from '../styles'
+import Rec from "../screens/Rec";
 
 const {width} = Dimensions.get('window');
 
@@ -10,7 +11,13 @@ export const data = [
   { title: "Cost Estimates"}
 ];
 
-export const renderCarouselItem = ({ item, index}) => {
+export const renderCarouselItem = ({item, index}) => {
+  return <CarouselItem item={item} index={index}/>;
+}
+
+export const CarouselItem = ({ item, index}) => {
+   const [isPressed, setIsPressed] = useState(false);
+
     let titleStyle = styles.overviewTitle;
     if (item.title === "Spending") {
       titleStyle = styles.spendingTitle;
@@ -29,8 +36,14 @@ export const renderCarouselItem = ({ item, index}) => {
     <View style={[styles.carousel, {width}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
-        <View style={styles.circle}>
-            <Text style={styles.exclamMark}> ! </Text>
+        <Pressable
+            onPress={() => setIsPressed(!isPressed)}
+            style={styles.circle}
+        >
+          <Text style={styles.exclamMark}> ! </Text>
+        </Pressable>
+        <View>
+          {isPressed && <Rec/>}
         </View>
         <View style={styles.contentContainer}>
             {item.title === "My Plan Overview" && (

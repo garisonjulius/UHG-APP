@@ -18,6 +18,7 @@ import Spotlight from "../components/Spotlight";
 
 function Home({navigation}) {
   const [carouselPage, setCarouselPage] = useState(0);
+  const [alertIsPressed, setalertIsPressed] = useState(false);
   // Initially set renderPopUp to false. Once user data is fetched,
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
