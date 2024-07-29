@@ -30,7 +30,7 @@ function Home({navigation}) {
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
 
-  uid = 1;
+  uid = 2;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
@@ -51,26 +51,14 @@ function Home({navigation}) {
           setRenderPopUp(false);
         }
 
-        // Check if user has been recommended a plan to avoid
-        // having the AI recommend a plan multiple
-        if (data['rid'] !== null) {
-          console.log("User", uid, " already has a recommended plan:", data['rid']);
-          setRid(data['rid']);
-          setRidCalculated(true);
+        // Verify user has a recommended plan (this code runs when user information is fetched)
+        if (data['rid'] == null) {
+          console.error("User does not have a recommended plan");
         }
         else {
-          console.log("User with id ", uid, "does not have a recommended plan.");
-          // Run algorithm to recommend a plan for the user
-          return fetch(`http://10.0.2.2:5000/recommend/${uid}`)
-              .then(response => response.json())
-              .then(innerData => {
-                console.log("Recommended plan", innerData['rid'], "for user.");
-                setRid(innerData['rid']);
-                setRidCalculated(true);
-              })
-              .catch(err => {
-                console.error('Request to recommend plan for user failed', err)
-              });
+          console.log("User", uid, "'s recommended plan is:", data['rid']);
+          setRid(data['rid']);
+          setRidCalculated(true);
         }
       })
       .catch(err => {
