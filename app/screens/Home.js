@@ -57,20 +57,6 @@ function Home({navigation}) {
           setRid(data['rid']);
           setRidCalculated(true);
         }
-        else {
-          console.log("User with id ", uid, "does not have a recommended plan.");
-          // Run algorithm to recommend a plan for the user
-          return fetch(`http://10.0.2.2:5000/recommend/${uid}`)
-              .then(response => response.json())
-              .then(innerData => {
-                console.log("Successfully recommended plan");
-                setRid(innerData['rid']);
-                setRidCalculated(true);
-              })
-              .catch(err => {
-                console.error('Request to recommend plan for user failed', err)
-              });
-        }
       })
       .catch(err => {
         alert(err)
