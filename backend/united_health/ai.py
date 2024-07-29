@@ -76,7 +76,12 @@ def put_rid(uid):
     cursor.close()
     conn.close()
 
-    return 'Success'
+    # Return the rid and the recommended plan title
+    response = {
+        'rid': rid
+    }
+
+    return response
 
 def put_short_description(uid):
      # Connect to SQLite database (change the database name and path as per your setup)
@@ -105,7 +110,8 @@ def put_short_description(uid):
     update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND plan_rec_desc IS NULL"
 
     # Execute the update query
-    cursor.execute(update_query, (index.query('Can you give a 30 word summary of just the reasoning:' + desc, llm_model), uid))
+    plan_reasoning = index.query('Can you give a 30 word summary of just the reasoning:' + desc, llm_model)
+    cursor.execute(update_query, (plan_reasoning, uid))
 
     # Commit the transaction
     conn.commit()
@@ -114,4 +120,8 @@ def put_short_description(uid):
     cursor.close()
     conn.close()
 
-    return 'Success'
+    response = {
+        'ai_reasoning': plan_reasoning
+    }
+
+    return response

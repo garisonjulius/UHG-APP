@@ -12,7 +12,7 @@ def get_db():
 
 @app.route('/updateDisplay/<uid>', methods=['POST'])
 def update_display(uid):
-    """Update the display_rec_pop_up database variable for user uid."""
+    """Update the display_rec_pop_up database variable to be false for user uid."""
     try:
         # Get JSON data from the request
         post_request_data = request.get_json()
@@ -48,10 +48,15 @@ def update_display(uid):
 def recommend_plan(uid):
     """Prompt OpenAI API with user infomation to generate a plan recommendation for the user, and 
     then store the recommended plan in the database."""
-    rid_res = united_health.ai.put_rid(uid)
-    desc_res = united_health.ai.put_short_description(uid)
+    rid = (united_health.ai.put_rid(uid))['rid']
+    ai_reasoning = (united_health.ai.put_short_description(uid))['ai_reasoning']
 
-    return rid_res == desc_res
+    response = {
+        'rid': rid,
+        'ai_reasoning': ai_reasoning
+    }
+
+    return response
     
 
 @app.route("/user/<uid>", methods=['GET'])

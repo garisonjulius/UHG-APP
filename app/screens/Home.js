@@ -22,7 +22,11 @@ function Home({navigation}) {
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
   const [renderPopUp, setRenderPopUp] = useState(false);
+  // Fetched user data
   const [userInfo, setUserInfo] = useState(null);
+  // Track whether or not algorithm setting rid from AI has been run
+  const [ridCalculated, setRidCalculated] = useState(false);
+  const [rid, setRid] = useState(null);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
 
@@ -43,24 +47,47 @@ function Home({navigation}) {
           setRenderPopUp(true);
         }
         else {
+          console.log("User previously selected do not show again.")
           setRenderPopUp(false);
+        }
+
+        // Check if user has been recommended a plan to avoid
+        // having the AI recommend a plan multiple
+        if (data['rid'] !== null) {
+          console.log("User", uid, " already has a recommended plan:", data['rid']);
+          setRid(data['rid']);
+          setRidCalculated(true);
+        }
+        else {
+          console.log("User with id ", uid, "does not have a recommended plan.");
+          // Run algorithm to recommend a plan for the user
+          return fetch(`http://10.0.2.2:5000/recommend/${uid}`)
+              .then(response => response.json())
+              .then(innerData => {
+                console.log("Recommended plan", innerData['rid'], "for user.");
+                setRid(innerData['rid']);
+                setRidCalculated(true);
+              })
+              .catch(err => {
+                console.error('Request to recommend plan for user failed', err)
+              });
         }
       })
       .catch(err => {
         alert(err)
       });
-    },[]);
+  },[]);
 
   return (
     <SafeAreaView style={styles.container}>
-      {renderPopUp && <PlanNotif 
+      {userInfo && ridCalculated && renderPopUp && <PlanNotif 
                         stopRender={
                           () => setRenderPopUp(false)
                         } 
                         displayPopUp={renderPopUp} 
-                        recPlanTitle={'UHC Gold Advantage'}
+                        rid={rid}
                         navigation={navigation}
-                        uid={userInfo && userInfo['uid']} />}
+                        uid={uid} />}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
