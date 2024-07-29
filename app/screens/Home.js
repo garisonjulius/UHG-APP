@@ -47,13 +47,16 @@ function Home({navigation}) {
           setRenderPopUp(true);
         }
         else {
+          console.log("User previously selected do not show again.")
           setRenderPopUp(false);
         }
 
-        // Check if user has been recommended a plan to avoid
-        // having the AI recommend a plan multiple
-        if (data['rid'] !== null) {
-          console.log("User", uid, " already has a recommended plan:", data['rid']);
+        // Verify user has a recommended plan (this code runs when user information is fetched)
+        if (data['rid'] == null) {
+          console.error("User does not have a recommended plan");
+        }
+        else {
+          console.log("User", uid, "'s recommended plan is:", data['rid']);
           setRid(data['rid']);
           setRidCalculated(true);
         }
