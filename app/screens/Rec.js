@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from "react"
 import { StyleSheet, Image, View, Text } from "react-native";
 import { Color, FontSize, FontFamily, Border } from "../assets/GlobalStyles";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ComparisonFrame1 = () => {
   
@@ -13,6 +14,10 @@ const ComparisonFrame1 = () => {
     // Fetch plan information
     fetchPlanInformation('1');
   }, []);
+
+  const handleAlert = () => {
+    console.log('Hello')
+  }
 
   const fetchUserInformation = async (uid) => {
     try {
@@ -115,13 +120,15 @@ HMO/PPO/POS/EPO
           source={require("../assets/phone-call.png")}
         />
       </View>
-      <View style={styles.alertCircleContainer}>
+      {/* <View>
+      <TouchableOpacity onPress={handleAlert}> */}
         <Image
           style={styles.alertCircleIcon}
           contentFit="cover"
           source={require("../assets/alert-circle.png")}
         />
-      </View>
+      {/* </TouchableOpacity>
+      </View> */}
       {/* <Image
         style={styles.xIcon}
         contentFit="cover"
