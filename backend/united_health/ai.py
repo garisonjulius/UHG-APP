@@ -63,8 +63,7 @@ def put_rid(uid):
     if curr_rid[0] is not None:
         return f'RID already set'
 
-
-     # SQL UPDATE statement to update plan_rec_desc only if it is currently None (NULL)
+    # SQL UPDATE statement to update plan_rec_desc only if it is currently None (NULL)
     update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND RID IS NULL"
 
     # Execute the update query
@@ -83,7 +82,7 @@ def put_rid(uid):
     cursor.close()
     conn.close()
 
-    # Return the rid and the recommended plan title
+    # Return the rid
     response = {
         'rid': rid
     }
