@@ -30,7 +30,7 @@ function Home({navigation}) {
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
 
-  uid = 2;
+  uid = 1;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
@@ -47,6 +47,7 @@ function Home({navigation}) {
           setRenderPopUp(true);
         }
         else {
+          console.log("User previously selected do not show again.")
           setRenderPopUp(false);
         }
 
@@ -63,7 +64,7 @@ function Home({navigation}) {
           return fetch(`http://10.0.2.2:5000/recommend/${uid}`)
               .then(response => response.json())
               .then(innerData => {
-                console.log("Successfully recommended plan");
+                console.log("Recommended plan", innerData['rid'], "for user.");
                 setRid(innerData['rid']);
                 setRidCalculated(true);
               })

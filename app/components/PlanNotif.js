@@ -14,7 +14,7 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
         fetch(plan_info_url)
           .then(response => response.json())
           .then(data => {
-            console.log("plan info: ", data)
+            console.log("Fetched recommended plan title:", data['plan_title']);
             setRecPlanTitle(data['plan_title']);
           })
           .catch(err => {
@@ -25,14 +25,12 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
     // Function to call when 'Do not show again' is pressed
     const postDisplayData = async () => {
         try {
-        // Perform the POST request
-        post_url = `http://10.0.2.2:5000/updateDisplay/${uid}`
-        const response = await axios.post(post_url, {
-            displayPopUp: false
-        });
-    
-        console.log(response.data);
-    
+            // Perform the POST request
+            post_url = `http://10.0.2.2:5000/updateDisplay/${uid}`
+            const response = await axios.post(post_url, {
+                displayPopUp: false
+            });
+            console.log("Sending post request after user clicked do not show again");
         } catch (error) {
             console.error('Error sending data to server:', error);
         }
