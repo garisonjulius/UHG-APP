@@ -76,7 +76,7 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
                                 stopRender();
                             }}
                             >
-                                <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Do not show again</Text>
+                                <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Test</Text>
                             </Pressable>
 
                             {/* Remind me later button */}
