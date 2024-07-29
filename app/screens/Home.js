@@ -22,11 +22,15 @@ function Home({navigation}) {
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
   const [renderPopUp, setRenderPopUp] = useState(false);
+  // Fetched user data
   const [userInfo, setUserInfo] = useState(null);
+  // Track whether or not algorithm setting rid from AI has been run
+  const [ridCalculated, setRidCalculated] = useState(false);
+  const [rid, setRid] = useState(null);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
 
-  uid = 1;
+  uid = 2;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
@@ -43,24 +47,35 @@ function Home({navigation}) {
           setRenderPopUp(true);
         }
         else {
+          console.log("User previously selected do not show again.")
           setRenderPopUp(false);
+        }
+
+        // Verify user has a recommended plan (this code runs when user information is fetched)
+        if (data['rid'] == null) {
+          console.error("User does not have a recommended plan");
+        }
+        else {
+          console.log("User", uid, "'s recommended plan is:", data['rid']);
+          setRid(data['rid']);
+          setRidCalculated(true);
         }
       })
       .catch(err => {
         alert(err)
       });
-    },[]);
+  },[]);
 
   return (
     <SafeAreaView style={styles.container}>
-      {renderPopUp && <PlanNotif 
+      {userInfo && ridCalculated && renderPopUp && <PlanNotif 
                         stopRender={
                           () => setRenderPopUp(false)
                         } 
                         displayPopUp={renderPopUp} 
-                        recPlanTitle={'UHC Gold Advantage'}
+                        rid={rid}
                         navigation={navigation}
-                        uid={userInfo && userInfo['uid']} />}
+                        uid={uid} />}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
@@ -76,7 +91,7 @@ function Home({navigation}) {
           style={styles.bell} />
       </View>
       <TouchableOpacity style={styles.dashboardContainer}>
-        <Text style={styles.recommendations}> User Health Recommendations </Text>
+        <Text style={styles.recommendations}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
         <TouchableOpacity style={styles.cardsContainer}> 
           <Text style={styles.cardText}> Member </Text>
           <Text style={styles.cardText}> Cards</Text>

@@ -159,11 +159,13 @@ HMO/PPO/POS/EPO
           source={require("../assets/phone-call.png")}
         />
       </View>
-      <Image
-        style={styles.alertCircleIcon}
-        contentFit="cover"
-        source={require("../assets/alert-circle.png")}
-      />
+      <View style={styles.alertCircleContainer}>
+        <Image
+          style={styles.alertCircleIcon}
+          contentFit="cover"
+          source={require("../assets/alert-circle.png")}
+        />
+      </View>
 
         <View > 
 
@@ -418,8 +420,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   alertCircleIcon: {
-    top: 88, 
-    left: 390,
+    //top: 88, 
+    //left: 390,
     width: 19, 
     height: 19,
     position: "absolute",
