@@ -13,16 +13,17 @@ import {
 const Spotlight = () => {
     return (
     <TouchableOpacity style={styles.spotlightContainer}>
-        <Text style={styles.spotlight}> Spotlight </Text>
+        <Text style={styles.spotlightText}> Spotlight </Text>
         <Image 
             source={require("../assets/forward-icon.png")}
             style={styles.spotlightForward}/>
-        <TouchableOpacity style={styles.cardsContainer}> 
-          <Image 
-          source={require("../assets/forward-icon.png")}
-          style={styles.memberForward}/>
+        <TouchableOpacity style={styles.spotlightNewsContainer}> 
+            <Text style={styles.spotlightNewsText}>Happy National Immunization Awareness Month!</Text>
           </TouchableOpacity>
-        <TouchableOpacity style={styles.claimsContainer}> 
+        <TouchableOpacity style={styles.spotlightMonthContainer}>
+        <Image 
+            source={require("../assets/calendar.png")}
+            style={styles.spotlightCalendar}/> 
         </TouchableOpacity>
       </TouchableOpacity>
 );

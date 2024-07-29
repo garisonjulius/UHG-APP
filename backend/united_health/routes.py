@@ -42,26 +42,14 @@ def update_display(uid):
         # Ensure the cursor and connection are closed
         cursor.close()
         conn.close()
-
-
-@app.route("/recommend/<uid>", methods=['GET'])
-def recommend_plan(uid):
-    """Prompt OpenAI API with user infomation to generate a plan recommendation for the user, and 
-    then store the recommended plan in the database."""
-    rid = (united_health.ai.put_rid(uid))['rid']
-    ai_reasoning = (united_health.ai.put_short_description(uid))['ai_reasoning']
-
-    response = {
-        'rid': rid,
-        'ai_reasoning': ai_reasoning
-    }
-
-    return response
     
 
 @app.route("/user/<uid>", methods=['GET'])
 def get_user_info(uid):
     """Return basic user information from the database given the user id."""
+    # Puts the RID in the database
+    united_health.ai.put_rid(uid)
+    
     # Connect to the database
     db = get_db()
     cur = db.cursor()
