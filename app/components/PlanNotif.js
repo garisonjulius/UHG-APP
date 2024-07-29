@@ -51,18 +51,22 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
                         <View style={popUpStyles.popUpText}>
                             <Text style={[popUpStyles.popUpText, popUpStyles.boldText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
                             <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan{'\n'}</Text>
-                            <Pressable onPress={() => {
+                            <Pressable 
+                            onPress={() => {
                                 // Call stopRender() here so that the popUp is not displayed
                                 // once the user comes back to the home page
                                 stopRender();
                                 navigation.navigate('Menu');
-                            }}>
-                                <Text style={popUpStyles.popUpText}>
-                                    More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
-                                    <View style={popUpStyles.arrowRight}>
-                                        <AntDesign name="arrowright" size={28} color="#02226d"/>
-                                    </View>
-                                </Text>
+                            }}
+                            >
+                                <View>
+                                    <Text style={popUpStyles.popUpText}>
+                                        More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
+                                        <View style={popUpStyles.arrowRight}>
+                                            <AntDesign name="arrowright" size={28} color="#02226d"/>
+                                        </View>
+                                    </Text>
+                                </View>
                             </Pressable>
                         </View>
 
@@ -78,7 +82,7 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
                                     stopRender();
                             }}
                             >
-                                <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Test</Text>
+                                <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Do not show again</Text>
                             </Pressable>
 
                             {/* Remind me later button */}
@@ -112,8 +116,12 @@ const popUpStyles = StyleSheet.create({
     allPopUpText: {
         color: '#02226d',
     },
+    moreInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     arrowRight: {
-        paddingLeft: 15,
+        paddingLeft: 5,
     },
     popUpView: {
         width: '100%',
