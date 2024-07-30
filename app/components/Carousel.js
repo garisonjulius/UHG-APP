@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { Text,TouchableOpacity,View, Dimensions, Image, Pressable } from "react-native";
+import { Text,TouchableOpacity,View, Dimensions, Image, Pressable, BackHandler } from "react-native";
 import styles from '../styles'
 import Rec from "../screens/Rec";
 
@@ -13,8 +13,6 @@ export const data = [
 
 
 export const CarouselItem = ({ item, index, navigation}) => {
-   const [isPressed, setIsPressed] = useState(false);
-
     let titleStyle = styles.overviewTitle;
     if (item.title === "Spending") {
       titleStyle = styles.spendingTitle;
