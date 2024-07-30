@@ -19,7 +19,7 @@ const NavBar = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeTabs} />
+        <Stack.Screen name="Home" component={HomeTabs} options={{headerShown: false}}/>
         <Stack.Screen name="Rec" component={Rec} />
       </Stack.Navigator>
     </NavigationContainer>

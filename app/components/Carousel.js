@@ -28,7 +28,7 @@ export const CarouselItem = ({ item, index, navigation}) => {
     }
 
   return (
-    <View style={[styles.carousel, {width}, {marginTop: -15}]}>
+    <View style={[styles.carousel, {width}, {marginTop: 0}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
