@@ -4,20 +4,35 @@ import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
-const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) => {
+const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
+    const [recPlanTitle, setRecPlanTitle] = useState(null);
+
+    // Fetch the recommended plan title
+    useEffect(() => {
+        plan_info_url = `http://10.0.2.2:5000/plan/${rid}`;
+        console.log(plan_info_url);
+        fetch(plan_info_url)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Fetched recommended plan title:", data['plan_title']);
+            setRecPlanTitle(data['plan_title']);
+          })
+          .catch(err => {
+            console.error('Request for recommended plan information failed', err);
+          });
+    }, []);
+
     // Function to call when 'Do not show again' is pressed
     const postDisplayData = async () => {
         try {
-        // Perform the POST request
-        post_url = `http://10.0.2.2:5000/updateDisplay/${uid}`
-        const response = await axios.post(post_url, {
-            displayPopUp: false
-        });
-    
-        console.log(response.data);
-    
+            // Perform the POST request
+            post_url = `http://10.0.2.2:5000/updateDisplay/${uid}`
+            const response = await axios.post(post_url, {
+                displayPopUp: false
+            });
+            console.log("Sending post request after user clicked do not show again");
         } catch (error) {
-        console.error('Error sending data to server:', error);
+            console.error('Error sending data to server:', error);
         }
     };
 
@@ -36,16 +51,22 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) 
                         <View style={popUpStyles.popUpText}>
                             <Text style={[popUpStyles.popUpText, popUpStyles.boldText]}>60 days until open enrollment begins (Nov. 15th){'\n'}</Text>
                             <Text style={popUpStyles.popUpText}>Based on your healthcare data from the past year, we recommend the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan{'\n'}</Text>
-                            <Pressable onPress={() => {
+                            <Pressable 
+                            onPress={() => {
                                 // Call stopRender() here so that the popUp is not displayed
                                 // once the user comes back to the home page
                                 stopRender();
                                 navigation.navigate('Menu');
-                            }}>
-                                <Text style={popUpStyles.popUpText}>
-                                    More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
-                                    <AntDesign name="arrowright" size={32} color="#02226d" style={popUpStyles.arrowRight}/>
-                                </Text>
+                            }}
+                            >
+                                <View>
+                                    <Text style={popUpStyles.popUpText}>
+                                        More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
+                                        <View style={popUpStyles.arrowRight}>
+                                            <AntDesign name="arrowright" size={28} color="#02226d"/>
+                                        </View>
+                                    </Text>
+                                </View>
                             </Pressable>
                         </View>
 
@@ -53,12 +74,12 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) 
                         <View style={popUpStyles.buttonsView}>
                             {/* Do not show again button */}
                             <Pressable
-                            style={popUpStyles.button}
-                            onPress={() => {
-                                // Make POST request
-                                postDisplayData();
-                                // Stop rendering the notification. This sets renderPopUp to false in Home.
-                                stopRender();
+                                style={popUpStyles.button}
+                                onPress={() => {
+                                    // Make POST request
+                                    postDisplayData();
+                                    // Stop rendering the notification. This sets renderPopUp to false in Home.
+                                    stopRender();
                             }}
                             >
                                 <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Do not show again</Text>
@@ -66,10 +87,10 @@ const PlanNotif = ({ stopRender, displayPopUp, recPlanTitle, navigation, uid }) 
 
                             {/* Remind me later button */}
                             <Pressable
-                            style={[popUpStyles.button, popUpStyles.buttonOpen]}
-                            onPress={() => {
-                                // Stop rendering the notification. This sets renderPopUp to false in Home.
-                                stopRender();
+                                style={popUpStyles.button}
+                                onPress={() => {
+                                    // Stop rendering the notification. This sets renderPopUp to false in Home.
+                                    stopRender();
                             }}
                             >
                                 <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Remind me later</Text>
@@ -95,8 +116,12 @@ const popUpStyles = StyleSheet.create({
     allPopUpText: {
         color: '#02226d',
     },
+    moreInfo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
     arrowRight: {
-        paddingLeft: 10,
+        paddingLeft: 5,
     },
     popUpView: {
         width: '100%',

@@ -38,14 +38,14 @@ def _get_rid(uid):
     # Find all matches in the text
     matches = re.findall(pattern, response)
 
-    return matches[0]
+    return matches[0], response
 
 def put_rid(uid):
     # Connect to SQLite database (change the database name and path as per your setup)
     conn = sqlite3.connect('UHCDatabase.db')
     cursor = conn.cursor()
 
-    rid = _get_rid(uid)
+    rid, desc = _get_rid(uid)
 
     # Look at current rid
     curr_rid = cursor.execute(
@@ -63,6 +63,12 @@ def put_rid(uid):
     if curr_rid[0] is not None:
         return f'RID already set'
 
+    # SQL UPDATE statement to update plan_rec_desc only if it is currently None (NULL)
+    update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND RID IS NULL"
+
+    # Execute the update query
+    cursor.execute(update_query, (index.query('Can you give a 30 word summary of just the reasoning:' + desc, llm_model), uid))
+
     # SQL UPDATE statement to update RID only if it is currently None (NULL)
     update_query = "UPDATE Users SET RID = ? WHERE UID = ? AND RID IS NULL"
 
@@ -76,42 +82,9 @@ def put_rid(uid):
     cursor.close()
     conn.close()
 
-    return 'Success'
+    # Return the rid
+    response = {
+        'rid': rid
+    }
 
-def put_short_description(uid):
-     # Connect to SQLite database (change the database name and path as per your setup)
-    conn = sqlite3.connect('UHCDatabase.db')
-    cursor = conn.cursor()
-
-    desc = get_recommended_description(uid)
-
-    # Look at current rid
-    plan_rec = cursor.execute(
-        "SELECT plan_rec_desc FROM Users "
-        "WHERE UID = ? ",
-        (uid, )
-    )
-    plan_rec = plan_rec.fetchall()[0]
-
-    # Verify user exists
-    if len(plan_rec) == 0:
-        return f'Invalid user id: {uid}. User does not exist', 400
-
-    # Check if user already has a recommended plan
-    if plan_rec[0] is not None:
-        return f'RID already set'
-
-    # SQL UPDATE statement to update plan_rec_desc only if it is currently None (NULL)
-    update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND plan_rec_desc IS NULL"
-
-    # Execute the update query
-    cursor.execute(update_query, (index.query('Can you give a 30 word summary of just the reasoning:' + desc, llm_model), uid))
-
-    # Commit the transaction
-    conn.commit()
-
-    # Close the cursor and connection
-    cursor.close()
-    conn.close()
-
-    return 'Success'
+    return response

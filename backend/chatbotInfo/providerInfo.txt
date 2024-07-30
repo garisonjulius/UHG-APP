@@ -1,0 +1,107 @@
+Dr. Sarah Johnson 
+
+Doctor_ID: 1 
+
+Gender: Female 
+
+Distance_from_Sarah: ~10 miles 
+
+Network: In-network 
+
+Years_in_practice: 10 years 
+
+Specialization: Internal Medicine 
+
+Office_name: Midtown Health Clinic 
+
+Phone_number: (301) 123-4567 
+
+Website_link: www.midtownhealthclinic.com 
+
+ 
+
+Dr. Michael Lee  
+
+Doctor_ID: 2 
+
+Gender: Male 
+
+Distance_from_Sarah: ~20 miles 
+
+Network: Out-of-network 
+
+Years_in_practice: 8 years 
+
+Specialization: Pediatrics 
+
+Office_name: Green Valley Pediatrics 
+
+Phone_number: (301) 234 5678 
+
+Website_link: www.greenvalleypediatrics.com 
+
+ 
+
+Dr. Emily Rodriguez  
+
+Doctor_ID: 3 
+
+Gender: Female 
+
+Distance_from_Sarah: ~5 miles 
+
+Network: In-network 
+
+Years_in_practice: 15 years 
+
+Specialization: Cardiology 
+
+Office_name: Heart Care Specialists 
+
+Phone_number: (240) 345 6789 
+
+Website_link: www.heartcarespecialists.com 
+
+ 
+
+Dr. David Patel  
+
+Doctor_ID: 4 
+
+Gender: Male 
+
+Distance_from_Sarah: ~40 miles 
+
+Network: Out-of-network 
+
+Years_in_practice: 12 years 
+
+Specialization: Orthopedics 
+
+Office_name: Orthopedic Excellence Center 
+
+Phone_number: (301) 456-7890 
+
+Website_link: www.orthopedicexcellence.com 
+
+ 
+
+Dr. Maria Garcia  
+
+Doctor ID: 5 
+
+Gender: Female 
+
+Distance_from_Sarah: ~3 miles 
+
+Network: In-network 
+
+Years_in_practice: 7 years 
+
+Specialization: Dermatology 
+
+Office_name: Clear Skin Dermatology  
+
+Phone_number: (240) 567-8901 
+
+Website_link: www.clearskindermatology.com 

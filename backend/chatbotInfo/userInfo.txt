@@ -1,0 +1,39 @@
+first_name: Sarah
+last_name: Hayes
+age: 29
+gender: Female
+num_children: 1
+has_spouse: 0
+zip_code: 28107
+pid: 3
+plan_title: UHC Bronze-X ($0 PCP, $5 Tier 2 Rx, No Referrals) - HMO
+plan_network_type: Health Maintenance Organization (HMO)
+monthly_premium: 379.54
+deductible_per_person: 8250
+out_of_pocket_max_per_person: 9450
+network_primary_bd: No Charge
+network_primary_ad: No Charge
+out_of_network_primary_bd: 100%
+network_preventive_bd: No Charge
+network_preventive_ad: No Charge
+network_specialist_bd: 140
+network_specialist_ad: 140
+network_xray_bd: Full Price
+network_xray_ad: 40%
+network_imaging_bd: Full Price
+network_imaging_ad: 40%
+network_blood_bd: Full Price
+network_blood_ad: 20
+network_generic_bd: 5
+network_generic_ad: 5
+network_brand_bd: Full Price
+network_brand_ad: Full Price
+network_npbrand_bd: Full Price
+network_npbrand_ad: 50%
+network_specialty_bd: Full Price
+network_specialty_ad: 50%
+network_hospital_bd: Full Price
+network_hospital_ad: 40%
+network_emergency_bd: Full Price
+network_emergency_ad: 50%
+annual_estimates: 5734
