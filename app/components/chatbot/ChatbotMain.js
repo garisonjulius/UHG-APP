@@ -1,19 +1,15 @@
-import React from "react"
-import {View,  StyleSheet, KeyboardAvoidingView} from "react-native"
+import React from "react";
+import {View,  StyleSheet, Text, KeyboardAvoidingView} from "react-native";
 import InputBar from "./InputBar";
 import ChatbotHeader from "./ChatbotHeader";
-
+import Prompts from "./Prompts"
 const ChatbotMain = () => {
 
     return(
 
         <View style = {styles.container} >
-             <ChatbotHeader/>
-
-             <KeyboardAvoidingView style = {styles.inputField} behavior = "height">
-                <InputBar/> 
-             </KeyboardAvoidingView>
-                                
+            <Prompts/>  
+            <InputBar/>                                 
         </View>
     );
 };
@@ -24,10 +20,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
+        alignItems: "center",
         backgroundColor: "#CDCDCD",
     },
-
-    inputField: {
-        flex: 1,
-    }
 });

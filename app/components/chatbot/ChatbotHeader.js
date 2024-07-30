@@ -17,7 +17,7 @@ export default ChatbotHeader;
 
 const styles = StyleSheet.create({
   headerContainer: {
-    flex: 1,
+    flex: .3,
   },
 
   header: {
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
   title: {
     color: "white",
     fontSize: 40, 
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginLeft: 10
   },
 
 });
