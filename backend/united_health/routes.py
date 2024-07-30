@@ -1,38 +1,67 @@
-from flask import jsonify
+from flask import jsonify, request
 from united_health import app
 import sqlite3
 import united_health.ai
+from .chatbot import write_user_info, llm_model, index
 
 DATABASE = 'UHCDatabase.db'
 
 def get_db():
     """Return connection to the UHCDatabase."""
-
     db = sqlite3.connect(DATABASE)
-
-    # db.row_factory = sqlite3.Row
     return db
 
-@app.route("/recommend/<uid>", methods=['GET'])
-def recommend_plan(uid):
-    """Prompt OpenAI API with user infomation to generate a plan recommendation for the user, and 
-    then store the recommended plan in the database."""
-    rid_res = united_health.ai.put_rid(uid)
-    desc_res = united_health.ai.put_short_description(uid)
+@app.route("/home", methods=['GET'])
+def home():
+    return "this is home"
 
-    return rid_res == desc_res
+@app.route('/updateDisplay/<uid>', methods=['POST'])
+def update_display(uid):
+    """Update the display_rec_pop_up database variable to be false for user uid."""
+    try:
+        # Get JSON data from the request
+        post_request_data = request.get_json()
+        display_val = post_request_data.get('displayPopUp')
+
+        # Validate data
+        if display_val is None:
+            return jsonify({'error': 'Invalid input for display value'}), 400
+
+        # Connect to SQLite database
+        conn = sqlite3.connect('UHCDatabase.db')
+        cursor = conn.cursor()
+
+        # SQL UPDATE statement to update display_rec_pop_up based on UID
+        update_query = "UPDATE Users SET display_rec_pop_up = ? WHERE UID = ?"
+
+        # Execute the update query
+        cursor.execute(update_query, (int(display_val), uid))
+
+        # Commit the transaction
+        conn.commit()
+
+        return jsonify({'message': f'Update successful for user with id {uid}'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        # Ensure the cursor and connection are closed
+        cursor.close()
+        conn.close()
     
 
 @app.route("/user/<uid>", methods=['GET'])
 def get_user_info(uid):
     """Return basic user information from the database given the user id."""
+    # Puts the RID in the database
+    united_health.ai.put_rid(uid)
+    
     # Connect to the database
     db = get_db()
     cur = db.cursor()
 
     # Fetch user's name, pid, and rid
     cur.execute(
-        "SELECT first_name, last_name, pid, rid, plan_rec_desc "
+        "SELECT first_name, last_name, pid, rid, plan_rec_desc, display_rec_pop_up "
         "FROM Users "
         "WHERE uid = ?",
         (uid, )
@@ -52,7 +81,8 @@ def get_user_info(uid):
         'last_name': user_info[1],
         'pid': user_info[2],
         'rid': user_info[3],
-        'reasoning' : user_info[4]
+        'ai_rec_reasoning': user_info[4],
+        'display_rec_pop_up': user_info[5]
     }
 
     return jsonify(response)

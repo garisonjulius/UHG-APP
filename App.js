@@ -2,6 +2,7 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import ChatBot from "./app/components/ChatBot";
 import {
   StyleSheet,
   Text,
@@ -24,3 +25,4 @@ export default function App() {
   //return <ChatbotHeader/>
   //return <InputBar/>
 }
+
