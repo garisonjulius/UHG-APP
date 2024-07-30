@@ -3,7 +3,7 @@ import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackgr
 
 const FloatingChatIcon = () => {
     return (
-        <Pressable style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
+        <Pressable onPress={() => alert("Hi")} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
             <Image style={floatingChatStyles.robot} source={require('../../assets/chat-logo.png')} />
         </Pressable>
     );
@@ -16,6 +16,9 @@ const floatingChatStyles = StyleSheet.create({
         width: 60, 
         height: 60,
         borderRadius: 45,
+        elevation: 5,
+        borderColor: 'white',
+        borderWidth: 3,
     },
     bottomRight: {
         position: 'absolute',
@@ -24,6 +27,7 @@ const floatingChatStyles = StyleSheet.create({
     },
     robot: {
         margin: 'auto',
+        paddingBottom: 5,
         width: 45,
         height: 45,
     },
