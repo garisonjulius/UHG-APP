@@ -90,7 +90,7 @@ function Home({navigation}) {
           source={require("../assets/bell.png")}
           style={styles.bell} />
       </View>
-      <TouchableOpacity style={styles.dashboardContainer}>
+      <TouchableOpacity style={[styles.dashboardContainer, {marginTop: 30}]}>
         <Text style={styles.recommendations}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
         <TouchableOpacity style={styles.cardsContainer}> 
           <Text style={styles.cardText}> Member </Text>
