@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef }from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { data, renderCarouselItem, handleScroll, PageIndicator, useCarouselEffect } from "../components/Carousel";
 import PlanNotif from '../components/PlanNotif';
-
+import FloatingChatIcon from '../components/chatbot/FloatingChatIcon';
 import styles from '../styles'
 import {
   Image,
@@ -125,6 +125,7 @@ function Home({navigation}) {
       onScroll={(event) => handleScroll(event, carouselPage, setCarouselPage)}/>
       <PageIndicator data={data} carouselPage={carouselPage}/>
       <Spotlight />
+      <FloatingChatIcon/>
     </SafeAreaView>
   );
 }

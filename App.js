@@ -20,8 +20,8 @@ import ChatbotHeader from "./app/components/chatbot/ChatbotHeader";
 import InputBar from "./app/components/chatbot/InputBar";
 
 export default function App() {
-  return <ChatbotMain />;
-  //return<NavBar/>
+  // return <ChatbotMain />;
+  return<NavBar/>
   //return <ChatbotHeader/>
   //return <InputBar/>
 }
