@@ -11,11 +11,8 @@ export const data = [
   { title: "Cost Estimates"}
 ];
 
-export const renderCarouselItem = ({item, index}) => {
-  return <CarouselItem item={item} index={index}/>;
-}
 
-export const CarouselItem = ({ item, index}) => {
+export const CarouselItem = ({ item, index, navigation}) => {
    const [isPressed, setIsPressed] = useState(false);
 
     let titleStyle = styles.overviewTitle;
@@ -37,14 +34,11 @@ export const CarouselItem = ({ item, index}) => {
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
-            onPress={() => setIsPressed(!isPressed)}
+            onPress={() => navigation.navigate('Rec')}
             style={styles.circle}
         >
           <Text style={styles.exclamMark}> ! </Text>
         </Pressable>
-        <View>
-          {isPressed && <Rec/>}
-        </View>
         <View style={styles.contentContainer}>
             {item.title === "My Plan Overview" && (
             <>

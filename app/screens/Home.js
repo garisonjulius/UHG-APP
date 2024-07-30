@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef }from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { data, renderCarouselItem, handleScroll, PageIndicator, useCarouselEffect } from "../components/Carousel";
+import { data, handleScroll, PageIndicator, useCarouselEffect, CarouselItem } from "../components/Carousel";
 import PlanNotif from '../components/PlanNotif';
 
 import styles from '../styles'
@@ -118,7 +118,9 @@ function Home({navigation}) {
       <FlatList
       ref={flatListRef}
       data={data}
-      renderItem={renderCarouselItem}
+      renderItem={({item, index}) => {
+        return <CarouselItem item={item} index={index} navigation={navigation}/>;
+      }}
       keyExtractor={(item, index) => index.toString()}
       horizontal={true}
       pagingEnabled={true}

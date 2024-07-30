@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 
-const ComparisonFrame1 = () => {
+const ComparisonFrame1 = ({navigation}) => {
   
   const [planData, setPlanData] = useState("");
   const [currPlan, setCurrPlan] = useState("");
@@ -58,8 +58,6 @@ const ComparisonFrame1 = () => {
         .then(response => response.json())
         .then(data => {
           console.log('Recommended Plan:', data);
-          console.log('LOL');
-          console.log('POP');
           setRecPlan(data);
         })
         .catch(err => {
@@ -160,8 +158,7 @@ HMO/PPO/POS/EPO
           source={require("../assets/phone-call.png")}
         />
       </View>
-      {/* <View>
-      <TouchableOpacity onPress={handleAlert}> */}
+      <View style={styles.alertCircleContainer}>
         <Image
           style={styles.alertCircleIcon}
           contentFit="cover"
