@@ -152,3 +152,28 @@ def get_plan_info(pid):
     
 
     return jsonify(response)
+
+@app.route("/getResponse/<uid>", methods=['GET','POST'])
+def getResponse(uid):
+    write_user_info(uid)
+    # user_input = request.json['user_input]
+    user_input = "What was my last question"
+    #user_inp = 
+    
+    chat_response = index.query(user_input, llm_model)
+    response = {
+        "user_input": user_input,
+        "chat_response": chat_response
+    }
+
+    return jsonify(response)
+
+
+# To-do
+ 
+# import chatbot
+# crete new flask route
+    # call the text loader function to get the txt file
+    # get the user input
+    # pass the input and txt file into the model
+    # get and return the response

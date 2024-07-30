@@ -13,6 +13,7 @@ const ComparisonFrame1 = () => {
   const [userData, setUserData] = useState("")
   const rid = 0;
 
+
   useEffect(() => {
     fetch('http://10.0.2.2:5000/user/1')
       .then(response => response.json())
@@ -57,8 +58,6 @@ const ComparisonFrame1 = () => {
         .then(response => response.json())
         .then(data => {
           console.log('Recommended Plan:', data);
-          console.log('LOL');
-          console.log('POP');
           setRecPlan(data);
         })
         .catch(err => {
