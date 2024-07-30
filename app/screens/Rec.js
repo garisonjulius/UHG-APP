@@ -13,6 +13,19 @@ const ComparisonFrame1 = ({navigation}) => {
   const [recPlan, setRecPlan] = useState("");
   const [userData, setUserData] = useState("")
   const rid = 0;
+  const inp = "";
+
+  // useEffect(() => {
+  //   fetch(`http://10.0.2.2:5000/getResponse/1/${inp}`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       //setUserData(data);
+  //     })
+  //     .catch(err => {
+  //       console.log("Invalid Test");
+  //     });
+  // }, []);
 
   useEffect(() => {
     fetch('http://10.0.2.2:5000/user/1')
