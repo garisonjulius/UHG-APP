@@ -26,7 +26,7 @@ export const renderCarouselItem = ({ item, index}) => {
     }
 
   return (
-    <View style={[styles.carousel, {width}]}>
+    <View style={[styles.carousel, {width}, {marginTop: -15}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <View style={styles.circle}>

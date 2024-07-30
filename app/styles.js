@@ -196,13 +196,13 @@ const styles = StyleSheet.create({
       borderWidth: 5,
       alignItems: "center",
       justifyContent: "center",
-      width: 45,
-      height: 45,
+      width: 35,
+      height: 35,
       borderRadius: 45 / 2,
     },
     exclamMark: {
       color: "#021842",
-      fontSize: 26,
+      fontSize: 20,
       fontWeight: "bold",
     },
     contentContainer: {
