@@ -92,7 +92,7 @@ function Home({navigation}) {
           style={styles.bell} />
       </View>
       <TouchableOpacity style={styles.dashboardContainer}>
-        <Text style={styles.recommendations}> User Health Recommendations </Text>
+        <Text style={styles.recommendations}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
         <TouchableOpacity style={styles.cardsContainer}> 
           <Text style={styles.cardText}> Member </Text>
           <Text style={styles.cardText}> Cards</Text>

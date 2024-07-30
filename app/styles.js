@@ -61,8 +61,12 @@ const styles = StyleSheet.create({
     },
     recommendations: {
       bottom: 80,
-      fontSize: 22,
-      fontWeight: "bold",
+      textAlign: 'center',
+      fontSize: 16,
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingRight: 5,
+      paddingLeft: 5,
     },
     cardsContainer: {
       position: "absolute",
@@ -381,7 +385,7 @@ const styles = StyleSheet.create({
       alignItems: "left",
       justifyContent: "left",
       bottom: 80,
-      fontSize: 22,
+      fontSize: 28,
       fontWeight: "bold",
       left: 5
     },

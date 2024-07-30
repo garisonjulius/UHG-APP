@@ -4,58 +4,83 @@ import { StyleSheet, Image, View, Text } from "react-native";
 import { Color, FontSize, FontFamily, Border } from "../assets/GlobalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+
+
 const ComparisonFrame1 = () => {
   
-  const [planData, setPlanData] = useState(null);
-  
+  const [planData, setPlanData] = useState("");
+  const [currPlan, setCurrPlan] = useState("");
+  const [recPlan, setRecPlan] = useState("");
+  const [userData, setUserData] = useState("")
+  const rid = 0;
+
   useEffect(() => {
-    // Fetch user information
-    fetchUserInformation('1'); 
-    // Fetch plan information
-    fetchPlanInformation('1');
+    fetch('http://10.0.2.2:5000/user/1')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setUserData(data);
+      })
+      .catch(err => {
+        console.log("Invalid Rec Plan Info");
+      });
   }, []);
 
-  const handleAlert = () => {
-    console.log('Hello')
-  }
+  useEffect(() => {
+    fetch('http://10.0.2.2:5000/plan/1')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setCurrPlan(data);
+      })
+      .catch(err => {
+        console.log("Invalid Plan Info");
+      });
+  }, []);
 
-  const fetchUserInformation = async (uid) => {
-    try {
-      const response = await fetch(`/user/${uid}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const userData = await response.json();
-      setUserData(userData); // Update state with fetched user data
-    } catch (error) {
-      console.error('Error fetching user information:', error);
+  //hard coding the recommended plan for now
+  useEffect(() => {
+    fetch('http://10.0.2.2:5000/plan/3')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setRecPlan(data);
+      })
+      .catch(err => {
+        console.log("Invalid Plan Info");
+      });
+  }, []);
+
+  useEffect(() => {
+    // Fetch recommended plan data when userData changes
+    if (userData && userData.rid) {
+      fetch(`http://10.0.2.2:5000/plan/${userData.rid}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Recommended Plan:', data);
+          console.log('LOL');
+          console.log('POP');
+          setRecPlan(data);
+        })
+        .catch(err => {
+          console.log("Error fetching recommended plan:", err);
+        });
     }
-  };
+  }, [userData]);
 
-  const fetchPlanInformation = async (pid) => {
-    try {
-      const response = await fetch(`/plan/${pid}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const planData = await response.json();
-      setPlanData(planData); // Update state with fetched plan data
-    } catch (error) {
-      console.error('Error fetching plan information:', error);
-    }
-  };
-
-  
   return (
     <View style={[styles.comparisonFrame, styles.comparisonFrameLayout]}>
       <View
         style={[styles.comparisonFrameChild, styles.comparisonFrameLayout]}
       />
-      <Text style={styles.monthlyPremiumAnnual}>{`Monthly Premium
+      <Text style={styles.monthlyPremiumAnnual}>{
+`Monthly 
+Premium
 
 Annual Deductible/person (U.S $)
 
-Annual Maximum 
+Annual 
+Maximum 
 OP (U.S $)
 
 IN Prim Care 
@@ -63,7 +88,8 @@ Visit before deductible
 
 ON Prim 
 Care Visit 
-before Deductible
+before
+Deductible
 
 IN Spec. Care Visit before deductible
 
@@ -72,6 +98,7 @@ HMO/PPO/POS/EPO
 
 `}</Text>
       <View style={styles.comparisonFrameItem} />
+      
       <View style={styles.comparisonFrameInner} />
       <View style={[styles.lineView, styles.lineLayout]} />
       <Image
@@ -87,9 +114,22 @@ HMO/PPO/POS/EPO
       <View style={[styles.rectangleView, styles.rectangleViewPosition]} />
       <Text style={[styles.features, styles.featuresTypo]}>Features</Text>
       <Text style={[styles.titleRecommended, styles.titleTypo]}>
-        <Text style={styles.title}>{`Reccomended
-`}</Text>
-        
+        <Text style={[styles.title, {lineHeight: 25}]}>{`Reccomended`}</Text>
+          <Text> {'\n'}{'\n'}{'\n'}{'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 19}]}> {recPlan["monthly_premium"]} </Text> 
+          <Text> {'\n'}{'\n'}{'\n'}{'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 7}]}> {recPlan["deductible_per_person"]} </Text>{'\n'}
+          <Text> {'\n'}{'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 22}]}> {recPlan["out_of_pocket_max_per_person"]} </Text>{'\n'}
+          <Text> {'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 53}]}> {recPlan["network_primary_bd"]} </Text>{'\n'}
+          <Text> {'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 54}]}> {recPlan["out_of_network_primary_bd"]} </Text>{'\n'}
+          <Text> {'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 53}]}> {recPlan["network_specialty_bd"]} </Text>{'\n'}
+          <Text> {'\n'}{'\n'} </Text>
+          <Text style={[styles.test, {lineHeight: 18}]}> {recPlan["plan_network_type"]} </Text>{'\n'}
+          
       </Text>
       <Text style={[styles.titleCurrent, styles.titleTypo]}>
         <Text style={styles.title}>{`Current
@@ -127,117 +167,47 @@ HMO/PPO/POS/EPO
           contentFit="cover"
           source={require("../assets/alert-circle.png")}
         />
-      {/* </TouchableOpacity>
-      </View> */}
-      {/* <Image
-        style={styles.xIcon}
-        contentFit="cover"
-        source={require("../assets/x.png")}
-      /> */}
-      <Text style={[styles.titlerectext, styles.titlerectextTypo]}>{
-`Lorum
+      </View>
 
+        <View > 
 
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: -23}]}> {currPlan["monthly_premium"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo]}> {currPlan["deductible_per_person"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo]}> {currPlan["out_of_pocket_max_per_person"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginLeft: -30}]}> {currPlan["network_primary_bd"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: 0}]}> {currPlan["out_of_network_primary_bd"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: 0, marginLeft: -50 }]}> {currPlan["network_specialty_bd"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: -20, marginLeft: -90}]}> {currPlan["plan_network_type"]} </Text> 
 
-Lorum
+        </View>
 
-
-
-Lorum
-
-
-
-Lorum
-
-
-
-
-Lorum
-
-
-
-
-Lorum
-
-
-
-Lorum`}</Text>
-      <Text style={[styles.titlecurrenttext, styles.titlerectextTypo]}>{`Lorum
-
-
-
-Lorum
-
-
-
-Lorum
-
-
-
-Lorum
-
-
-
-
-Lorum
-
-
-
-
-Lorum
-
-
-
-Lorum`}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  comparisonFrameLayout: {
-    position: "absolute",
-    height: 998,
-    backgroundColor: Color.colorWhite,
+  test: {
+    fontSize: FontSize.size_lgi,
+    color: Color.colorBlack,
+    marginTop: 20,
+    paddingTop: -40,
+    lineHeight: 10,
   },
-  inInFlexBox: { //
-    textAlign: "left",
-    left: 3,
-    position: "absolute",
+  transform: {
+    transform: [{translateY: 400}],
   },
-  rectangleIconLayout: { //
-    width: 449,
+  titlerectext: {
     position: "absolute",
+    marginLeft: 0,
+    textAlign: 'left',
+    //fontSize: 10,
   },
-  lineLayout: {
-    height: 631,
-    position: "absolute",
-  },
-  rectangleViewPosition: {
-    width: 448,
-    left: 0,
-    position: "absolute",
-  },
-  featuresTypo: {
-    lineHeight: 22,
-    textAlign: "center",
-    fontSize: FontSize.size_3xl,
-    position: "absolute",
-  },
-  titleTypo: { ////
-    color: Color.colorWhite,
-    fontFamily: FontFamily.inriaSerifBold,
-    fontWeight: "700",
-    position: "absolute",
-  },
-  groupChildLayout: { ////
-    height: 251,
-    width: 449,
-    position: "absolute",
-    //zIndex: 10,
+  spacing: {
+    marginBottom: 20,
   },
   titlerectextTypo: { ////
     height: 556,
-    width: 120,
+    width: 140,
     left: "55%",
     top: 153,
     textAlign: "left",
@@ -246,7 +216,55 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     lineHeight: 19,
     fontSize: FontSize.size_lgi,
-    position: "absolute",
+    //position: "absolute",
+  },
+  titlecurrenttext: { ////
+    marginLeft: -40,
+    marginBottom: -470,
+    marginTop: -15,
+    textAlign: 'center',
+    //position: "absolute",
+  },
+  comparisonFrameLayout: {
+    //position: "absolute",
+    height: 998,
+    backgroundColor: Color.colorWhite,
+  },
+  inInFlexBox: { //
+    textAlign: "left",
+    left: 3,
+    //position: "absolute",
+  },
+  rectangleIconLayout: { //
+    width: 449,
+    //position: "absolute",
+  },
+  lineLayout: {
+    height: 631,
+    //position: "absolute",
+  },
+  rectangleViewPosition: {
+    width: 448,
+    left: 0,
+    //position: "absolute",
+  },
+  featuresTypo: {
+    lineHeight: 22,
+    textAlign: "center",
+    fontSize: FontSize.size_3xl,
+    //position: "absolute",
+  },
+  titleTypo: { ////
+    color: Color.colorWhite,
+    fontFamily: FontFamily.inriaSerifBold,
+    fontWeight: "700",
+    //position: "absolute",
+  },
+  groupChildLayout: { ////
+    height: 251,
+    width: 449,
+    //position: "absolute",
+    //zIndex: 10,
   },
   comparisonFrameChild: {
     top: -15,
@@ -259,7 +277,7 @@ const styles = StyleSheet.create({
     fontSize: 16.5,
     lineHeight: 19,
     color: Color.colorBlack,
-    width: 131,
+    width: 138,
     height: 711,
     //textAlign: "left",
     //fontSize: FontSize.size_lgi,
@@ -272,7 +290,7 @@ const styles = StyleSheet.create({
     width: 153,
     left: 130,
     top: 0,
-    position: "absolute",
+    //position: "absolute",
     //height: 998,
     //backgroundColor: Color.colorWhite,
   },
@@ -284,7 +302,7 @@ const styles = StyleSheet.create({
     top: 115,
     left: 3,
     width: 449,
-    position: "absolute",
+    //position: "absolute",
   },
   lineView: {
     top: 116,
@@ -297,7 +315,7 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   lineIcon: {
-    left: 279,
+    left: 273,
     width: 7,
     //height: 631,
     top: 115,
@@ -306,7 +324,7 @@ const styles = StyleSheet.create({
   comparisonFrameChild1: {
     height: 2,
     top: 746,
-    position: "absolute",
+    //position: "absolute",
   },
   rectangleView: {
     borderTopLeftRadius: Border.br_3xs,
@@ -329,11 +347,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: FontSize.size_lg,
-    position: "absolute",
+    //position: "absolute",
   },
   recommended: {
     fontSize: FontSize.size_md,
-    position: "absolute",
+    //position: "absolute",
   },
   titleRecommended: {
     width: 150,
@@ -354,13 +372,13 @@ const styles = StyleSheet.create({
     left: 0,
     height: 251,
     top: -105,
-    position: "absolute",
+    //position: "absolute",
   },
   rectangleIcon: {
     left: -1,
     height: 251,
     top: 746,
-    position: "absolute",
+    //position: "absolute",
   },
   basedOnHealthcare: {
     top: -70, //793
@@ -419,14 +437,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     overflow: "hidden",
   },
-  titlerectext: {
-    marginLeft: 104, ////
-    position: "absolute",
-  },
-  titlecurrenttext: { ////
-    marginLeft: -49,
-    position: "absolute",
-  },
   comparisonFrame: {
     //borderRadius: Border.br_mid,
     flex: 1,
@@ -434,7 +444,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     height: 998,
     backgroundColor: Color.colorWhite,
-    position: "absolute",
+    //position: "absolute",
   },
 });
 

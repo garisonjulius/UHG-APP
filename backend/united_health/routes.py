@@ -2,6 +2,7 @@ from flask import jsonify, request
 from united_health import app
 import sqlite3
 import united_health.ai
+from .chatbot import write_user_info, llm_model, index
 
 DATABASE = 'UHCDatabase.db'
 
@@ -9,6 +10,10 @@ def get_db():
     """Return connection to the UHCDatabase."""
     db = sqlite3.connect(DATABASE)
     return db
+
+@app.route("/home", methods=['GET'])
+def home():
+    return "this is home"
 
 @app.route('/updateDisplay/<uid>', methods=['POST'])
 def update_display(uid):
