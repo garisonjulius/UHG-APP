@@ -1,38 +1,15 @@
 import React from "react"
 import {useState} from "react"
-//import {ArrowRightCircle} from "react-native-feather";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, KeyboardAvoidingView, Touchable} from "react-native"
 
 const InputBar = () => {
-
-    const [inputMessage, setInputMessage] = useState("")
-    const [outputMessage, setOutputMessage] = useState(null)
-
-    // const handleButtonClick = () => {
-    //     console.log(inputMessage)
-    //     fetch("url/inputMessage")
-    //     .then((response) => {
-    //         console.log(response)
-    //     })
-        
-    // }
-    // const handleTextInput = (text) => {
-    //     setInputMessage(text)
-    //     console.log(text)
-    // }
-
-    //onChangeText = {handleTextInput}
-    //onPress = {handleButtonClick}
-
-    //<KeyboardAvoidingView behavior = "height" keyboardVerticalOffset={210}>
-
 
     return(
 
         <View style = {styles.container}>
                 <View style = {styles.inputBar}> 
                     <View>
-                        <TextInput placeholder= "Ask Me Anything..." placeholderTextColor={"black"} style={styles.placeholderText} ></TextInput>   
+                        <TextInput placeholder= "Ask Me Anything..." placeholderTextColor={"black"} style={styles.placeholderText}></TextInput>   
                     </View>
                     <TouchableOpacity >
                         <View style = {styles.sendButton}>

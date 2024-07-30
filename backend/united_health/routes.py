@@ -156,8 +156,8 @@ def get_plan_info(pid):
 @app.route("/getResponse/<uid>", methods=['GET','POST'])
 def getResponse(uid):
     write_user_info(uid)
-    # user_input = request.json['user_input]
-    user_input = "What was my last question"
+    user_input = request.json['user_input']
+    #user_input = "What was my last question"
     #user_inp = 
     
     chat_response = index.query(user_input, llm_model)
