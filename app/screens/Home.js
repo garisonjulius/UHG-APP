@@ -128,7 +128,7 @@ function Home({navigation}) {
       onScroll={(event) => handleScroll(event, carouselPage, setCarouselPage)}/>
       <PageIndicator data={data} carouselPage={carouselPage}/>
       <Spotlight />
-      <FloatingChatIcon/>
+      <FloatingChatIcon navigation={navigation}/>
     </SafeAreaView>
   );
 }

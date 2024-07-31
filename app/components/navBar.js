@@ -23,7 +23,7 @@ const NavBar = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeTabs} options={{headerShown: false}}/>
         <Stack.Screen name="Rec" component={Rec} />
-        <Stack.Screen name="ChatbotMain" component={ChatbotMain} options={{headerShown: false}} />
+        <Stack.Screen name="ChatbotMain" component={ChatbotMain} options={{headerShown: true}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
