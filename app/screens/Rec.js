@@ -13,20 +13,20 @@ const ComparisonFrame1 = ({navigation}) => {
   const [recPlan, setRecPlan] = useState("");
   const [userData, setUserData] = useState("");
   const [isTextVisible, setTextVisible] = useState(false);
-  const rid = 0;
-  const inp = "What are all the benefits of my plan";
+  //const rid = 0;
+  // const inp = "Find me a provider";
 
-  useEffect(() => {
-    fetch(`http://10.0.2.2:5000/getResponse/1/${inp}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        //setUserData(data);
-      })
-      .catch(err => {
-        console.log("Invalid Test");
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(`http://10.0.2.2:5000/getResponse/1/${inp}`)
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data);
+  //       //setUserData(data);
+  //     })
+  //     .catch(err => {
+  //       console.log("Invalid Test");
+  //     });
+  // }, []);
 
   useEffect(() => {
     fetch('http://10.0.2.2:5000/user/1')
@@ -123,7 +123,7 @@ HMO/PPO/POS/EPO
       <View style={[styles.rectangleView, styles.rectangleViewPosition]} />
       <Text style={[styles.features, styles.featuresTypo]}>Features</Text>
       <Text style={[styles.titleRecommended, styles.titleTypo]}>
-        <Text style={[styles.title, {lineHeight: 25}]}>{`Reccomended`}</Text>
+        <Text style={[styles.title, {lineHeight: 25}]}>{`Recommended`}</Text>
           <Text> {'\n'}{'\n'}{'\n'}{'\n'}{'\n'} </Text>
           <Text style={[styles.test, {lineHeight: 19}]}> {recPlan["monthly_premium"]} </Text> 
           <Text> {'\n'}{'\n'}{'\n'}{'\n'}{'\n'} </Text>
@@ -268,7 +268,8 @@ const styles = StyleSheet.create({
   featuresTypo: {
     lineHeight: 22,
     textAlign: "center",
-    fontSize: FontSize.size_3xl,
+    fontSize: FontSize.size_lg,
+    Color: Color.colorWhite,
     //position: "absolute",
   },
   titleTypo: { ////

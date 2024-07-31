@@ -33,7 +33,7 @@ export const CarouselItem = ({ item, index, navigation}) => {
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
-            onPress={() => <PlanNotif />}
+            onPress={() => navigation.navigate('Rec')}
             style={styles.circle}
         >
           <Text style={styles.exclamMark}> ! </Text>
