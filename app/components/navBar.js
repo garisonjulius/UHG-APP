@@ -8,10 +8,12 @@ import FindCare from "../screens/FindCare";
 import Rx from "../screens/Rx";
 import Menu from "../screens/Menu";
 import Rec from "../screens/Rec";
+import ChatbotMain from "../screens/ChatbotMain";
 
 import { View } from "react-native";
 import HomeTabs from "../screens/HomeTabs";
 import { createStackNavigator } from "@react-navigation/stack";
+import PlanNotif from "./PlanNotif";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +23,7 @@ const NavBar = () => {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeTabs} options={{headerShown: false}}/>
         <Stack.Screen name="Rec" component={Rec} />
+        <Stack.Screen name="ChatbotMain" component={ChatbotMain} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

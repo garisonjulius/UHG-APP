@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import { Text,TouchableOpacity,View, Dimensions, Image, Pressable, BackHandler } from "react-native";
 import styles from '../styles'
 import Rec from "../screens/Rec";
+import PlanNotif from "./PlanNotif";
 
 const {width} = Dimensions.get('window');
 
@@ -32,7 +33,7 @@ export const CarouselItem = ({ item, index, navigation}) => {
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
-            onPress={() => navigation.navigate('Rec')}
+            onPress={() => <PlanNotif />}
             style={styles.circle}
         >
           <Text style={styles.exclamMark}> ! </Text>

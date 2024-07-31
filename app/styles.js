@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
       height: 60,
     },
     dashboardContainer: {
-      top: "18%",
+      top: "17%",
       position: "absolute",
       alignItems: "center",
       justifyContent: "center",
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       marginTop: 5,
-      bottom: "45%"
+      bottom: "47%"
     },
     pageIndicatorBead: {
       width: 10,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#021842"
     },
     dashboardContainer2: {
-      marginTop: "55%",
+      marginTop: "53%",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",
@@ -373,7 +373,7 @@ const styles = StyleSheet.create({
       alignItems: "left",
       justifyContent: "center",
       flexDirection: "column",
-      bottom: 30,
+      bottom: 33,
       height: "13%",
       width: "90%",
       aspectRatio: 1,
@@ -438,7 +438,9 @@ const styles = StyleSheet.create({
       left: 335,
       bottom: 115,
       tintColor: "#021842"
-    }
+    },
+    
+    
   });
   
   export default styles;
