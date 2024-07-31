@@ -12,25 +12,24 @@ const ComparisonFrame1 = () => {
   const [recPlan, setRecPlan] = useState("");
   const [userData, setUserData] = useState("")
   const rid = 0;
-  const inp = "";
+  const inp = "What are all the benefits of my plan";
 
-  // useEffect(() => {
-  //   fetch(`http://10.0.2.2:5000/getResponse/1/${inp}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       //setUserData(data);
-  //     })
-  //     .catch(err => {
-  //       console.log("Invalid Test");
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(`http://10.0.2.2:5000/getResponse/1/${inp}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        //setUserData(data);
+      })
+      .catch(err => {
+        console.log("Invalid Test");
+      });
+  }, []);
 
   useEffect(() => {
     fetch('http://10.0.2.2:5000/user/1')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setUserData(data);
       })
       .catch(err => {
@@ -42,7 +41,6 @@ const ComparisonFrame1 = () => {
     fetch('http://10.0.2.2:5000/plan/1')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setCurrPlan(data);
       })
       .catch(err => {
@@ -55,7 +53,6 @@ const ComparisonFrame1 = () => {
     fetch('http://10.0.2.2:5000/plan/3')
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setRecPlan(data);
       })
       .catch(err => {
