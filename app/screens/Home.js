@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef }from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { data, renderCarouselItem, handleScroll, PageIndicator, useCarouselEffect } from "../components/Carousel";
+import { data, handleScroll, PageIndicator, useCarouselEffect, CarouselItem } from "../components/Carousel";
 import PlanNotif from '../components/PlanNotif';
-
+import FloatingChatIcon from '../components/chatbot/FloatingChatIcon';
 import styles from '../styles'
 import {
   Image,
@@ -18,6 +18,7 @@ import Spotlight from "../components/Spotlight";
 
 function Home({navigation}) {
   const [carouselPage, setCarouselPage] = useState(0);
+  const [alertIsPressed, setalertIsPressed] = useState(false);
   // Initially set renderPopUp to false. Once user data is fetched,
   // it will be updated to true and trigger the popup to display
   // if the user has not clicked 'Do not show again'
@@ -90,7 +91,7 @@ function Home({navigation}) {
           source={require("../assets/bell.png")}
           style={styles.bell} />
       </View>
-      <TouchableOpacity style={[styles.dashboardContainer, {marginTop: 30}]}>
+      <TouchableOpacity style={[styles.dashboardContainer, {marginTop: 10}]}>
         <Text style={styles.recommendations}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
         <TouchableOpacity style={styles.cardsContainer}> 
           <Text style={styles.cardText}> Member </Text>
@@ -117,7 +118,9 @@ function Home({navigation}) {
       <FlatList
       ref={flatListRef}
       data={data}
-      renderItem={renderCarouselItem}
+      renderItem={({item, index}) => {
+        return <CarouselItem item={item} index={index} navigation={navigation}/>;
+      }}
       keyExtractor={(item, index) => index.toString()}
       horizontal={true}
       pagingEnabled={true}
@@ -125,6 +128,7 @@ function Home({navigation}) {
       onScroll={(event) => handleScroll(event, carouselPage, setCarouselPage)}/>
       <PageIndicator data={data} carouselPage={carouselPage}/>
       <Spotlight />
+      <FloatingChatIcon navigation={navigation}/>
     </SafeAreaView>
   );
 }

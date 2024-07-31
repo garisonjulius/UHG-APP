@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from "react";
-import { Text,TouchableOpacity,View, Dimensions, Image } from "react-native";
+import { Text,TouchableOpacity,View, Dimensions, Image, Pressable, BackHandler } from "react-native";
 import styles from '../styles'
+import Rec from "../screens/Rec";
+import PlanNotif from "./PlanNotif";
 
 const {width} = Dimensions.get('window');
 
@@ -10,7 +12,8 @@ export const data = [
   { title: "Cost Estimates"}
 ];
 
-export const renderCarouselItem = ({ item, index}) => {
+
+export const CarouselItem = ({ item, index, navigation}) => {
     let titleStyle = styles.overviewTitle;
     if (item.title === "Spending") {
       titleStyle = styles.spendingTitle;
@@ -26,12 +29,15 @@ export const renderCarouselItem = ({ item, index}) => {
     }
 
   return (
-    <View style={[styles.carousel, {width}, {marginTop: -15}]}>
+    <View style={[styles.carousel, {width}, {marginTop: 0}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
-        <View style={styles.circle}>
-            <Text style={styles.exclamMark}> ! </Text>
-        </View>
+        <Pressable
+            onPress={() => <PlanNotif />}
+            style={styles.circle}
+        >
+          <Text style={styles.exclamMark}> ! </Text>
+        </Pressable>
         <View style={styles.contentContainer}>
             {item.title === "My Plan Overview" && (
             <>
