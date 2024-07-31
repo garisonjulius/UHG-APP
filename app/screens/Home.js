@@ -30,6 +30,7 @@ function Home({navigation}) {
   const [rid, setRid] = useState(null);
   const flatListRef = useRef(null);
   const intervalRef = useRef(null);
+  const [fromCarousel, setFromCarousel] = useState(false);
 
   uid = 2;
   
@@ -76,7 +77,9 @@ function Home({navigation}) {
                         displayPopUp={renderPopUp} 
                         rid={rid}
                         navigation={navigation}
-                        uid={uid} />}
+                        uid={uid} 
+                        fromCarousel={fromCarousel}
+                        />}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
@@ -119,7 +122,7 @@ function Home({navigation}) {
       ref={flatListRef}
       data={data}
       renderItem={({item, index}) => {
-        return <CarouselItem item={item} index={index} navigation={navigation}/>;
+        return <CarouselItem item={item} index={index} navigation={navigation} setRenderPopUp={setRenderPopUp} setFromCarousel={setFromCarousel}/>;
       }}
       keyExtractor={(item, index) => index.toString()}
       horizontal={true}
