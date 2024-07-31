@@ -8,7 +8,7 @@ const ChatbotMain = () => {
     return(
 
         <View style = {styles.container} >
-            <Text style = {{fontWeight: "bold"}}>Chatbot</Text>                                 
+            <InputBar/>                                 
         </View>
     );
 };
