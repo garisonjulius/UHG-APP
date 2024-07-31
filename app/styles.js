@@ -440,8 +440,12 @@ const styles = StyleSheet.create({
       bottom: 115,
       tintColor: "#021842"
     },
-    month: {
-      
+    monthTextContainer: {
+      color: "#02226d",
+      fontSize: 18,
+      fontWeight: "bold",
+      left: 30,
+      top: 39,
     },
     
     
