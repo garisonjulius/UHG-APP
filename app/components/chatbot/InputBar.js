@@ -10,10 +10,10 @@ const InputBar = () => {
 
         <View style = {styles.container}>
                 <View style = {styles.inputBar}> 
-                    <View styles={styles.fixWidth}>
+                    <View style = {styles.fixWidth}>
                         <TextInput multiline={true} placeholder= "Ask me anything..." placeholderTextColor={"black"} style={styles.placeholderText}></TextInput>   
                     </View>
-                    <TouchableOpacity >
+                    <TouchableOpacity>
                         <View style = {styles.sendButton}>
                             <Image
                             source={require("../../assets/arrow-right-circle.png")}
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 
     container:{
         flex: 1,
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
     },
 
     inputBar: {
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     },
 
     fixWidth: {
-        maxWidth: '100%',
-    }
+        maxWidth: '50%',
+    },
 });
