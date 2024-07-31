@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
     },
 
     fixWidth: {
-        width: '100%',
+        maxWidth: '100%',
     }
 });
