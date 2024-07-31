@@ -159,15 +159,20 @@ def getResponse(uid, input):
     global history
 
     write_user_info(uid)
-    
+
+    original_input = input
+
+    if input == "Find a provider" or "Find me a provider" or "Find a doctor" or "Find me a doctor":
+        input = "Respond to user input by asking for more details 'user_input': " + input
 
     history += f"User: {input}\n"
     #fullPrompt = history + "Assistant: "
     
-
     chatResponse = index.query(history, llm_model)
+
+    
     response = {
-        "user_input": input,
+        "user_input": original_input,
         "chat_response": chatResponse
     }
     
