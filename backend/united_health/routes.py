@@ -160,20 +160,17 @@ def getResponse(uid, input):
 
     write_user_info(uid)
     
-    #Append the user's message to the history
+
     history += f"User: {input}\n"
-    
-    # Construct the full prompt with history
     fullPrompt = history + "Assistant: "
     
-    #Get the chatbot response
+
     chatResponse = index.query(history, llm_model)
     response = {
         "user_input": input,
         "chat_response": chatResponse
     }
     
-    # Append the bot's response to the history
     history += f"Assistant: {chatResponse}\n"
 
     
