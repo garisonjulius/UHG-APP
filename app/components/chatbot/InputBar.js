@@ -1,6 +1,8 @@
 import React from "react"
 import {useState} from "react"
-import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, KeyboardAvoidingView, Touchable} from "react-native"
+import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, KeyboardAvoidingView, Touchable} from "react-native"
+
+var windowWidth = Dimensions.get('window').width;
 
 const InputBar = () => {
 
@@ -8,10 +10,10 @@ const InputBar = () => {
 
         <View style = {styles.container}>
                 <View style = {styles.inputBar}> 
-                    <View>
-                        <TextInput placeholder= "Ask Me Anything..." placeholderTextColor={"black"} style={styles.placeholderText}></TextInput>   
+                    <View style = {styles.fixWidth}>
+                        <TextInput multiline={true} placeholder= "Ask me anything..." placeholderTextColor={"black"} style={styles.placeholderText}></TextInput>   
                     </View>
-                    <TouchableOpacity >
+                    <TouchableOpacity>
                         <View style = {styles.sendButton}>
                             <Image
                             source={require("../../assets/arrow-right-circle.png")}
@@ -31,12 +33,13 @@ const styles = StyleSheet.create({
 
     container:{
         flex: 1,
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
     },
 
     inputBar: {
         flexDirection: "row",
         marginBottom: 15,
+        maxWidth: '100%',
         height: 50,
         borderRadius: 25,
         backgroundColor: "#FFFFFF",
@@ -58,5 +61,9 @@ const styles = StyleSheet.create({
     arrowImage: {
         width: 30,
         height: 30,
-    }
+    },
+
+    fixWidth: {
+        maxWidth: '50%',
+    },
 });

@@ -7,7 +7,11 @@ import Prompts from "../components/chatbot/Prompts"
 const ChatbotMain = () => {
     return(
         <View style = {styles.container} >
-            <Text style = {{fontWeight: "bold"}}>Hi</Text>                                 
+            {/* <Text style = {{fontWeight: "bold"}}>Chatbot</Text>     
+                                         */}
+            <Prompts>
+            </Prompts>
+            <InputBar></InputBar>
         </View>
     );
 };
