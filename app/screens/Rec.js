@@ -12,10 +12,8 @@ const ComparisonFrame1 = ({navigation}) => {
   const [recPlan, setRecPlan] = useState("");
   const [userData, setUserData] = useState("");
   const [isTextVisible, setTextVisible] = useState(false);
-
-
   useEffect(() => {
-    fetch("http://10.0.2.2:5000/user/1")
+    fetch('http://10.0.2.2:5000/user/1')
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -247,7 +245,8 @@ const styles = StyleSheet.create({
   featuresTypo: {
     lineHeight: 22,
     textAlign: "center",
-    fontSize: FontSize.size_3xl,
+    fontSize: FontSize.size_lg,
+    Color: Color.colorWhite,
     //position: "absolute",
   },
   titleTypo: { ////
