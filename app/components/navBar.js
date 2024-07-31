@@ -22,8 +22,8 @@ const NavBar = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeTabs} options={{headerShown: false}}/>
-        <Stack.Screen name="Rec" component={Rec} />
-        <Stack.Screen name="ChatbotMain" component={ChatbotMain} options={{headerShown: true}} />
+        <Stack.Screen name="Rec" component={Rec} options={{title: 'Recommendations'}}/>
+        <Stack.Screen name="ChatbotMain" component={ChatbotMain} options={{headerShown: true, title: 'Elena.AI'}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

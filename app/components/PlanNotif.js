@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 
 // Basic code structure from: https://reactnative.dev/docs/modal
-const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
+const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid, fromCarousel }) => {
     const [recPlanTitle, setRecPlanTitle] = useState(null);
     const [isTextVisible, setTextVisible] = useState(false);
 
@@ -72,7 +72,7 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
                                 // Call stopRender() here so that the popUp is not displayed
                                 // once the user comes back to the home page
                                 stopRender();
-                                navigation.navigate('Menu');
+                                navigation.navigate('Rec');
                             }}
                             >
                                 <View>
@@ -88,7 +88,8 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
 
                         {/* Buttons */}
                         <View style={popUpStyles.buttonsView}>
-                            {/* Do not show again button */}
+                            {!fromCarousel &&
+                            // Do not show again button
                             <Pressable
                                 style={popUpStyles.button}
                                 onPress={() => {
@@ -100,6 +101,7 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid }) => {
                             >
                                 <Text style={[popUpStyles.boldText, popUpStyles.buttonText]}>Do not show again</Text>
                             </Pressable>
+                            }
 
                             {/* Remind me later button */}
                             <Pressable

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
       height: 60,
     },
     dashboardContainer: {
-      top: "17%",
+      top: "20%",
       position: "absolute",
       alignItems: "center",
       justifyContent: "center",
@@ -379,6 +379,7 @@ const styles = StyleSheet.create({
       aspectRatio: 1,
       backgroundColor: "white",
       borderRadius: 10,
+      elevation: 10,
     },
     spotlightText: {
       color: "#02226d",
@@ -438,6 +439,9 @@ const styles = StyleSheet.create({
       left: 335,
       bottom: 115,
       tintColor: "#021842"
+    },
+    month: {
+      
     },
     
     
