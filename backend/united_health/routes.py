@@ -162,7 +162,7 @@ def getResponse(uid, input):
     
 
     history += f"User: {input}\n"
-    fullPrompt = history + "Assistant: "
+    #fullPrompt = history + "Assistant: "
     
 
     chatResponse = index.query(history, llm_model)
