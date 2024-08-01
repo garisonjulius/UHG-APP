@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
       height: 60,
     },
     dashboardContainer: {
-      top: "20%",
+      top: "18%",
       position: "absolute",
       alignItems: "center",
       justifyContent: "center",
@@ -68,18 +68,21 @@ const styles = StyleSheet.create({
       flexDirection: 'row'
     },
     wellness: {
-      backgroundColor: 'tan',
+      backgroundColor: '#ede3d3',
       display: 'flex',
       flexDirection: 'col',
-      padding: 10,
+      padding: 5,
       borderRadius: 10,
+      bottom: 85
     },
     wellnessTitle: {
       fontStyle: 'italic',
       textAlign: 'center',
+      fontWeight: 'bold',
     },
     wellnessText: {
       textAlign: 'center',
+      fontWeight: 'bold',
     },
     recTipText: {
       bottom: 80,
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
       flexDirection: "column",
       bottom: 10,
       left: 10,
-      height: "60%",
+      height: "57%",
       width: "45%",
       aspectRatio: 1,
       backgroundColor: "#021842",
@@ -137,7 +140,7 @@ const styles = StyleSheet.create({
       color: "white",
       fontSize: 14,
       left: 10,
-      top: 15,
+      top: 12,
     },
     claimsContainer: {
       position: "absolute",
@@ -146,7 +149,7 @@ const styles = StyleSheet.create({
       flexDirection: "column",
       bottom: 10,
       right: 10,
-      height: "60%",
+      height: "57%",
       width: "45%",
       aspectRatio: 1,
       backgroundColor: "#edf8fc",
@@ -170,7 +173,7 @@ const styles = StyleSheet.create({
       color: "black",
       fontSize: 14,
       top: 50,
-      left: 5,
+      left: 10,
     },
     carousel: {
       height: "125%",
@@ -194,7 +197,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#021842"
     },
     dashboardContainer2: {
-      marginTop: "53%",
+      marginTop: "59%",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",
