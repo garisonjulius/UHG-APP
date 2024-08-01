@@ -15,7 +15,7 @@ import {
 } from "react-native";
 
 import NavBar from "./app/components/navBar";
-import ChatbotMain from "./app/screens/ChatbotMain";
+import ChatbotMain from "./app/components/chatbot/ChatbotMain";
 import ChatbotHeader from "./app/components/chatbot/ChatbotHeader";
 import InputBar from "./app/components/chatbot/InputBar";
 

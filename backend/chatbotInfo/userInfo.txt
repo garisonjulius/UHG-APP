@@ -1,39 +1,39 @@
-first_name: Sarah
-last_name: Hayes
-age: 29
+first_name: Leah
+last_name: Johnson
+age: 30
 gender: Female
 num_children: 1
-has_spouse: 0
+has_spouse: 1
 zip_code: 28107
-pid: 3
-plan_title: UHC Bronze-X ($0 PCP, $5 Tier 2 Rx, No Referrals) - HMO
+pid: 1
+plan_title: UHC Bronze-X Value Plan - HMO
 plan_network_type: Health Maintenance Organization (HMO)
-monthly_premium: 379.54
-deductible_per_person: 8250
+monthly_premium: 376.65
+deductible_per_person: 9450
 out_of_pocket_max_per_person: 9450
-network_primary_bd: No Charge
-network_primary_ad: No Charge
+network_primary_bd: 35
+network_primary_ad: 35
 out_of_network_primary_bd: 100%
 network_preventive_bd: No Charge
 network_preventive_ad: No Charge
-network_specialist_bd: 140
-network_specialist_ad: 140
-network_xray_bd: Full Price
-network_xray_ad: 40%
+network_specialist_bd: 90
+network_specialist_ad: 90
+network_xray_bd: 150
+network_xray_ad: 150
 network_imaging_bd: Full Price
-network_imaging_ad: 40%
-network_blood_bd: Full Price
-network_blood_ad: 20
-network_generic_bd: 5
-network_generic_ad: 5
+network_imaging_ad: No Charge
+network_blood_bd: 80
+network_blood_ad: 80
+network_generic_bd: 25
+network_generic_ad: 25
 network_brand_bd: Full Price
 network_brand_ad: Full Price
 network_npbrand_bd: Full Price
-network_npbrand_ad: 50%
+network_npbrand_ad: No Charge
 network_specialty_bd: Full Price
-network_specialty_ad: 50%
+network_specialty_ad: No Charge
 network_hospital_bd: Full Price
-network_hospital_ad: 40%
+network_hospital_ad: No Charge
 network_emergency_bd: Full Price
-network_emergency_ad: 50%
-annual_estimates: 5734
+network_emergency_ad: No Charge
+annual_estimates: 4810

@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 
-const FloatingChatIcon = ({ navigation, uid , uid}) => {
+const FloatingChatIcon = ({ navigation, uid}) => {
     const [showBubble, setShowBubble] = useState(true);
     const [name, setName] = useState('');
 
@@ -22,17 +22,17 @@ const FloatingChatIcon = ({ navigation, uid , uid}) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowBubble(false);
-        }, 3000);
+        }, 30000);
 
         return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }, []);
 
     return (
-        <Pressable onPress={() => navigation.navigate('ChatbotMain', {uid:uid})} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
+        <Pressable onPress={() => navigation.navigate('ChatbotMain', {name:name, uid:uid})} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
             <Image style={floatingChatStyles.robot} source={require('../../assets/chat-logo.png')} />
             {showBubble && (
                 <ImageBackground style={floatingChatStyles.bubble} source={require('../../assets/bubble.png')}>
-                    <Text style={floatingChatStyles.bubbleText}>Hello Sarah! I’m Elena, your personal assistant. Click me if you have any questions</Text>
+                    <Text style={floatingChatStyles.bubbleText}>Hello {name}! I’m Elena, your personal assistant. Click me if you have any questions</Text>
                 </ImageBackground>
             )}
         </Pressable>
