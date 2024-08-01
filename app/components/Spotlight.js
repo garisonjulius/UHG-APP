@@ -21,7 +21,7 @@ const Spotlight = () => {
             <Text style={styles.spotlightNewsText}>Happy National Immunization Awareness Month!</Text>
           </TouchableOpacity>
         <TouchableOpacity style={styles.spotlightMonthContainer}>
-          <Text style={styles.month}> 
+          <Text style={styles.monthTextContainer}> 
             Aug
           </Text>
         <Image 

@@ -29,7 +29,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
     }
 
   return (
-    <View style={[styles.carousel, {width}, {marginTop: -20}]}>
+    <View style={[styles.carousel, {width}, {marginTop: 0}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
@@ -47,11 +47,10 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
             {item.title === "My Plan Overview" && (
             <>
                <View style={styles.planidContainer}>
-               <Text style={subtitleStyle1}>{item.subtitle1} </Text>
+               <Text style={subtitleStyle1}>{item.subtitle1} *</Text>
                <Text style={styles.myplanText}>#003126875</Text>
                </View>
                <Text style={{fontWeight: "bold", right: "35%", top: "60%", fontSize: 10,}}> *Do Not Share this ID</Text>
-
                <View style={styles.coverageContainer}>
                <Text style={subtitleStyle2}>{item.subtitle2} </Text>
                <Text style={styles.myplanText}> Dental </Text>
@@ -75,7 +74,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
               <Text style={styles.remainingText}>Remaining</Text>
               </View>
               <Image 
-              source={require("../assets/small-progress.png")}
+              source={require("../assets/non-full-bar.png")}
               style={styles.deductibleBar}/>
 
               <Text style={styles.pocketText}>Out-of-Pocket Max</Text>
@@ -84,7 +83,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
                 <Text style={styles.remainingText2}>Remaining</Text>
               </View>
                <Image 
-              source={require("../assets/big-progress.png")}
+              source={require("../assets/full-bar.png")}
               style={styles.pocketBar}/>
 
             </>
