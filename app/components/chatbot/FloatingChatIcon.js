@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 
-const FloatingChatIcon = ({ navigation, uid }) => {
+const FloatingChatIcon = ({ navigation, uid , uid}) => {
     const [showBubble, setShowBubble] = useState(true);
     const [name, setName] = useState('');
 
@@ -28,7 +28,7 @@ const FloatingChatIcon = ({ navigation, uid }) => {
     }, []);
 
     return (
-        <Pressable onPress={() => navigation.navigate('ChatbotMain')} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
+        <Pressable onPress={() => navigation.navigate('ChatbotMain', {uid:uid})} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
             <Image style={floatingChatStyles.robot} source={require('../../assets/chat-logo.png')} />
             {showBubble && (
                 <ImageBackground style={floatingChatStyles.bubble} source={require('../../assets/bubble.png')}>
