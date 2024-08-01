@@ -4,7 +4,6 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, 
 
 var windowWidth = Dimensions.get('window').width;
 import { GiftedChat } from "react-native-gifted-chat";
-import Prompts from "./Prompts"
 
 const InputBar = ({name, uid}) => {
 
@@ -31,9 +30,10 @@ const InputBar = ({name, uid}) => {
         //handleButtonClick()
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         if(promptClicked){
             handleButtonClick();
+            setPromptClicked(false);
         }
     }, [inputMessage])
 
@@ -49,10 +49,13 @@ const InputBar = ({name, uid}) => {
     }
 
     const handleButtonClick = () => {
+        const tempInputMsg = inputMessage;
+        // Clear input message
+        setInputMessage("");
 
         const message = {
             _id:Math.random().toString(36).substring(7),
-            text: inputMessage,
+            text: tempInputMsg,
             createdAt: new Date(),
             user: {_id:1}
         }
@@ -60,7 +63,7 @@ const InputBar = ({name, uid}) => {
             GiftedChat.append(previousMessages, [message])
         )
 
-        fetch(`http://10.0.2.2:5000/getResponse/${uid}/${inputMessage}`)
+        fetch(`http://10.0.2.2:5000/getResponse/${uid}/${tempInputMsg}`)
         .then(response => response.json())
         .then(data => {
             console.log(data["chat_response"]),
@@ -117,9 +120,9 @@ const InputBar = ({name, uid}) => {
             <View style = {styles.inputField}>
                 <View style = {styles.inputBar}> 
                     <View style = {styles.fixWidth}>
-                        <TextInput  placeholder= "Ask me anything..." placeholderTextColor={"black"} style={styles.placeholderText} onChangeText = {handleTextInput}></TextInput>   
+                        <TextInput multiline={true} placeholder="Ask me anything..." value={inputMessage} onSubmitEditing={handleButtonClick} placeholderTextColor={"grey"} style={styles.placeholderText} onChangeText = {handleTextInput}></TextInput>   
                     </View>
-                    <TouchableOpacity onPress = {handleButtonClick}>
+                    <TouchableOpacity onPress={handleButtonClick}>
                         <View style = {styles.sendButton}>
                             <Image
                                 source={require("../../assets/arrow-right-circle.png")}
@@ -230,6 +233,6 @@ const styles = StyleSheet.create({
     },
 
     fixWidth: {
-        maxWidth: '50%',
+        maxWidth: '80%',
     },
 });

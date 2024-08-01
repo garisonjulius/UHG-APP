@@ -59,7 +59,32 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       elevation: 10,
     },
-    recommendations: {
+    sideBySideCards: {
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    mainInfo: {
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    wellness: {
+      backgroundColor: '#ede3d3',
+      display: 'flex',
+      flexDirection: 'col',
+      padding: 5,
+      borderRadius: 10,
+      bottom: 72
+    },
+    wellnessTitle: {
+      fontStyle: 'italic',
+      textAlign: 'center',
+      fontWeight: 'bold',
+    },
+    wellnessText: {
+      textAlign: 'center',
+      fontWeight: 'bold',
+    },
+    recTipText: {
       bottom: 80,
       textAlign: 'center',
       fontSize: 16,
@@ -75,7 +100,7 @@ const styles = StyleSheet.create({
       flexDirection: "column",
       bottom: 10,
       left: 10,
-      height: "60%",
+      height: "57%",
       width: "45%",
       aspectRatio: 1,
       backgroundColor: "#021842",
@@ -115,7 +140,7 @@ const styles = StyleSheet.create({
       color: "white",
       fontSize: 14,
       left: 10,
-      top: 15,
+      top: 12,
     },
     claimsContainer: {
       position: "absolute",
@@ -124,7 +149,7 @@ const styles = StyleSheet.create({
       flexDirection: "column",
       bottom: 10,
       right: 10,
-      height: "60%",
+      height: "57%",
       width: "45%",
       aspectRatio: 1,
       backgroundColor: "#edf8fc",
@@ -148,7 +173,7 @@ const styles = StyleSheet.create({
       color: "black",
       fontSize: 14,
       top: 50,
-      left: 5,
+      left: 10,
     },
     carousel: {
       height: "125%",

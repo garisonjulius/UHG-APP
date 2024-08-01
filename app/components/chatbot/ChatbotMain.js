@@ -1,8 +1,7 @@
 import React from "react";
 import {View,  StyleSheet, Text, KeyboardAvoidingView} from "react-native";
-import InputBar from "./InputBar";
-import ChatbotHeader from "./ChatbotHeader";
-import Prompts from "./Prompts"
+import InputBar from "../components/chatbot/InputBar";
+import ChatbotHeader from "../components/chatbot/ChatbotHeader";
 
 const ChatbotMain = ({route}) => {
     const {name, uid} = route.params;
