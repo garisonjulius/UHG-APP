@@ -3,18 +3,42 @@ import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackgr
 
 const FloatingChatIcon = ({navigation}) => {
     return (
+        <View style={floatingChatStyles.bottomRight}>
         <Pressable onPress={() => navigation.navigate('ChatbotMain')} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
             <Image style={floatingChatStyles.robot} source={require('../../assets/chat-logo.png')} />
         </Pressable>
+        <ImageBackground style={floatingChatStyles.bubble} source={require('../../assets/bubble.png')}>
+                <Text style={floatingChatStyles.bubbleText}>Hello Sarah! I’m Elena, your personal assistant. Click me if you have any questions</Text>
+        </ImageBackground>
+        </View>
+
     );
 }
 
 
 const floatingChatStyles = StyleSheet.create({
+    bubble: {
+        margin: 'auto',
+        paddingBottom: 5,
+        width: 150,
+        height: 120,
+        right: 45,
+        bottom: 40
+    },
+    bubbleText: {
+        top: 15,
+        left: 3,
+        margin: 15,
+        fontSize: 10,
+        color: "black",
+        zIndex: 5,
+        alignContent: "center",
+        fontWeight: "bold"
+    },
     circle: {
         backgroundColor: '#02226d',
-        width: 60, 
-        height: 60,
+        width: 48, 
+        height: 48,
         borderRadius: 45,
         elevation: 5,
         borderColor: 'white',
@@ -22,14 +46,14 @@ const floatingChatStyles = StyleSheet.create({
     },
     bottomRight: {
         position: 'absolute',
-        bottom: 10,
-        right: 10,
+        bottom: 7,
+        right: 7,
     },
     robot: {
         margin: 'auto',
         paddingBottom: 5,
-        width: 45,
-        height: 45,
+        width: 36,
+        height: 36,
     },
 });
 
