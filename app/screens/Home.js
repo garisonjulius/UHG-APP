@@ -32,7 +32,7 @@ function Home({navigation}) {
   const intervalRef = useRef(null);
   const [fromCarousel, setFromCarousel] = useState(false);
 
-  uid = 1;
+  let uid = 1;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
@@ -80,6 +80,8 @@ function Home({navigation}) {
                         uid={uid} 
                         fromCarousel={fromCarousel}
                         />}
+
+      {/* Header */}
       <View style={styles.headerContainer}>
         <TouchableHighlight>
           <View style={styles.button}>
@@ -94,30 +96,47 @@ function Home({navigation}) {
           source={require("../assets/bell.png")}
           style={styles.bell} />
       </View>
-      <TouchableOpacity style={[styles.dashboardContainer, {marginTop: 10}]}>
-        <Text style={styles.recommendations}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
-        <TouchableOpacity style={styles.cardsContainer}> 
-          <Text style={styles.cardText}> Member </Text>
-          <Text style={styles.cardText}> Cards</Text>
-          <Text style={styles.MDVText}> Medical </Text>
-          <Text style={styles.MDVText}> Dental </Text>
-          <Text style={styles.MDVText}> Vision </Text>
-          <Image 
-          source={require("../assets/uhg-logo.png")}
-          style={styles.logo}/>
-          <Image 
-          source={require("../assets/forward-icon.png")}
-          style={styles.memberForward}/>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.claimsContainer}> 
-          <Text style={styles.claimText}> Claims</Text>
-          <Text style={styles.claimNum}> 1 </Text>
-          <Text style={styles.claimDays}> In Last 60 Days </Text>
-          <Image 
-          source={require("../assets/forward-icon.png")}
-          style={styles.claimForward}/>
-          </TouchableOpacity>
-      </TouchableOpacity>
+
+      {/* First box on dashboard */}
+      <View style={[styles.dashboardContainer, {marginTop: 10}]}>
+        {/* <View style={styles.mainInfo}> */}
+          <View style={styles.wellness}>
+            <Text style={styles.wellnessTitle}>Wellness</Text>
+            <Text style={styles.wellnessText}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
+          </View>
+
+          {/* Member Card */}
+          {/* <View style={styles.sideBySideCards}> */}
+            <View style={styles.cardsContainer}>
+              <Text style={styles.cardText}> Member </Text>
+              <Text style={styles.cardText}> Cards</Text>
+              <Text style={styles.MDVText}> Medical </Text>
+              <Text style={styles.MDVText}> Dental </Text>
+              <Text style={styles.MDVText}> Vision </Text>
+              <Image 
+                source={require("../assets/uhg-logo.png")}
+                style={styles.logo}
+              />
+              <Image 
+                source={require("../assets/forward-icon.png")}
+                style={styles.memberForward}
+              />
+            </View>
+            
+            {/* Claims Card */}
+            <View style={styles.claimsContainer}>
+              <Text style={styles.claimText}> Claims</Text>
+              <Text style={styles.claimNum}> 1 </Text>
+              <Text style={styles.claimDays}> In Last 60 Days </Text>
+              <Image 
+              source={require("../assets/forward-icon.png")}
+              style={styles.claimForward}/>
+            </View>
+          {/* </View> */}
+        {/* </View> */}
+      </View> 
+
+      {/* Carousel */}
       <FlatList
       ref={flatListRef}
       data={data}

@@ -12,7 +12,7 @@ import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
-function HomeTabs() {
+function HomeTabs({uid}) {
   return(
   <Tab.Navigator
         initialRouteName="Home" 
@@ -96,6 +96,7 @@ function HomeTabs() {
         <Tab.Screen
           name="Home"
           component={Home}
+          initialParams={{uid: uid}}
           options={{
             headerShown: false,
             tabBarStyle: {

@@ -8,14 +8,17 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 
 
-const ComparisonFrame1 = ({navigation}) => {
+const ComparisonFrame1 = ({route}) => {
   
   const [currPlan, setCurrPlan] = useState("");
   const [recPlan, setRecPlan] = useState("");
   const [userData, setUserData] = useState("");
   const [isTextVisible, setTextVisible] = useState(false);
+
+  const {uid} = route.params;
+
   useEffect(() => {
-    fetch('http://10.0.2.2:5000/user/1')
+    fetch(`http://10.0.2.2:5000/user/${uid}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);

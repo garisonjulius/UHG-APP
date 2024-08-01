@@ -72,17 +72,17 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid, fromCarouse
                                 // Call stopRender() here so that the popUp is not displayed
                                 // once the user comes back to the home page
                                 stopRender();
-                                navigation.navigate('Rec');
+                                navigation.navigate('Rec', {uid: uid});
                             }}
                             >
                                 <View>
                                     <Text style={popUpStyles.popUpText}>
-                                        More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan
-                                        <View style={popUpStyles.arrowRight}>
-                                            <AntDesign name="arrowright" size={28} color="#02226d"/>
-                                        </View>
+                                        More information on the <Text style={popUpStyles.boldText}>{recPlanTitle}</Text> plan {' '}   
+                                            <Text style={popUpStyles.arrowText}>
+                                                <AntDesign name="arrowright" size={18} color="#02226d" style={popUpStyles.arrowRight}/>
+                                            </Text>
                                     </Text>
-                                </View>
+                                    </View>
                             </Pressable>
                         </View>
 
@@ -123,6 +123,11 @@ const PlanNotif = ({ stopRender, displayPopUp, rid, navigation, uid, fromCarouse
 }
 
 const popUpStyles = StyleSheet.create({
+    arrowText: {
+        fontSize: 18, // Match the size of the text to align properly
+        marginLeft: 10, // Space between the text and the arrow
+        lineHeight: 25, // Ensure the arrow aligns with the text's baseline
+      },
     centeredView: {
         flex: 1,
         justifyContent: 'center',
@@ -139,7 +144,7 @@ const popUpStyles = StyleSheet.create({
         alignItems: 'center',
     },
     arrowRight: {
-        paddingLeft: 5,
+        paddingLeft: 25
     },
     popUpView: {
         width: '100%',
@@ -165,6 +170,7 @@ const popUpStyles = StyleSheet.create({
     button: {
         borderRadius: 10,
         padding: 10,
+        marginTop: 5
     },
     popUpText: {
         fontSize: 18,
