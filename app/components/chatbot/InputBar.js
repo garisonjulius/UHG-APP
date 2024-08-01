@@ -5,19 +5,15 @@ import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, 
 var windowWidth = Dimensions.get('window').width;
 import { GiftedChat } from "react-native-gifted-chat";
 
-const InputBar = ({uid}) => {
+const InputBar = ({name, uid}) => {
 
-    const[messages, setMessages] = useState([])
+    const[messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState(null);
     const [outputMessage, setOutputMessage] = useState(null);
     const [promptClicked, setPromptClicked] = useState(false);
-    const [userName, setUserName] = useState(null)
 
-    useEffect (() => {
-        fetch(`http://10.0.2.2:5000/user/${uid}`)
-        .then(result => result.json())
-        .then(data => setUserName(data["first_name"]))
-    }, [uid])
+
+
 
     const handlePromptProviderClick = () => {
         
@@ -41,6 +37,11 @@ const InputBar = ({uid}) => {
         }
     }, [inputMessage])
 
+    // useEffect(() =>{
+    //     if(inputMessage === "My plan benefits"){
+    //         handleButtonClick();
+    //     }
+    // }, [inputMessage])
 
     const handleTextInput = (text) => {
         setInputMessage(text)
@@ -92,7 +93,7 @@ const InputBar = ({uid}) => {
 
             <View style = {styles.prompts}>
                 <View style = {styles.examplePrompt}>
-                    <Text style = {styles.examplePromptText}>Welcome to Elena.AI {userName}! Here are examples of requests I can accomodate:</Text>
+                    <Text style = {styles.examplePromptText}>Welcome to Elena.AI {name}! Here are examples of requests I can accomodate:</Text>
                 </View>
 
                 <View style = {styles.firstRowPrompts}>
