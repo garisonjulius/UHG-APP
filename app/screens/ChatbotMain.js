@@ -4,10 +4,10 @@ import InputBar from "../components/chatbot/InputBar";
 import ChatbotHeader from "../components/chatbot/ChatbotHeader";
 import Prompts from "../components/chatbot/Prompts"
 
-const ChatbotMain = () => {
+const ChatbotMain = ({uid}) => {
     return(
         <View style = {styles.container} >
-            <InputBar/>                                 
+            <InputBar uid = {uid}/>                                 
         </View>
     );
 };

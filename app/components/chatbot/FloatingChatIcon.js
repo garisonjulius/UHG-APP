@@ -13,7 +13,7 @@ const FloatingChatIcon = ({ navigation }) => {
     // }, []);
 
     return (
-        <Pressable onPress={() => navigation.navigate('ChatbotMain')} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
+        <Pressable onPress={() => navigation.navigate('ChatbotMain', {uid:uid})} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
             <Image style={floatingChatStyles.robot} source={require('../../assets/chat-logo.png')} />
             {showBubble && (
                 <ImageBackground style={floatingChatStyles.bubble} source={require('../../assets/bubble.png')}>
