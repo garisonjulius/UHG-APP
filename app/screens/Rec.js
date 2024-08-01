@@ -8,28 +8,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ComparisonFrame1 = ({navigation}) => {
   
-  const [planData, setPlanData] = useState("");
   const [currPlan, setCurrPlan] = useState("");
   const [recPlan, setRecPlan] = useState("");
   const [userData, setUserData] = useState("");
   const [isTextVisible, setTextVisible] = useState(false);
-  const rid = 0;
-  const inp = "";
 
-  // useEffect(() => {
-  //   fetch(`http://10.0.2.2:5000/getResponse/1/${inp}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data);
-  //       //setUserData(data);
-  //     })
-  //     .catch(err => {
-  //       console.log("Invalid Test");
-  //     });
-  // }, []);
 
   useEffect(() => {
-    fetch('http://10.0.2.2:5000/user/1')
+    fetch("http://10.0.2.2:5000/user/1")
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -41,29 +27,19 @@ const ComparisonFrame1 = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    fetch('http://10.0.2.2:5000/plan/1')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setCurrPlan(data);
-      })
-      .catch(err => {
-        console.log("Invalid Plan Info");
-      });
-  }, []);
+    if (userData && userData.pid){
+      fetch(`http://10.0.2.2:5000/plan/${userData.pid}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          setCurrPlan(data);
+        })
+        .catch(err => {
+          console.log("Invalid Plan Info");
+        });
+      }
+  }, [userData]);
 
-  //hard coding the recommended plan for now
-  useEffect(() => {
-    fetch('http://10.0.2.2:5000/plan/3')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setRecPlan(data);
-      })
-      .catch(err => {
-        console.log("Invalid Plan Info");
-      });
-  }, []);
 
   useEffect(() => {
     // Fetch recommended plan data when userData changes
@@ -126,7 +102,7 @@ HMO/PPO/POS/EPO
       <View style={[styles.rectangleView, styles.rectangleViewPosition]} />
       <Text style={[styles.features, styles.featuresTypo]}>Features</Text>
       <Text style={[styles.titleRecommended, styles.titleTypo]}>
-        <Text style={[styles.title, {lineHeight: 25}]}>{`Reccomended`}</Text>
+        <Text style={[styles.title, {lineHeight: 25}]}>{`Recommended`}</Text>
           <Text> {'\n'}{'\n'}{'\n'}{'\n'}{'\n'} </Text>
           <Text style={[styles.test, {lineHeight: 19}]}> {recPlan["monthly_premium"]} </Text> 
           <Text> {'\n'}{'\n'}{'\n'}{'\n'}{'\n'} </Text>
@@ -194,7 +170,7 @@ HMO/PPO/POS/EPO
           <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: -23}]}> {currPlan["monthly_premium"]} </Text>
           <Text style={[styles.titlecurrenttext, styles.titlerectextTypo]}> {currPlan["deductible_per_person"]} </Text>
           <Text style={[styles.titlecurrenttext, styles.titlerectextTypo]}> {currPlan["out_of_pocket_max_per_person"]} </Text>
-          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginLeft: -30}]}> {currPlan["network_primary_bd"]} </Text>
+          <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginLeft: -56}]}> {currPlan["network_primary_bd"]} </Text>
           <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: 0}]}> {currPlan["out_of_network_primary_bd"]} </Text>
           <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: 0, marginLeft: -50 }]}> {currPlan["network_specialty_bd"]} </Text>
           <Text style={[styles.titlecurrenttext, styles.titlerectextTypo, {marginTop: -20, marginLeft: -90}]}> {currPlan["plan_network_type"]} </Text> 
@@ -475,9 +451,9 @@ const styles = StyleSheet.create({
       width: 25, 
       height: 25,
       position: "absolute",
-      backgroundColor: "#02226d",
-      right: 0,
-      top: 60
+      backgroundColor: "white",
+      right: -7,
+      top: 108
   },
   textBox: {
     zIndex: 5,
@@ -486,10 +462,10 @@ const styles = StyleSheet.create({
     borderColor: '#dee2e6',
     borderWidth: 1,
     borderRadius: 5,
-    width: 200,
+    width: 350,
     alignItems: 'center',
     position: 'absolute',
-    top: 95, // Adjust to position text box relative to the image
+    top: 25, // Adjust to position text box relative to the image
     right: 10, // Align text box with the image container
   },
   text: {

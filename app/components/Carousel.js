@@ -13,7 +13,7 @@ export const data = [
 ];
 
 
-export const CarouselItem = ({ item, index, navigation}) => {
+export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromCarousel}) => {
     let titleStyle = styles.overviewTitle;
     if (item.title === "Spending") {
       titleStyle = styles.spendingTitle;
@@ -29,11 +29,16 @@ export const CarouselItem = ({ item, index, navigation}) => {
     }
 
   return (
-    <View style={[styles.carousel, {width}, {marginTop: 0}]}>
+    <View style={[styles.carousel, {width}, {marginTop: -20}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
-            onPress={() => <PlanNotif />}
+            onPress={() => 
+              {
+                setRenderPopUp(true);
+                setFromCarousel(true);
+            }
+          }
             style={styles.circle}
         >
           <Text style={styles.exclamMark}> ! </Text>
