@@ -59,7 +59,29 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       elevation: 10,
     },
-    recommendations: {
+    sideBySideCards: {
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    mainInfo: {
+      display: 'flex',
+      flexDirection: 'row'
+    },
+    wellness: {
+      backgroundColor: 'tan',
+      display: 'flex',
+      flexDirection: 'col',
+      padding: 10,
+      borderRadius: 10,
+    },
+    wellnessTitle: {
+      fontStyle: 'italic',
+      textAlign: 'center',
+    },
+    wellnessText: {
+      textAlign: 'center',
+    },
+    recTipText: {
       bottom: 80,
       textAlign: 'center',
       fontSize: 16,
