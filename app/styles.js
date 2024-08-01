@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
       height: 60,
     },
     dashboardContainer: {
-      top: "20%",
+      top: "17%",
       position: "absolute",
       alignItems: "center",
       justifyContent: "center",
