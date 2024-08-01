@@ -1,5 +1,5 @@
 import React from "react";
-import {View,  StyleSheet, Text, TouchableOpacity, ScrollView} from "react-native";
+import {View,  StyleSheet, Text, TouchableOpacity, ScrollView, SafeAreaView} from "react-native";
 
 const Prompts = () => {
 
@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
         height: 130,
         flexdirection: "column",
         alignItems: "center",
+        position: "absolute",
+        marginLeft: 25, 
+        marginTop: 25
     },
 
     examplePrompt: {

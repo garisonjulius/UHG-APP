@@ -19,10 +19,11 @@ import ChatbotMain from "./app/screens/ChatbotMain";
 import ChatbotHeader from "./app/components/chatbot/ChatbotHeader";
 import InputBar from "./app/components/chatbot/InputBar";
 
+//hides default props console warning
+import { LogBox } from 'react-native';
+LogBox.ignoreAllLogs();
+
 export default function App() {
-  //return <ChatbotMain />;
   return<NavBar/>
-  //return <ChatbotHeader/>
-  //return <InputBar/>
 }
 
