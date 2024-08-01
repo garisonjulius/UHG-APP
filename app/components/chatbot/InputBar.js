@@ -1,5 +1,5 @@
 import React from "react"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, KeyboardAvoidingView, Touchable} from "react-native"
 
 var windowWidth = Dimensions.get('window').width;
@@ -12,6 +12,35 @@ const InputBar = () => {
     const [inputMessage, setInputMessage] = useState(null);
     const [outputMessage, setOutputMessage] = useState(null);
     uid = 1;
+
+    const handlePromptProviderClick = () => {
+        
+        setInputMessage("Find a provider")
+        handleButtonClick()
+        console.log(inputMessage)
+    }
+
+    // const handlePromptPlanClick = () => {
+    //     setInputMessage("My plan benefits")
+    //     //handleButtonClick()
+    // }
+
+    useEffect(() =>{
+        if(inputMessage === "Find a provider"){
+            handleButtonClick();
+        }
+    }, [inputMessage])
+
+    // useEffect(() =>{
+    //     if(inputMessage === "My plan benefits"){
+    //         handleButtonClick();
+    //     }
+    // }, [inputMessage])
+
+    const handleTextInput = (text) => {
+        setInputMessage(text)
+        console.log(inputMessage)
+    }
 
     const handleButtonClick = () => {
 
@@ -45,11 +74,7 @@ const InputBar = () => {
         .catch(err => {
             console.log("Invalid Test");
         });
-    };
-
-    const handleTextInput = (text) => {
-        setInputMessage(text)
-    }   
+    };   
 
     //<KeyboardAvoidingView behavior = "height" keyboardVerticalOffset={210}>
 
@@ -63,13 +88,13 @@ const InputBar = () => {
                 </View>
 
                 <View style = {styles.firstRowPrompts}>
-                    <TouchableOpacity onPress = {handleButtonClick}>
+                    <TouchableOpacity onPress={handlePromptProviderClick}>
                         <View style = {styles.firstRowContent}>
                             <Text style = {styles.firstRowTextOne}>Find a provider</Text>
                         </View>
                     </TouchableOpacity>
             
-                    <TouchableOpacity onPress = {handleButtonClick}>
+                    <TouchableOpacity >
                         <View style = {styles.firstRowContent}>
                             <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
                         </View>
