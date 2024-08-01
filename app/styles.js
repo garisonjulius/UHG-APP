@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
       flexDirection: 'col',
       padding: 5,
       borderRadius: 10,
-      bottom: 85
+      bottom: 72
     },
     wellnessTitle: {
       fontStyle: 'italic',
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
       backgroundColor: "#021842"
     },
     dashboardContainer2: {
-      marginTop: "59%",
+      marginTop: "53%",
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",

@@ -32,7 +32,7 @@ function Home({navigation}) {
   const intervalRef = useRef(null);
   const [fromCarousel, setFromCarousel] = useState(false);
 
-  let uid = 2;
+  let uid = 1;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
@@ -99,14 +99,14 @@ function Home({navigation}) {
 
       {/* First box on dashboard */}
       <View style={[styles.dashboardContainer, {marginTop: 10}]}>
-        <View style={styles.mainInfo}>
+        {/* <View style={styles.mainInfo}> */}
           <View style={styles.wellness}>
-            <Text style={styles.wellnessTitle}>Wellnes</Text>
+            <Text style={styles.wellnessTitle}>Wellness</Text>
             <Text style={styles.wellnessText}>According to Cleveland clinic, bicycle helmets reduce the likelihood of traumatic brain injury by 53% in the event of an accident.</Text>
           </View>
 
           {/* Member Card */}
-          <View style={styles.sideBySideCards}>
+          {/* <View style={styles.sideBySideCards}> */}
             <View style={styles.cardsContainer}>
               <Text style={styles.cardText}> Member </Text>
               <Text style={styles.cardText}> Cards</Text>
@@ -132,8 +132,8 @@ function Home({navigation}) {
               source={require("../assets/forward-icon.png")}
               style={styles.claimForward}/>
             </View>
-          </View>
-        </View>
+          {/* </View> */}
+        {/* </View> */}
       </View> 
 
       {/* Carousel */}
