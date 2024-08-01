@@ -20,22 +20,11 @@ const InputBar = () => {
         console.log(inputMessage)
     }
 
-    // const handlePromptPlanClick = () => {
-    //     setInputMessage("My plan benefits")
-    //     //handleButtonClick()
-    // }
+    const handlePromptPlanClick = () => {
+        setInputMessage("My plan benefits")
+    }
 
-    useEffect(() =>{
-        if(inputMessage === "Find a provider"){
-            handleButtonClick();
-        }
-    }, [inputMessage])
 
-    // useEffect(() =>{
-    //     if(inputMessage === "My plan benefits"){
-    //         handleButtonClick();
-    //     }
-    // }, [inputMessage])
 
     const handleTextInput = (text) => {
         setInputMessage(text)
@@ -94,7 +83,7 @@ const InputBar = () => {
                         </View>
                     </TouchableOpacity>
             
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={handlePromptPlanClick}>
                         <View style = {styles.firstRowContent}>
                             <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
                         </View>

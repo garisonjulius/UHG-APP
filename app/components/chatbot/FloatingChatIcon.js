@@ -4,13 +4,13 @@ import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackgr
 const FloatingChatIcon = ({ navigation }) => {
     const [showBubble, setShowBubble] = useState(true);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowBubble(false);
-        }, 10000);
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {
+    //         setShowBubble(false);
+    //     }, 10000);
 
-        return () => clearTimeout(timer); // Cleanup the timer on component unmount
-    }, []);
+    //     return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    // }, []);
 
     return (
         <Pressable onPress={() => navigation.navigate('ChatbotMain')} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
@@ -63,6 +63,7 @@ const floatingChatStyles = StyleSheet.create({
         paddingBottom: 5,
         width: 36,
         height: 36,
+        top: 28
     },
 });
 
