@@ -6,27 +6,37 @@ var windowWidth = Dimensions.get('window').width;
 import { GiftedChat } from "react-native-gifted-chat";
 import Prompts from "./Prompts"
 
-const InputBar = () => {
+const InputBar = ({uid}) => {
 
     const[messages, setMessages] = useState([])
     const [inputMessage, setInputMessage] = useState(null);
     const [outputMessage, setOutputMessage] = useState(null);
-    uid = 1;
+    const [promptClicked, setPromptClicked] = useState(false);
+    const [userName, setUserName] = useState(null)
+
+    useEffect = () => {
+        fetch(`http://10.0.2.2:5000/user/${uid}`)
+        .then(result => result.json())
+        .then(data => setUserName(data["first_name"]))
+    }
 
     const handlePromptProviderClick = () => {
         
         setInputMessage("Find a provider")
-        handleButtonClick()
-        console.log(inputMessage)
+        setPromptClicked(true)
+        //handleButtonClick()
+        //console.log(inputMessage)
     }
 
-    // const handlePromptPlanClick = () => {
-    //     setInputMessage("My plan benefits")
-    //     //handleButtonClick()
-    // }
+    const handlePromptPlanClick = () => {
+        setInputMessage("My plan benefits")
+        setPromptClicked(true)
+
+        //handleButtonClick()
+    }
 
     useEffect(() =>{
-        if(inputMessage === "Find a provider"){
+        if(promptClicked){
             handleButtonClick();
         }
     }, [inputMessage])
@@ -84,7 +94,7 @@ const InputBar = () => {
 
             <View style = {styles.prompts}>
                 <View style = {styles.examplePrompt}>
-                    <Text style = {styles.examplePromptText}>Welcome to Elena.AI Sarah! Here are examples of requests I can accomodate:</Text>
+                    <Text style = {styles.examplePromptText}>Welcome to Elena.AI {userName}! Here are examples of requests I can accomodate:</Text>
                 </View>
 
                 <View style = {styles.firstRowPrompts}>
@@ -94,7 +104,7 @@ const InputBar = () => {
                         </View>
                     </TouchableOpacity>
             
-                    <TouchableOpacity >
+                    <TouchableOpacity onPress={handlePromptPlanClick}>
                         <View style = {styles.firstRowContent}>
                             <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
                         </View>
