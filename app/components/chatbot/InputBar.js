@@ -1,5 +1,5 @@
-import React from "react"
-import {useState, useEffect} from "react"
+import React from "react";
+import {useState, useEffect} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, KeyboardAvoidingView, Touchable} from "react-native"
 
 var windowWidth = Dimensions.get('window').width;
@@ -8,17 +8,17 @@ import Prompts from "./Prompts"
 
 const InputBar = ({uid}) => {
 
-    const[messages, setMessages] = useState([])
+    const[messages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState(null);
     const [outputMessage, setOutputMessage] = useState(null);
     const [promptClicked, setPromptClicked] = useState(false);
-    const [userName, setUserName] = useState(null)
+    const [userName, setUserName] = useState(null);
 
-    useEffect = () => {
+    useEffect(() => {
         fetch(`http://10.0.2.2:5000/user/${uid}`)
         .then(result => result.json())
         .then(data => setUserName(data["first_name"]))
-    }
+    }, [uid])
 
     const handlePromptProviderClick = () => {
         
@@ -38,6 +38,7 @@ const InputBar = ({uid}) => {
     useEffect(() =>{
         if(promptClicked){
             handleButtonClick();
+            setPromptClicked(false);
         }
     }, [inputMessage])
 
