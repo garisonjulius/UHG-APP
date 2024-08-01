@@ -1,16 +1,31 @@
 import React, { useState, useEffect} from "react";
 import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
 
-const FloatingChatIcon = ({ navigation }) => {
+const FloatingChatIcon = ({ navigation, uid }) => {
     const [showBubble, setShowBubble] = useState(true);
+    const [name, setName] = useState('');
 
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //         setShowBubble(false);
-    //     }, 10000);
+    useEffect(() => {
+        fetch(`http://10.0.2.2:5000/user/${uid}`)
+        .then(
+            response => response.json()
+        )
+        .then(
+            data => setName(data.first_name)
+        )
+        .catch(err => {
+            console.error('Request for user information failed', err);
+          }
+        )
+    }, [])
 
-    //     return () => clearTimeout(timer); // Cleanup the timer on component unmount
-    // }, []);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowBubble(false);
+        }, 3000);
+
+        return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    }, []);
 
     return (
         <Pressable onPress={() => navigation.navigate('ChatbotMain')} style={[floatingChatStyles.circle, floatingChatStyles.bottomRight]}>
