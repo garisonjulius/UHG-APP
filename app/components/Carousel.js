@@ -47,11 +47,10 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
             {item.title === "My Plan Overview" && (
             <>
                <View style={styles.planidContainer}>
-               <Text style={subtitleStyle1}>{item.subtitle1} </Text>
+               <Text style={subtitleStyle1}>{item.subtitle1} *</Text>
                <Text style={styles.myplanText}>#003126875</Text>
                </View>
                <Text style={{fontWeight: "bold", right: "35%", top: "60%", fontSize: 10,}}> *Do Not Share this ID</Text>
-
                <View style={styles.coverageContainer}>
                <Text style={subtitleStyle2}>{item.subtitle2} </Text>
                <Text style={styles.myplanText}> Dental </Text>
