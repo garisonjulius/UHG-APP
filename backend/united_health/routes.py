@@ -5,6 +5,7 @@ import united_health.ai
 from .chatbot import write_user_info, llm_model, index
 
 DATABASE = 'UHCDatabase.db'
+history = ""
 
 def get_db():
     """Return connection to the UHCDatabase."""
@@ -155,22 +156,23 @@ def get_plan_info(pid):
 
 @app.route("/getResponse/<uid>/<input>", methods=['GET','POST'])
 def getResponse(uid, input):
+    global history
+
     write_user_info(uid)
     
-    chat_response = index.query(input, llm_model)
+
+    history += f"User: {input}\n"
+    #fullPrompt = history + "Assistant: "
+    
+
+    chatResponse = index.query(history, llm_model)
     response = {
         "user_input": input,
-        "chat_response": chat_response
+        "chat_response": chatResponse
     }
+    
+    history += f"Assistant: {chatResponse}\n"
+
+    
 
     return jsonify(response)
-
-
-# To-do
- 
-# import chatbot
-# crete new flask route
-    # call the text loader function to get the txt file
-    # get the user input
-    # pass the input and txt file into the model
-    # get and return the response
