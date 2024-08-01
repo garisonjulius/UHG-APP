@@ -2,7 +2,6 @@ import React from "react";
 import {View,  StyleSheet, Text, KeyboardAvoidingView} from "react-native";
 import InputBar from "../components/chatbot/InputBar";
 import ChatbotHeader from "../components/chatbot/ChatbotHeader";
-import Prompts from "../components/chatbot/Prompts"
 
 const ChatbotMain = ({uid}) => {
     return(

@@ -29,7 +29,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
     }
 
   return (
-    <View style={[styles.carousel, {width}, {marginTop: -20}]}>
+    <View style={[styles.carousel, {width}, {marginTop: 0}]}>
       <TouchableOpacity style={styles.dashboardContainer2}>
         <Text style={titleStyle}>{item.title}</Text>
         <Pressable
@@ -74,7 +74,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
               <Text style={styles.remainingText}>Remaining</Text>
               </View>
               <Image 
-              source={require("../assets/small-progress.png")}
+              source={require("../assets/non-full-bar.png")}
               style={styles.deductibleBar}/>
 
               <Text style={styles.pocketText}>Out-of-Pocket Max</Text>
@@ -83,7 +83,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
                 <Text style={styles.remainingText2}>Remaining</Text>
               </View>
                <Image 
-              source={require("../assets/big-progress.png")}
+              source={require("../assets/full-bar.png")}
               style={styles.pocketBar}/>
 
             </>
