@@ -11,14 +11,13 @@ const InputBar = ({name, uid}) => {
     const [inputMessage, setInputMessage] = useState(null);
     const [outputMessage, setOutputMessage] = useState(null);
     const [promptClicked, setPromptClicked] = useState(false);
-
-
-
+    const [showPrompts, setShowPrompts] = useState(true);
 
     const handlePromptProviderClick = () => {
         
         setInputMessage("Find a provider")
         setPromptClicked(true)
+        setShowPrompts(false)
         //handleButtonClick()
         //console.log(inputMessage)
     }
@@ -26,6 +25,7 @@ const InputBar = ({name, uid}) => {
     const handlePromptPlanClick = () => {
         setInputMessage("My plan benefits")
         setPromptClicked(true)
+        setShowPrompts(false)
 
         //handleButtonClick()
     }
@@ -49,6 +49,7 @@ const InputBar = ({name, uid}) => {
     }
 
     const handleButtonClick = () => {
+        setShowPrompts(false)
         const tempInputMsg = inputMessage;
         // Clear input message
         setInputMessage("");
@@ -90,26 +91,28 @@ const InputBar = ({name, uid}) => {
     return(
 
         <View>
-
-            <View style = {styles.prompts}>
-                <View style = {styles.examplePrompt}>
-                    <Text style = {styles.examplePromptText}>Welcome to Elena.AI {name}! Here are examples of requests I can accomodate:</Text>
-                </View>
-
-                <View style = {styles.firstRowPrompts}>
-                    <TouchableOpacity onPress={handlePromptProviderClick}>
-                        <View style = {styles.firstRowContent}>
-                            <Text style = {styles.firstRowTextOne}>Find a provider</Text>
-                        </View>
-                    </TouchableOpacity>
             
-                    <TouchableOpacity onPress={handlePromptPlanClick}>
-                        <View style = {styles.firstRowContent}>
-                            <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </View>   
+            {showPrompts && (
+                <View style = {styles.prompts}>
+                    <View style = {styles.examplePrompt}>
+                        <Text style = {styles.examplePromptText}>Welcome to Elena.AI {name}! Here are examples of requests I can accomodate:</Text>
+                    </View>
+
+                    <View style = {styles.firstRowPrompts}>
+                        <TouchableOpacity onPress={handlePromptProviderClick}>
+                            <View style = {styles.firstRowContent}>
+                                <Text style = {styles.firstRowTextOne}>Find a provider</Text>
+                            </View>
+                        </TouchableOpacity>
+            
+                        <TouchableOpacity onPress={handlePromptPlanClick}>
+                            <View style = {styles.firstRowContent}>
+                                <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View> 
+            )}
 
             <View>
                 <GiftedChat messages = {messages} renderInputToolbar={(() => { })} 
