@@ -1,7 +1,6 @@
 import React from "react";
-import {View,  StyleSheet, Text, KeyboardAvoidingView} from "react-native";
+import {View,  StyleSheet} from "react-native";
 import InputBar from "./InputBar";
-import ChatbotHeader from "./ChatbotHeader";
 
 const ChatbotMain = ({route}) => {
     const {name, uid} = route.params;

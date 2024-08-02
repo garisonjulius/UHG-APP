@@ -1,8 +1,6 @@
 import React from "react";
 import {useState, useEffect} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, KeyboardAvoidingView, Touchable} from "react-native"
-
-var windowWidth = Dimensions.get('window').width;
 import { GiftedChat } from "react-native-gifted-chat";
 
 const InputBar = ({name, uid}) => {
@@ -18,16 +16,12 @@ const InputBar = ({name, uid}) => {
         setInputMessage("Find a provider")
         setPromptClicked(true)
         setShowPrompts(false)
-        //handleButtonClick()
-        //console.log(inputMessage)
     }
 
     const handlePromptPlanClick = () => {
         setInputMessage("My plan benefits")
         setPromptClicked(true)
         setShowPrompts(false)
-
-        //handleButtonClick()
     }
 
     useEffect(() => {
@@ -37,20 +31,14 @@ const InputBar = ({name, uid}) => {
         }
     }, [inputMessage])
 
-    // useEffect(() =>{
-    //     if(inputMessage === "My plan benefits"){
-    //         handleButtonClick();
-    //     }
-    // }, [inputMessage])
-
     const handleTextInput = (text) => {
         setInputMessage(text)
         console.log(inputMessage)
     }
 
     const handleButtonClick = () => {
-        setShowPrompts(false)
         const tempInputMsg = inputMessage;
+
         // Clear input message
         setInputMessage("");
 
@@ -86,12 +74,10 @@ const InputBar = ({name, uid}) => {
         });
     };   
 
-    //<KeyboardAvoidingView behavior = "height" keyboardVerticalOffset={210}>
-
     return(
 
         <View>
-            
+
             {showPrompts && (
                 <View style = {styles.prompts}>
                     <View style = {styles.examplePrompt}>
@@ -114,6 +100,8 @@ const InputBar = ({name, uid}) => {
                 </View> 
             )}
 
+              
+
             <View>
                 <GiftedChat messages = {messages} renderInputToolbar={(() => { })} 
                 user={{_id:1}}
@@ -123,7 +111,7 @@ const InputBar = ({name, uid}) => {
             <View style = {styles.inputField}>
                 <View style = {styles.inputBar}> 
                     <View style = {styles.fixWidth}>
-                        <TextInput multiline={true} placeholder="Ask me anything..." value={inputMessage} onSubmitEditing={handleButtonClick} placeholderTextColor={"grey"} style={styles.placeholderText} onChangeText = {handleTextInput}></TextInput>   
+                        <TextInput multiline={true} placeholder={"Ask me anything..."} value={inputMessage} onSubmitEditing={handleButtonClick} placeholderTextColor={"grey"} style={styles.placeholderText} onChangeText = {handleTextInput}></TextInput>   
                     </View>
                     <TouchableOpacity onPress={handleButtonClick}>
                         <View style = {styles.sendButton}>
