@@ -1,8 +1,6 @@
-import React from "react"
-import {useState, useEffect} from "react"
+import React from "react";
+import {useState, useEffect} from "react";
 import {View, Text, TextInput, StyleSheet, TouchableOpacity, Image, Dimensions, KeyboardAvoidingView, Touchable} from "react-native"
-
-var windowWidth = Dimensions.get('window').width;
 import { GiftedChat } from "react-native-gifted-chat";
 
 const InputBar = ({name, uid}) => {
@@ -11,23 +9,19 @@ const InputBar = ({name, uid}) => {
     const [inputMessage, setInputMessage] = useState(null);
     const [outputMessage, setOutputMessage] = useState(null);
     const [promptClicked, setPromptClicked] = useState(false);
-
-
-
+    const [showPrompts, setShowPrompts] = useState(true);
 
     const handlePromptProviderClick = () => {
         
         setInputMessage("Find a provider")
         setPromptClicked(true)
-        //handleButtonClick()
-        //console.log(inputMessage)
+        setShowPrompts(false)
     }
 
     const handlePromptPlanClick = () => {
         setInputMessage("My plan benefits")
         setPromptClicked(true)
-
-        //handleButtonClick()
+        setShowPrompts(false)
     }
 
     useEffect(() => {
@@ -37,19 +31,13 @@ const InputBar = ({name, uid}) => {
         }
     }, [inputMessage])
 
-    // useEffect(() =>{
-    //     if(inputMessage === "My plan benefits"){
-    //         handleButtonClick();
-    //     }
-    // }, [inputMessage])
-
     const handleTextInput = (text) => {
         setInputMessage(text)
-        console.log(inputMessage)
     }
 
     const handleButtonClick = () => {
         const tempInputMsg = inputMessage;
+
         // Clear input message
         setInputMessage(null);
 
@@ -66,7 +54,6 @@ const InputBar = ({name, uid}) => {
         fetch(`http://10.0.2.2:5000/getResponse/${uid}/${tempInputMsg}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data["chat_response"]),
             setOutputMessage(data["chat_response"])
 
             const message = {
@@ -85,31 +72,33 @@ const InputBar = ({name, uid}) => {
         });
     };   
 
-    //<KeyboardAvoidingView behavior = "height" keyboardVerticalOffset={210}>
-
     return(
 
         <View>
 
-            <View style = {styles.prompts}>
-                <View style = {styles.examplePrompt}>
-                    <Text style = {styles.examplePromptText}>Welcome to Elena.AI {name}! Here are examples of requests I can accomodate:</Text>
-                </View>
+            {showPrompts && (
+                <View style = {styles.prompts}>
+                    <View style = {styles.examplePrompt}>
+                        <Text style = {styles.examplePromptText}>Welcome to Elena.AI {name}! Here are examples of requests I can accomodate:</Text>
+                    </View>
 
-                <View style = {styles.firstRowPrompts}>
-                    <TouchableOpacity onPress={handlePromptProviderClick}>
-                        <View style = {styles.firstRowContent}>
-                            <Text style = {styles.firstRowTextOne}>Find a provider</Text>
-                        </View>
-                    </TouchableOpacity>
+                    <View style = {styles.firstRowPrompts}>
+                        <TouchableOpacity onPress={handlePromptProviderClick}>
+                            <View style = {styles.firstRowContent}>
+                                <Text style = {styles.firstRowTextOne}>Find a provider</Text>
+                            </View>
+                        </TouchableOpacity>
             
-                    <TouchableOpacity onPress={handlePromptPlanClick}>
-                        <View style = {styles.firstRowContent}>
-                            <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-            </View>   
+                        <TouchableOpacity onPress={handlePromptPlanClick}>
+                            <View style = {styles.firstRowContent}>
+                                <Text style = {styles.firstRowTextTwo}>My plan benefits</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View> 
+            )}
+
+              
 
             <View>
                 <GiftedChat messages = {messages} renderInputToolbar={(() => { })} 
@@ -120,7 +109,14 @@ const InputBar = ({name, uid}) => {
             <View style = {styles.inputField}>
                 <View style = {styles.inputBar}> 
                     <View style = {styles.fixWidth}>
-                        {(!inputMessage || promptClicked) ? <TextInput multiline={false} placeholder="Ask me anything..." onSubmitEditing={handleButtonClick} onChangeText={handleTextInput} style={styles.placeholderText}/> : <TextInput multiline={true} value={inputMessage} onSubmitEditing={handleButtonClick} placeholderTextColor={"grey"} style={styles.placeholderText} onChangeText = {handleTextInput} numberOfLines={1}></TextInput>}
+                        {(!inputMessage || promptClicked) ? <TextInput 
+                        multiline={false} 
+                        placeholder={"Ask me anything..."} onSubmitEditing={handleButtonClick} onChangeText={handleTextInput} style={styles.placeholderText}/> : <TextInput multiline={true} 
+                        value={inputMessage} 
+                        onSubmitEditing={handleButtonClick} 
+                        placeholderTextColor={"grey"} 
+                        style={styles.placeholderText} 
+                        onChangeText = {handleTextInput} numberOfLines={1}></TextInput>}
                     </View>
                     <TouchableOpacity onPress={handleButtonClick}>
                         <View style = {styles.sendButton}>
