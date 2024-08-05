@@ -32,7 +32,7 @@ function Home({navigation}) {
   const intervalRef = useRef(null);
   const [fromCarousel, setFromCarousel] = useState(false);
 
-  let uid = 1;
+  let uid = 7;
   
   useCarouselEffect(carouselPage, setCarouselPage, data, flatListRef, intervalRef);
 
