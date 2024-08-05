@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { View, Pressable, StyleSheet, Text, Image, TouchableOpacity, ImageBackground } from 'react-native';
+import {Pressable, StyleSheet, Text, Image, ImageBackground, View } from 'react-native';
 
 const FloatingChatIcon = ({ navigation, uid}) => {
     const [showBubble, setShowBubble] = useState(true);
