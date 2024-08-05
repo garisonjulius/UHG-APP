@@ -21,7 +21,7 @@ VALUES
 (3, 1, NULL, NULL, TRUE, 'Michael', 'Smith', 35, 2, TRUE, 37, 'Male', 'Male', 60000, '28107', 86, FALSE, FALSE),
 (4, 5, NULL, NULL, TRUE, 'Emily', 'Brown', 28, 0, FALSE, NULL, NULL, 'Female', 50000, '28107', 40, FALSE, NULL),
 (5, 4, NULL, NULL, TRUE, 'David', 'Lee', 26, 0, FALSE, NULL, NULL, 'Male', 40000, '28107', 92, FALSE, NULL),
-(6, 2, NULL, NULL, TRUE, 'Jessica', 'Garcia', 29, 3, TRUE, 31, 'Male', 'Female', 125000, '28107', 63, FALSE, FALSE),
+(6, 2, NULL, NULL, TRUE, 'Jessica', 'Garcia', 29, 3, TRUE, 31, 'Male', 'Female', 125000, '28107', 63, FALSE, FALSE);
 
 -- Insert information about user's health and plan spending into UserHealthInformation table
 INSERT INTO UserHealthInformation
@@ -31,7 +31,7 @@ VALUES
 (3, TRUE, TRUE, 2, 0, 1, 0, 1, 2, 0, 296, 0, 2240, 2225, 0, 0, 0, 0, 0, 'Low', FALSE),
 (4, FALSE, TRUE, 4, 2, 1, 0, 1, 3, 5, 592, 148, 3360, 2225, 0, 50, 100, 0, 80, 'Moderate', TRUE),
 (5, TRUE, FALSE, 15, 4, 3, 2, 2, 8, 12, 2220, 296, 8960, 6675, 1030, 40, 150, 150, 4000, 'Low', FALSE),
-(6, FALSE, TRUE, 4, 2, 0, 1, 0, 3, 5, 592, 148, 3360, 0, 515, 30, 200, 250, 5000, 'High', TRUE),
+(6, FALSE, TRUE, 4, 2, 0, 1, 0, 3, 5, 592, 148, 3360, 0, 515, 30, 200, 250, 5000, 'High', TRUE);
 
 -- Insert user conditions into UserHealthConditions table
 
