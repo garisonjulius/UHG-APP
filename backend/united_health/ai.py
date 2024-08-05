@@ -67,7 +67,7 @@ def put_rid(uid):
     update_query = "UPDATE Users SET plan_rec_desc = ? WHERE UID = ? AND RID IS NULL"
 
     # Execute the update query
-    cursor.execute(update_query, (index.query('Can you give a 30 word summary of just the reasoning:' + desc, llm_model), uid))
+    cursor.execute(update_query, (index.query('Can you give a 30 word summary of just the reasoning of why the specific plan is better, be sure to write the specifc plan name title and not the number:' + desc, llm_model), uid))
 
     # SQL UPDATE statement to update RID only if it is currently None (NULL)
     update_query = "UPDATE Users SET RID = ? WHERE UID = ? AND RID IS NULL"

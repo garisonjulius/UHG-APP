@@ -10,15 +10,34 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 const ComparisonFrame1 = ({route}) => {
   
-  const [currPlan, setCurrPlan] = useState("");
-  const [recPlan, setRecPlan] = useState("");
+  const [currPlan, setCurrPlan] = useState(
+    {
+      "monthly_premium": "",
+      "deductible_per_person": "",
+      'out_of_pocket_max_per_person': "",
+      'network_primary_bd': "",
+      'out_of_network_primary_bd': "",
+      'network_specialist_bd': "",
+      'plan_network_type': "",
+    }
+  );
+  const [recPlan, setRecPlan] = useState(
+    {
+      "monthly_premium": "",
+      "deductible_per_person": "",
+      'out_of_pocket_max_per_person': "",
+      'network_primary_bd': "",
+      'out_of_network_primary_bd': "",
+      'network_specialist_bd': "",
+      'plan_network_type': "",
+    }
+  );
   const [userData, setUserData] = useState("");
   const [isTextVisible, setTextVisible] = useState(false);
 
-  const {uid} = route.params;
 
   useEffect(() => {
-    fetch(`http://10.0.2.2:5000/user/${uid}`)
+    fetch("http://10.0.2.2:5000/user/1")
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -61,9 +80,9 @@ const ComparisonFrame1 = ({route}) => {
 
   const tableInformation = {
     tableHead: ['Features', 'Current', 'Recommended'],
-    tableTitle: ['Monthly Premium', 'Annual Deductible per person (USD)', 'Annual Maximum OP (USD)', 'IN Prim Care Visit before deductible', 'ON Prim Care Visit before deductible', 'IN Specialist Visit before deductible', 'HMO/PPO/POS/EPO'],
+    tableTitle: ['Monthly Premium (USD)', 'Annual Deductible per person (USD)', 'Annual Maximum OP (USD)', 'IN Prim Care Visit before deductible (USD)', 'ON Prim Care Visit before deductible (USD)', 'IN Specialist Visit before deductible (USD)', 'HMO/PPO/POS/EPO'],
     tableData: [
-      ['$' + currPlan['monthly_premium'], '$' + recPlan['monthly_premium']],
+      [currPlan['monthly_premium'], recPlan['monthly_premium']],
       [currPlan['deductible_per_person'], recPlan['deductible_per_person']],
       [currPlan['out_of_pocket_max_per_person'], recPlan['out_of_pocket_max_per_person']],
       [currPlan['network_primary_bd'], recPlan['network_primary_bd']],
