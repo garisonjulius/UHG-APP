@@ -33,7 +33,6 @@ const InputBar = ({name, uid}) => {
 
     const handleTextInput = (text) => {
         setInputMessage(text)
-        console.log(inputMessage)
     }
 
     const handleButtonClick = () => {
@@ -55,7 +54,6 @@ const InputBar = ({name, uid}) => {
         fetch(`http://10.0.2.2:5000/getResponse/${uid}/${tempInputMsg}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data["chat_response"]),
             setOutputMessage(data["chat_response"])
 
             const message = {
@@ -111,7 +109,14 @@ const InputBar = ({name, uid}) => {
             <View style = {styles.inputField}>
                 <View style = {styles.inputBar}> 
                     <View style = {styles.fixWidth}>
-                        <TextInput multiline={true} placeholder={"Ask me anything..."} value={inputMessage} onSubmitEditing={handleButtonClick} placeholderTextColor={"grey"} style={styles.placeholderText} onChangeText = {handleTextInput}></TextInput>   
+                        <TextInput 
+                        multiline={true} 
+                        placeholder={"Ask me anything..."} 
+                        value={inputMessage} 
+                        onSubmitEditing={handleButtonClick} 
+                        placeholderTextColor={"grey"} 
+                        style={styles.placeholderText} 
+                        onChangeText = {handleTextInput}></TextInput>   
                     </View>
                     <TouchableOpacity onPress={handleButtonClick}>
                         <View style = {styles.sendButton}>
