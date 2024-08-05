@@ -39,7 +39,7 @@ const InputBar = ({name, uid}) => {
         const tempInputMsg = inputMessage;
 
         // Clear input message
-        setInputMessage("");
+        setInputMessage(null);
 
         const message = {
             _id:Math.random().toString(36).substring(7),
@@ -109,14 +109,14 @@ const InputBar = ({name, uid}) => {
             <View style = {styles.inputField}>
                 <View style = {styles.inputBar}> 
                     <View style = {styles.fixWidth}>
-                        <TextInput 
-                        multiline={true} 
-                        placeholder={"Ask me anything..."} 
+                        {(!inputMessage || promptClicked) ? <TextInput 
+                        multiline={false} 
+                        placeholder={"Ask me anything..."} onSubmitEditing={handleButtonClick} onChangeText={handleTextInput} style={styles.placeholderText}/> : <TextInput multiline={true} 
                         value={inputMessage} 
                         onSubmitEditing={handleButtonClick} 
                         placeholderTextColor={"grey"} 
                         style={styles.placeholderText} 
-                        onChangeText = {handleTextInput}></TextInput>   
+                        onChangeText = {handleTextInput} numberOfLines={1}></TextInput>}
                     </View>
                     <TouchableOpacity onPress={handleButtonClick}>
                         <View style = {styles.sendButton}>
@@ -145,6 +145,19 @@ const styles = StyleSheet.create({
         marginTop: 25,
         zIndex: 1
     },
+
+    input: {
+        height: 40,              // Control the height
+        //maxHeight: 40,           // Max height to allow for multiple lines if needed
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 20,
+        paddingHorizontal: 10,  // Add padding to avoid text being too close to edges
+        fontSize: 16,            // Font size for text
+        textAlignVertical: 'top',  // Center text vertically
+        width: '100%',           // Full width of the container
+      },
+
 
     examplePrompt: {
         flex: 1,

@@ -74,7 +74,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
               <Text style={styles.remainingText}>Remaining</Text>
               </View>
               <Image 
-              source={require("../assets/non-full-bar.png")}
+              source={require("../assets/deductible.png")}
               style={styles.deductibleBar}/>
 
               <Text style={styles.pocketText}>Out-of-Pocket Max</Text>
@@ -83,7 +83,7 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
                 <Text style={styles.remainingText2}>Remaining</Text>
               </View>
                <Image 
-              source={require("../assets/full-bar.png")}
+              source={require("../assets/out-of-pocket.png")}
               style={styles.pocketBar}/>
 
             </>
