@@ -346,12 +346,14 @@ const styles = StyleSheet.create({
       width: "20%",
       height: "10%",
       bottom: "28%",
+      borderRadius: 10,
     },
     pocketBar: {
       marginLeft: "45%",
       width: "20%",
       height: "10%",
       bottom: "20%",
+      borderRadius: 10
     },
     costTitle: {
       color: "#02226d",
