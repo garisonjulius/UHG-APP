@@ -110,14 +110,26 @@ const InputBar = ({name, uid}) => {
             <View style = {styles.inputField}>
                 <View style = {styles.inputBar}> 
                     <View style = {styles.fixWidth}>
-                        {(!inputMessage || promptClicked) ? <TextInput 
+                        {(!inputMessage || promptClicked) ? 
+                        
+                        <TextInput 
                         multiline={false} 
-                        placeholder={"Ask me anything..."} onSubmitEditing={handleButtonClick} onChangeText={handleTextInput} style={styles.placeholderText}/> : <TextInput multiline={true} 
+                        placeholder={"Ask me anything..."}
+                        onSubmitEditing={handleButtonClick}
+                        onChangeText={handleTextInput}
+                        style={styles.placeholderText}/> 
+                        
+                        : 
+                        
+                        <TextInput 
+                        multiline={true} 
                         value={inputMessage} 
                         onSubmitEditing={handleButtonClick} 
                         placeholderTextColor={"grey"} 
                         style={styles.placeholderText} 
-                        onChangeText = {handleTextInput} numberOfLines={1}></TextInput>}
+                        onChangeText={handleTextInput}
+                        numberOfLines={1}
+                        ></TextInput>}
                     </View>
                     <TouchableOpacity onPress={handleButtonClick}>
                         <View style = {styles.sendButton}>
