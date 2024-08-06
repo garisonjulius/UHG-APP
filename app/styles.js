@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
     },
     wellnessTitle: {
       fontStyle: 'italic',
+      fontFamily: 'serif',
       textAlign: 'center',
-      fontWeight: 'bold',
+      fontSize: 18,
     },
     wellnessText: {
       textAlign: 'center',
