@@ -22,7 +22,7 @@ const FloatingChatIcon = ({ navigation, uid}) => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowBubble(false);
-        }, 5000);
+        }, 100000);
 
         return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }, []);

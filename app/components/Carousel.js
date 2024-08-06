@@ -142,7 +142,7 @@ export const useCarouselEffect = (carouselPage, setCarouselPage, data, flatListR
             const newIndex = (carouselPage + 1) % data.length;
             flatListRef.current.scrollToIndex({ index: newIndex, animated: true });
             setCarouselPage(newIndex);
-        }, 200000);
+        }, 5000);
       
         return () => {
             clearInterval(intervalRef.current);
