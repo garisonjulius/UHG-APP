@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
       flexDirection: 'row'
     },
     wellness: {
-      backgroundColor: '#ede3d3',
+      backgroundColor: '#fff4e3',
       display: 'flex',
       flexDirection: 'col',
       padding: 5,

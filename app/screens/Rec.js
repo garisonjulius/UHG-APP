@@ -35,9 +35,10 @@ const ComparisonFrame1 = ({route}) => {
   const [userData, setUserData] = useState("");
   const [isTextVisible, setTextVisible] = useState(false);
 
+  const {uid} = route.params;
 
   useEffect(() => {
-    fetch("http://10.0.2.2:5000/user/1")
+    fetch(`http://10.0.2.2:5000/user/${uid}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -80,8 +81,9 @@ const ComparisonFrame1 = ({route}) => {
 
   const tableInformation = {
     tableHead: ['Features', 'Current', 'Recommended'],
-    tableTitle: ['Monthly Premium (USD)', 'Annual Deductible per person (USD)', 'Annual Maximum OP (USD)', 'IN Prim Care Visit before deductible (USD)', 'ON Prim Care Visit before deductible (USD)', 'IN Specialist Visit before deductible (USD)', 'HMO/PPO/POS/EPO'],
+    tableTitle: ['Plan Name', 'Monthly Premium (USD)', 'Annual Deductible per person (USD)', 'Annual Maximum OP (USD)', 'IN Prim Care Visit before deductible (USD)', 'ON Prim Care Visit before deductible (USD)', 'IN Specialist Visit before deductible (USD)', 'HMO/PPO/POS/EPO'],
     tableData: [
+      [currPlan['plan_title'], recPlan['plan_title']],
       [currPlan['monthly_premium'], recPlan['monthly_premium']],
       [currPlan['deductible_per_person'], recPlan['deductible_per_person']],
       [currPlan['out_of_pocket_max_per_person'], recPlan['out_of_pocket_max_per_person']],
@@ -117,10 +119,7 @@ const ComparisonFrame1 = ({route}) => {
         <Row data={tableInformation.tableHead} flexArr={[.74, 1.13, 1.13]} style={styles.head} textStyle={styles.textHead}>
           <Text>{tableInformation.tableHead[0]}</Text>
           <Text>{tableInformation.tableHead[1]}</Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Text>{tableInformation.tableHead[2]}</Text>
-            <AntDesign name="right" size={16} color="pink" />
-          </View>
+          <Text>{tableInformation.tableHead[2]}</Text>
         </Row>
         <TableWrapper style={styles.wrapper}>
           <Col data={tableInformation.tableTitle} style={styles.title} textStyle={styles.textCol}/>
@@ -194,7 +193,10 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   aiReasoning: {
-    margin: 20,
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: 15,
+    marginLeft: 15
   },
   aiReasoningText: {
     textAlign: 'center',
