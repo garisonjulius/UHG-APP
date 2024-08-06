@@ -80,7 +80,7 @@ const InputBar = ({name, uid}) => {
             {showPrompts && (
                 <View style = {styles.prompts}>
                     <View style = {styles.examplePrompt}>
-                        <Text style = {styles.examplePromptText}>Welcome to Elena.AI {name}! Here are examples of requests I can accomodate:</Text>
+                        <Text style = {styles.examplePromptText}>Welcome to Elena.AI, {name}! Here are examples of requests I can accomodate:</Text>
                     </View>
 
                     <View style = {styles.firstRowPrompts}>
