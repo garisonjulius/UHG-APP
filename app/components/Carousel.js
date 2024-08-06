@@ -46,6 +46,9 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
         <View style={styles.contentContainer}>
             {item.title === "My Plan Overview" && (
             <>
+            <Image 
+            source={require("../assets/forward-icon.png")}
+            style={styles.overviewArrow}/>
                <View style={styles.planidContainer}>
                <Text style={subtitleStyle1}>{item.subtitle1} *</Text>
                <Text style={styles.myplanText}>#003126875</Text>
@@ -61,6 +64,9 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
           )}
             {item.title === "Spending" && (
             <> 
+            <Image 
+            source={require("../assets/forward-icon.png")}
+            style={styles.spendingArrow}/>
               <Text style={subtitleStyle1}>{item.subtitle1} </Text>
               <Text style={styles.networkText}>Medical In-Network</Text>
               <Image 
@@ -90,6 +96,9 @@ export const CarouselItem = ({ item, index, navigation, setRenderPopUp, setFromC
           )}
             {item.title === "Cost Estimates" && (
             <>
+            <Image 
+            source={require("../assets/forward-icon.png")}
+            style={styles.costArrow}/>
               <View style={styles.costContainer1}>
               <Text style={styles.costText}> X-Ray </Text>
               <Text style={styles.costNumbers}>$0</Text>
@@ -133,7 +142,7 @@ export const useCarouselEffect = (carouselPage, setCarouselPage, data, flatListR
             const newIndex = (carouselPage + 1) % data.length;
             flatListRef.current.scrollToIndex({ index: newIndex, animated: true });
             setCarouselPage(newIndex);
-        }, 5000);
+        }, 200000);
       
         return () => {
             clearInterval(intervalRef.current);
