@@ -33,6 +33,7 @@ const InputBar = ({name, uid}) => {
 
     const handleTextInput = (text) => {
         setInputMessage(text)
+        setShowPrompts(false)
     }
 
     const handleButtonClick = () => {
