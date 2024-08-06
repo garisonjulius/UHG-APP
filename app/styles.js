@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
     },
     wellnessTitle: {
       fontStyle: 'italic',
+      fontFamily: 'serif',
       textAlign: 'center',
-      fontWeight: 'bold',
+      fontSize: 18,
     },
     wellnessText: {
       textAlign: 'center',
@@ -241,6 +242,30 @@ const styles = StyleSheet.create({
       aspectRatio: 1,
       backgroundColor: "#edf8fc",
       borderRadius: 10,
+    },
+    overviewArrow: {
+      width: 30,
+      height: 30,
+      position: "absolute",
+      left: 230,
+      bottom: 161.3,
+      tintColor: "#021842"
+    },
+    spendingArrow: {
+      width: 30,
+      height: 30,
+      position: "absolute",
+      left: 130,
+      bottom: 160.5,
+      tintColor: "#021842"
+    },
+    costArrow: {
+      width: 30,
+      height: 30,
+      position: "absolute",
+      left: 200,
+      bottom: 161,
+      tintColor: "#021842"
     },
     planidContainer: {
       right: "25%",
