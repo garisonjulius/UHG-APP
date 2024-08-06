@@ -8,7 +8,7 @@ import FindCare from "../screens/FindCare";
 import Rx from "../screens/Rx";
 import Menu from "../screens/Menu";
 import Rec from "../screens/Rec";
-import ChatbotMain from "../screens/ChatbotMain";
+import ChatbotMain from "./chatbot/ChatbotMain";
 
 import { View } from "react-native";
 import HomeTabs from "../screens/HomeTabs";
