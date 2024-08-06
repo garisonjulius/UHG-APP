@@ -14,18 +14,18 @@ In network cost of imaging before deductible is met in US dollars: Full price
 In network cost of imaging after deductible is met in US dollars: No charge
 In network cost of blood work before deductible is met in US dollars: $80
 In network cost of blood work after deductible is met in US dollars: $80
-In network cost of generic medication before deductible is met in US dollars: $25
-In network cost of generic medication after deductible is met in US dollars: $25
-In network cost of brand medication before deductible is met in US dollars: Full price
-In network cost of brand medication after deductible is met in US dollars: No charge
-In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
-In network cost of non-preferred brand medication after deductible is met in US dollars: No charge
-In network cost of specialty medication before deductible is met in US dollars: Full price
-In network cost of specialty medication after deductible is met in US dollars: No charge
-In network cost of hospital stay before deductible is met in US dollars: Full price
-In network cost of hospital stay after deductible is met in US dollars: No charge
-In network cost of emergency room before deductible is met in US dollars: Full price
-In network cost of emergency room after deductible is met in US dollars: No charge
+In network cost of generic prescription before deductible is met in US dollars: $25
+In network cost of generic prescription after deductible is met in US dollars: $25
+In network cost of brand prescription before deductible is met in US dollars: Full price
+In network cost of brand prescription after deductible is met in US dollars: No charge
+In network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+In network cost of non-preferred brand prescription after deductible is met in US dollars: No charge
+In network cost of specialty prescription before deductible is met in US dollars: Full price
+In network cost of specialty prescription after deductible is met in US dollars: No charge
+In network cost of hospital visit before deductible is met in US dollars: Full price
+In network cost of hospital visit after deductible is met in US dollars: No charge
+In network cost of emergency room visit before deductible is met in US dollars: Full price
+In network cost of emergency room visit after deductible is met in US dollars: No charge
 Out of network primary care doctor visit before deductible is met in US dollars: 100%
 Out of network primary care doctor visit after deductible is met in US dollars: 100%
 Out of network preventive care doctor visit before deductible is met in US dollars: 100%
@@ -38,26 +38,18 @@ Out of network cost of imaging before deductible is met in US dollars: Full Pric
 Out of network cost of imaging after deductible is met in US dollars: 100%
 Out of network cost of blood work before deductible is met in US dollars: 100%
 Out of network cost of blood work after deductible is met in US dollars: 100%
-Out of network cost of generic medication before deductible is met in US dollars: 100%
-Out of network cost of generic medication after deductible is met in US dollars: 100%
-Out of network cost of brand medication before deductible is met in US dollars: Full price
-Out of network cost of brand medication after deductible is met in US dollars: 100%
-Out of network cost of non-preferred brand medication before deductible is met in US dollars: Full price
- Out of network cost of non-preferred brand medication after deductible is met in US dollars: 100%
-Out of network cost of specialty medication before deductible is met in US dollars: Full price
- Out of network cost of specialty medication after deductible is met in US dollars: 100%
-Out of network cost of hospital stay before deductible is met in US dollars: Full price
-Out of network cost of hospital stay after deductible is met in US dollars: 100%
-Out of network cost of emergency room before deductible is met in US dollars: Full price
-Out of network cost of emergency room after deductible is met in US dollars: No charge
-
-
-
-
-
-
-
-
+Out of network cost of generic prescription before deductible is met in US dollars: 100%
+Out of network cost of generic prescription after deductible is met in US dollars: 100%
+Out of network cost of brand prescription before deductible is met in US dollars: Full price
+Out of network cost of brand prescription after deductible is met in US dollars: 100%
+Out of network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+Out of network cost of non-preferred brand prescription after deductible is met in US dollars: 100%
+Out of network cost of specialty prescription before deductible is met in US dollars: Full price
+Out of network cost of specialty prescription after deductible is met in US dollars: 100%
+Out of network cost of hospital visit before deductible is met in US dollars: Full price
+Out of network cost of hospital visit after deductible is met in US dollars: 100%
+Out of network cost of emergency room visit before deductible is met in US dollars: Full price
+Out of network cost of emergency room visit after deductible is met in US dollars: No charge
 
 
 Health care plan #2: UHC Bronze-X Virtual Access (Unlimited $0 Virtual) - HMO
@@ -76,19 +68,19 @@ In network cost of imaging before deductible is met in US dollars: Full price
 In network cost of imaging after deductible is met in US dollars: 30%
 In network cost of blood work before deductible is met in US dollars: $20
 In network cost of blood work after deductible is met in US dollars: $20
-In network cost of generic medication before deductible is met in US dollars: $3
-In network cost of generic medication after deductible is met in US dollars: $3
-In network cost of brand medication before deductible is met in US dollars: Full price
-In network cost of brand medication after deductible is met in US dollars: 30%
-In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
-In network cost of non-preferred brand medication after deductible is met in US dollars: 50%
-In network cost of specialty medication before deductible is met in US dollars: Full price
-In network cost of specialty medication after deductible is met in US dollars: 50%
-In network cost of hospital stay before deductible is met in US dollars: Full price 
-In network cost of hospital stay after deductible is met in US dollars: 30%
-In network cost of emergency room before deductible is met in US dollars: Full price
-In network cost of emergency room after deductible is met in US dollars: 50%
- Out of network primary care doctor visit before deductible is met in US dollars: 100%
+In network cost of generic prescription before deductible is met in US dollars: $3
+In network cost of generic prescription after deductible is met in US dollars: $3
+In network cost of brand prescription before deductible is met in US dollars: Full price
+In network cost of brand prescription after deductible is met in US dollars: 30%
+In network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+In network cost of non-preferred brand prescription after deductible is met in US dollars: 50%
+In network cost of specialty prescription before deductible is met in US dollars: Full price
+In network cost of specialty prescription after deductible is met in US dollars: 50%
+In network cost of hospital visit before deductible is met in US dollars: Full price 
+In network cost of hospital visit after deductible is met in US dollars: 30%
+In network cost of emergency room visit before deductible is met in US dollars: Full price
+In network cost of emergency room visit after deductible is met in US dollars: 50%
+Out of network primary care doctor visit before deductible is met in US dollars: 100%
 Out of network primary care doctor visit after deductible is met in US dollars: 100% 
 Out of network preventive care doctor visit before deductible is met in US dollars: 100%
 Out of network preventive care doctor visit after deductible is met in US dollars: 100%
@@ -100,24 +92,18 @@ Out of network cost of imaging before deductible is met in US dollars: Full pric
 Out of network cost of imaging after deductible is met in US dollars: 100%
 Out of network cost of blood work before deductible is met in US dollars: 100% 
 Out of network cost of blood work after deductible is met in US dollars: 100%
-Out of network cost of generic medication before deductible is met in US dollars: 100%
-Out of network cost of generic medication after deductible is met in US dollars: 100%
-Out of network cost of brand medication before deductible is met in US dollars: Full price
-Out of network cost of brand medication after deductible is met in US dollars: 100%
-Out of network cost of non-preferred brand medication before deductible is met in US dollars: Full price
- Out of network cost of non-preferred brand medication after deductible is met in US dollars: 100%
-Out of network cost of specialty medication before deductible is met in US dollars: Full price
- Out of network cost of specialty medication after deductible is met in US dollars: 100%
-Out of network cost of hospital stay before deductible is met in US dollars: Full price
-Out of network cost of hospital stay after deductible is met in US dollars: 100%
-Out of network cost of emergency room before deductible is met in US dollars: Full price
-Out of network cost of emergency room after deductible is met in US dollars: 50%
-
-
-
-
-
-
+Out of network cost of generic prescription before deductible is met in US dollars: 100%
+Out of network cost of generic prescription after deductible is met in US dollars: 100%
+Out of network cost of brand prescription before deductible is met in US dollars: Full price
+Out of network cost of brand prescription after deductible is met in US dollars: 100%
+Out of network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+Out of network cost of non-preferred brand prescription after deductible is met in US dollars: 100%
+Out of network cost of specialty prescription before deductible is met in US dollars: Full price
+Out of network cost of specialty prescription after deductible is met in US dollars: 100%
+Out of network cost of hospital visit before deductible is met in US dollars: Full price
+Out of network cost of hospital visit after deductible is met in US dollars: 100%
+Out of network cost of emergency room visit before deductible is met in US dollars: Full price
+Out of network cost of emergency room visit after deductible is met in US dollars: 50%
 
 
 Health care plan #3: UHC Bronze-X ($0 PCP, $5 Tier 2 Rx, No Referrals) - HMO
@@ -136,18 +122,18 @@ In network cost of imaging before deductible is met in US dollars: Full price
 In network cost of imaging after deductible is met in US dollars: 40%
 In network cost of blood work before deductible is met in US dollars: Full price
 In network cost of blood work after deductible is met in US dollars: 20%
-In network cost of generic medication before deductible is met in US dollars: 5%
-In network cost of generic medication after deductible is met in US dollars: 5%
-In network cost of brand medication before deductible is met in US dollars: Full price
-In network cost of brand medication after deductible is met in US dollars: 40%
-In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
-In network cost of non-preferred brand medication after deductible is met in US dollars: 50%
-In network cost of specialty medication before deductible is met in US dollars: Full price
-In network cost of specialty medication after deductible is met in US dollars: 50%
-In network cost of hospital stay before deductible is met in US dollars: Full price
-In network cost of hospital stay after deductible is met in US dollars: 40%
-In network cost of emergency room before deductible is met in US dollars: Full price
-In network cost of emergency room after deductible is met in US dollars: 50%
+In network cost of generic prescription before deductible is met in US dollars: 5%
+In network cost of generic prescription after deductible is met in US dollars: 5%
+In network cost of brand prescription before deductible is met in US dollars: Full price
+In network cost of brand prescription after deductible is met in US dollars: 40%
+In network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+In network cost of non-preferred brand prescription after deductible is met in US dollars: 50%
+In network cost of specialty prescription before deductible is met in US dollars: Full price
+In network cost of specialty prescription after deductible is met in US dollars: 50%
+In network cost of hospital visit before deductible is met in US dollars: Full price
+In network cost of hospital visit after deductible is met in US dollars: 40%
+In network cost of emergency room visit before deductible is met in US dollars: Full price
+In network cost of emergency room visit after deductible is met in US dollars: 50%
 Out of network primary care doctor visit before deductible is met in US dollars: 100%
 Out of network primary care doctor visit after deductible is met in US dollars: 100%
 Out of network preventive care doctor visit before deductible is met in US dollars: 100% 
@@ -160,22 +146,18 @@ Out of network cost of imaging before deductible is met in US dollars: Full pric
 Out of network cost of imaging after deductible is met in US dollars: 100%
 Out of network cost of blood work before deductible is met in US dollars: Full price
 Out of network cost of blood work after deductible is met in US dollars: 100%
-Out of network cost of generic medication before deductible is met in US dollars: 100%
-Out of network cost of generic medication after deductible is met in US dollars: 100%
-Out of network cost of brand medication before deductible is met in US dollars: Full price
-Out of network cost of brand medication after deductible is met in US dollars: 100%
-Out of network cost of non-preferred brand medication before deductible is met in US dollars: Full price
- Out of network cost of non-preferred brand medication after deductible is met in US dollars: 100%
-Out of network cost of specialty medication before deductible is met in US dollars: Full price
- Out of network cost of specialty medication after deductible is met in US dollars: 100%
-Out of network cost of hospital stay before deductible is met in US dollars: Full price
-Out of network cost of hospital stay after deductible is met in US dollars: 100%
-Out of network cost of emergency room before deductible is met in US dollars: Full price
-Out of network cost of emergency room after deductible is met in US dollars: 50%
-
-
-
-
+Out of network cost of generic prescription before deductible is met in US dollars: 100%
+Out of network cost of generic prescription after deductible is met in US dollars: 100%
+Out of network cost of brand prescription before deductible is met in US dollars: Full price
+Out of network cost of brand prescription after deductible is met in US dollars: 100%
+Out of network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+Out of network cost of non-preferred brand prescription after deductible is met in US dollars: 100%
+Out of network cost of specialty prescription before deductible is met in US dollars: Full price
+Out of network cost of specialty prescription after deductible is met in US dollars: 100%
+Out of network cost of hospital visit before deductible is met in US dollars: Full price
+Out of network cost of hospital visit after deductible is met in US dollars: 100%
+Out of network cost of emergency room visit before deductible is met in US dollars: Full price
+Out of network cost of emergency room visit after deductible is met in US dollars: 50%
 
 
 Health care plan #4: UHC Silver-X Virtual Access (Unlimited $0 Virtual) - HMO
@@ -194,18 +176,18 @@ In network cost of imaging before deductible is met in US dollars: Full price
 In network cost of imaging after deductible is met in US dollars: 40%
 In network cost of blood work before deductible is met in US dollars: $10
 In network cost of blood work after deductible is met in US dollars: $10
-In network cost of generic medication before deductible is met in US dollars: $3
-In network cost of generic medication after deductible is met in US dollars: $3
-In network cost of brand medication before deductible is met in US dollars: Full price
-In network cost of brand medication after deductible is met in US dollars: $100
-In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
-In network cost of non-preferred brand medication after deductible is met in US dollars: 40%
-In network cost of specialty medication before deductible is met in US dollars: Full price
-In network cost of specialty medication after deductible is met in US dollars: 50%
-In network cost of hospital stay before deductible is met in US dollars: Full price
-In network cost of hospital stay after deductible is met in US dollars: 40%
-In network cost of emergency room before deductible is met in US dollars: Full price
-In network cost of emergency room after deductible is met in US dollars: 40%
+In network cost of generic prescription before deductible is met in US dollars: $3
+In network cost of generic prescription after deductible is met in US dollars: $3
+In network cost of brand prescription before deductible is met in US dollars: Full price
+In network cost of brand prescription after deductible is met in US dollars: $100
+In network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+In network cost of non-preferred brand prescription after deductible is met in US dollars: 40%
+In network cost of specialty prescription before deductible is met in US dollars: Full price
+In network cost of specialty prescription after deductible is met in US dollars: 50%
+In network cost of hospital visit before deductible is met in US dollars: Full price
+In network cost of hospital visit after deductible is met in US dollars: 40%
+In network cost of emergency room visit before deductible is met in US dollars: Full price
+In network cost of emergency room visit after deductible is met in US dollars: 40%
 Out of network primary care doctor visit before deductible is met in US dollars: 100%
 Out of network primary care doctor visit after deductible is met in US dollars: 100%
 Out of network preventive care doctor visit before deductible is met in US dollars:  100%
@@ -218,24 +200,18 @@ Out of network cost of imaging before deductible is met in US dollars: Full pric
 Out of network cost of imaging after deductible is met in US dollars: 100%
 Out of network cost of blood work before deductible is met in US dollars: 100%
 Out of network cost of blood work after deductible is met in US dollars: 100%
-Out of network cost of generic medication before deductible is met in US dollars: 100% 
-Out of network cost of generic medication after deductible is met in US dollars: 100%
-Out of network cost of brand medication before deductible is met in US dollars: Full price
-Out of network cost of brand medication after deductible is met in US dollars: 100%
-Out of network cost of non-preferred brand medication before deductible is met in US dollars: Full price
- Out of network cost of non-preferred brand medication after deductible is met in US dollars: 100%
-Out of network cost of specialty medication before deductible is met in US dollars: Full price
- Out of network cost of specialty medication after deductible is met in US dollars: 100%
-Out of network cost of hospital stay before deductible is met in US dollars: Full price
-Out of network cost of hospital stay after deductible is met in US dollars: 100%
-Out of network cost of emergency room before deductible is met in US dollars: Full price
-Out of network cost of emergency room after deductible is met in US dollars: 40%
-
-
-
-
-
-
+Out of network cost of generic prescription before deductible is met in US dollars: 100% 
+Out of network cost of generic prescription after deductible is met in US dollars: 100%
+Out of network cost of brand prescription before deductible is met in US dollars: Full price
+Out of network cost of brand prescription after deductible is met in US dollars: 100%
+Out of network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+Out of network cost of non-preferred brand prescription after deductible is met in US dollars: 100%
+Out of network cost of specialty prescription before deductible is met in US dollars: Full price
+Out of network cost of specialty prescription after deductible is met in US dollars: 100%
+Out of network cost of hospital visit before deductible is met in US dollars: Full price
+Out of network cost of hospital visit after deductible is met in US dollars: 100%
+Out of network cost of emergency room visit before deductible is met in US dollars: Full price
+Out of network cost of emergency room visit after deductible is met in US dollars: 40%
 
 
 Health care plan #5: UHC Gold-X Advantage+ ($0 PCP, Adult Dental + Vision) - HMO
@@ -254,18 +230,18 @@ In network cost of imaging before deductible is met in US dollars: $250
 In network cost of imaging after deductible is met in US dollars: $250
 In network cost of blood work before deductible is met in US dollars: $10
 In network cost of blood work after deductible is met in US dollars: $10
-In network cost of generic medication before deductible is met in US dollars: $1
-In network cost of generic medication after deductible is met in US dollars: $1
-In network cost of brand medication before deductible is met in US dollars: $50
-In network cost of brand medication after deductible is met in US dollars: $50
-In network cost of non-preferred brand medication before deductible is met in US dollars: Full price
-In network cost of non-preferred brand medication after deductible is met in US dollars: 30%
-In network cost of specialty medication before deductible is met in US dollars: Full price
-In network cost of specialty medication after deductible is met in US dollars: 40%
-In network cost of hospital stay before deductible is met in US dollars: Full price
-In network cost of hospital stay after deductible is met in US dollars: 20%
-In network cost of emergency room before deductible is met in US dollars: Full price
-In network cost of emergency room after deductible is met in US dollars: 20%
+In network cost of generic prescription before deductible is met in US dollars: $1
+In network cost of generic prescription after deductible is met in US dollars: $1
+In network cost of brand prescription before deductible is met in US dollars: $50
+In network cost of brand prescription after deductible is met in US dollars: $50
+In network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+In network cost of non-preferred brand prescription after deductible is met in US dollars: 30%
+In network cost of specialty prescription before deductible is met in US dollars: Full price
+In network cost of specialty prescription after deductible is met in US dollars: 40%
+In network cost of hospital visit before deductible is met in US dollars: Full price
+In network cost of hospital visit after deductible is met in US dollars: 20%
+In network cost of emergency room visit before deductible is met in US dollars: Full price
+In network cost of emergency room visit after deductible is met in US dollars: 20%
 Out of network primary care doctor visit before deductible is met in US dollars: 100%
 Out of network primary care doctor visit after deductible is met in US dollars: 100%
 Out of network preventive care doctor visit before deductible is met in US dollars: 100% 
@@ -278,15 +254,15 @@ Out of network cost of imaging before deductible is met in US dollars: 100%
 Out of network cost of imaging after deductible is met in US dollars: 100%
 Out of network cost of blood work before deductible is met in US dollars: 100%
 Out of network cost of blood work after deductible is met in US dollars: 100%
-Out of network cost of generic medication before deductible is met in US dollars: 100%
-Out of network cost of generic medication after deductible is met in US dollars: 100%
-Out of network cost of brand medication before deductible is met in US dollars: 100%
-Out of network cost of brand medication after deductible is met in US dollars: 100%
-Out of network cost of non-preferred brand medication before deductible is met in US dollars: Full price
- Out of network cost of non-preferred brand medication after deductible is met in US dollars: 100%
-Out of network cost of specialty medication before deductible is met in US dollars: Full price
- Out of network cost of specialty medication after deductible is met in US dollars: 100%
-Out of network cost of hospital stay before deductible is met in US dollars: Full price
-Out of network cost of hospital stay after deductible is met in US dollars: 100%
-Out of network cost of emergency room before deductible is met in US dollars: Full price
-Out of network cost of emergency room after deductible is met in US dollars: 20%
+Out of network cost of generic prescription before deductible is met in US dollars: 100%
+Out of network cost of generic prescription after deductible is met in US dollars: 100%
+Out of network cost of brand prescription before deductible is met in US dollars: 100%
+Out of network cost of brand prescription after deductible is met in US dollars: 100%
+Out of network cost of non-preferred brand prescription before deductible is met in US dollars: Full price
+Out of network cost of non-preferred brand prescription after deductible is met in US dollars: 100%
+Out of network cost of specialty prescription before deductible is met in US dollars: Full price
+Out of network cost of specialty prescription after deductible is met in US dollars: 100%
+Out of network cost of hospital visit before deductible is met in US dollars: Full price
+Out of network cost of hospital visit after deductible is met in US dollars: 100%
+Out of network cost of emergency room visit before deductible is met in US dollars: Full price
+Out of network cost of emergency room visit after deductible is met in US dollars: 20%
