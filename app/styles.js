@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
       color: "#02226d",
       fontSize: 22,
       fontWeight: "bold",
+      right: 2,
     },
     bell: {
       left: "140%",
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
       flexDirection: 'col',
       padding: 5,
       borderRadius: 10,
-      bottom: 72
+      bottom: 70,
     },
     wellnessTitle: {
       fontStyle: 'italic',

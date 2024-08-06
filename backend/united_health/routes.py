@@ -162,8 +162,8 @@ def getResponse(uid, input):
 
     original_input = input
 
-    if input == "Find a provider" or "Find me a provider" or "Find a doctor" or "Find me a doctor":
-        input = "If the question can't be answer based on the data you've been given ask user for more details 'user_input': " + input
+    # prompting
+    input = "If the question can't be answer based on the data you've been given ask user for more details. When providing info about doctors or specialists avoid using double stars in your response. 'user_input': " + input
 
     history += f"User: {input}\n"
     #fullPrompt = history + "Assistant: "
